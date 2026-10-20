@@ -1,5 +1,12 @@
 [
   {
+    "de": "die Frau",
+    "ar": "المرأة",
+    "pl": "die Frauen",
+    "syn": "-",
+    "ant": "der Mann"
+  },
+  {
     "de": "der Ehemann",
     "ar": "الزوج",
     "pl": "die Ehemänner",
