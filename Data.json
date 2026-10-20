@@ -1,0 +1,1563 @@
+[
+  {
+    "de": "das Zimmer",
+    "ar": "الغرفة",
+    "pl": "die Zimmer",
+    "syn": "der Raum",
+    "ant": "-"
+  },
+  {
+    "de": "das Wörterbuch",
+    "ar": "المعجم / القاموس",
+    "pl": "die Wörterbücher",
+    "syn": "das Lexikon",
+    "ant": "-"
+  },
+  {
+    "de": "das Wort (Wörter)",
+    "ar": "الكلمة (منفردة)",
+    "pl": "die Wörter",
+    "syn": "der Begriff",
+    "ant": "-"
+  },
+  {
+    "de": "das Wort (Worte)",
+    "ar": "العبارة / الجملة المترابطة",
+    "pl": "die Worte",
+    "syn": "der Satz",
+    "ant": "-"
+  },
+  {
+    "de": "die Tageszeitung",
+    "ar": "جريدة يومية",
+    "pl": "die Tageszeitungen",
+    "syn": "die Zeitung",
+    "ant": "-"
+  },
+  {
+    "de": "sagen",
+    "ar": "يقول",
+    "pl": "Verbe (فعل)",
+    "syn": "sprechen / äußern",
+    "ant": "schweigen (يصمت)"
+  },
+  {
+    "de": "die Wahrheit",
+    "ar": "الحقيقة",
+    "pl": "die Wahrheiten",
+    "syn": "die Realität",
+    "ant": "die Lüge (الكذبة)"
+  },
+  {
+    "de": "wahr",
+    "ar": "حقيقي / صحيح",
+    "pl": "Adjectif (صفة)",
+    "syn": "richtig / echt",
+    "ant": "unwahr / falsch"
+  },
+  {
+    "de": "unwahr",
+    "ar": "غير حقيقي / كاذب",
+    "pl": "Adjectif (صفة)",
+    "syn": "falsch / gelogen",
+    "ant": "wahr / echt"
+  },
+  {
+    "de": "der Regenschirm",
+    "ar": "مظلة المطر",
+    "pl": "die Regenschirme",
+    "syn": "der Schirm",
+    "ant": "der Sonnenschirm"
+  },
+  {
+    "de": "der Regen",
+    "ar": "المطر",
+    "pl": "Sans pluriel",
+    "syn": "der Niederschlag",
+    "ant": "die Trockenheit"
+  },
+  {
+    "de": "der Sonnenschirm",
+    "ar": "مظلة الشمس",
+    "pl": "die Sonnenschirme",
+    "syn": "-",
+    "ant": "der Regenschirm"
+  },
+  {
+    "de": "die Sonne",
+    "ar": "الشمس",
+    "pl": "die Sonnen",
+    "syn": "-",
+    "ant": "der Mond (القمر)"
+  },
+  {
+    "de": "der Bildschirm",
+    "ar": "الشاشة",
+    "pl": "die Bildschirme",
+    "syn": "der Monitor",
+    "ant": "-"
+  },
+  {
+    "de": "die Seite",
+    "ar": "صفحة الدفتر",
+    "pl": "die Seiten",
+    "syn": "das Blatt",
+    "ant": "-"
+  },
+  {
+    "de": "seit",
+    "ar": "منذ",
+    "pl": "Préposition (حرف جر)",
+    "syn": "ab",
+    "ant": "bis (حتى)"
+  },
+  {
+    "de": "das Glas",
+    "ar": "الكأس (الزجاجي)",
+    "pl": "die Gläser",
+    "syn": "der Becher",
+    "ant": "-"
+  },
+  {
+    "de": "die Tasse",
+    "ar": "فنجان / كأس قهوة",
+    "pl": "die Tassen",
+    "syn": "der Kaffeebecher",
+    "ant": "-"
+  },
+  {
+    "de": "der Wagen",
+    "ar": "السيارة / العربة",
+    "pl": "die Wagen",
+    "syn": "das Auto / das Fahrzeug",
+    "ant": "-"
+  },
+  {
+    "de": "die Batterie",
+    "ar": "البطارية",
+    "pl": "die Batterien",
+    "syn": "der Akku",
+    "ant": "-"
+  },
+  {
+    "de": "der Wasserhahn",
+    "ar": "صنبور الماء",
+    "pl": "die Wasserhähne",
+    "syn": "der Hahn",
+    "ant": "-"
+  },
+  {
+    "de": "beschreiben",
+    "ar": "يصف",
+    "pl": "Verbe (فعل)",
+    "syn": "erklären / schildern",
+    "ant": "-"
+  },
+  {
+    "de": "der Künstler",
+    "ar": "الفنان",
+    "pl": "die Künstler",
+    "syn": "der Maler",
+    "ant": "-"
+  },
+  {
+    "de": "der Maler",
+    "ar": "الرسام / الصباغ",
+    "pl": "die Maler",
+    "syn": "der Künstler",
+    "ant": "-"
+  },
+  {
+    "de": "der Kellner",
+    "ar": "النادل",
+    "pl": "die Kellner",
+    "syn": "der Ober",
+    "ant": "der Gast / der Kunde"
+  },
+  {
+    "de": "der Keller",
+    "ar": "القبو / المرآب السفلي",
+    "pl": "die Keller",
+    "syn": "das Untergeschoss",
+    "ant": "der Dachboden"
+  },
+  {
+    "de": "der Killer",
+    "ar": "القاتل",
+    "pl": "die Killer",
+    "syn": "der Mörder",
+    "ant": "das Opfer (الضحية)"
+  },
+  {
+    "de": "der Gast",
+    "ar": "الضيف / الزبون",
+    "pl": "die Gäste",
+    "syn": "der Kunde / der Besucher",
+    "ant": "der Gastgeber"
+  },
+  {
+    "de": "der Kunde",
+    "ar": "الزبون / العميل",
+    "pl": "die Kunden",
+    "syn": "der Gast / der Käufer",
+    "ant": "der Verkäufer"
+  },
+  {
+    "de": "bedienen",
+    "ar": "يخدم",
+    "pl": "Verbe (فعل)",
+    "syn": "servieren / helfen",
+    "ant": "-"
+  },
+  {
+    "de": "der Patient",
+    "ar": "المريض (عند الطبيب)",
+    "pl": "die Patienten",
+    "syn": "der Kranke",
+    "ant": "der Arzt"
+  },
+  {
+    "de": "der Kranke",
+    "ar": "الشخص المريض",
+    "pl": "die Kranken",
+    "syn": "der Patient",
+    "ant": "der Gesunde"
+  },
+  {
+    "de": "untersuchen",
+    "ar": "يفحص",
+    "pl": "Verbe (فعل)",
+    "syn": "prüfen / kontrollieren",
+    "ant": "-"
+  },
+  {
+    "de": "suchen",
+    "ar": "يبحث",
+    "pl": "Verbe (فعل)",
+    "syn": "fahnden",
+    "ant": "finden (يجد)"
+  },
+  {
+    "de": "besuchen",
+    "ar": "يزور",
+    "pl": "Verbe (فعل)",
+    "syn": "besichtigen",
+    "ant": "-"
+  },
+  {
+    "de": "finden",
+    "ar": "يجد",
+    "pl": "Verbe (فعل)",
+    "syn": "entdecken",
+    "ant": "suchen / verlieren"
+  },
+  {
+    "de": "entwickeln",
+    "ar": "يطور",
+    "pl": "Verbe (فعل)",
+    "syn": "aufbauen / erfinden",
+    "ant": "zerstören"
+  },
+  {
+    "de": "unterrichten",
+    "ar": "يُدرّس / يُعلّم",
+    "pl": "Verbe (فعل)",
+    "syn": "lehren / beibringen",
+    "ant": "lernen (يتعلم)"
+  },
+  {
+    "de": "das Projekt",
+    "ar": "المشروع",
+    "pl": "die Projekte",
+    "syn": "das Vorhaben / der Plan",
+    "ant": "-"
+  },
+  {
+    "de": "das Solarauto",
+    "ar": "سيارة الطاقة الشمسية",
+    "pl": "die Solarautos",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "die Besprechung",
+    "ar": "الاجتماع / النقاش",
+    "pl": "die Besprechungen",
+    "syn": "die Sitzung / das Treffen",
+    "ant": "-"
+  },
+  {
+    "de": "die Sitzung",
+    "ar": "الجلسة / الاجتماع",
+    "pl": "die Sitzungen",
+    "syn": "die Besprechung",
+    "ant": "-"
+  },
+  {
+    "de": "der Schüler",
+    "ar": "التلميذ (في المدرسة)",
+    "pl": "die Schüler",
+    "syn": "der Lernende",
+    "ant": "der Lehrer"
+  },
+  {
+    "de": "der Student",
+    "ar": "الطالب (الجامعي)",
+    "pl": "die Studenten",
+    "syn": "der Studierende",
+    "ant": "der Professor"
+  },
+  {
+    "de": "die Jura",
+    "ar": "مادة القانون / الحقوق",
+    "pl": "Sans pluriel",
+    "syn": "die Rechtswissenschaft",
+    "ant": "-"
+  },
+  {
+    "de": "der Jurist",
+    "ar": "رجل قانون / حقوقي",
+    "pl": "die Juristen",
+    "syn": "der Anwalt",
+    "ant": "-"
+  },
+  {
+    "de": "später",
+    "ar": "لاحقاً / فيما بعد",
+    "pl": "Adverbe (ظرف زمان)",
+    "syn": "danach / hinterher",
+    "ant": "früher / jetzt"
+  },
+  {
+    "de": "manchmal",
+    "ar": "أحياناً",
+    "pl": "Adverbe (ظرف)",
+    "syn": "ab und zu / gelegentlich",
+    "ant": "immer / nie"
+  },
+  {
+    "de": "warum",
+    "ar": "لماذا",
+    "pl": "Question (أداة استفهام)",
+    "syn": "wieso / weshalb",
+    "ant": "darum / deshalb"
+  },
+  {
+    "de": "denn",
+    "ar": "لأنّ",
+    "pl": "Conjonction (أداة ربط)",
+    "syn": "weil / da",
+    "ant": "trotzdem"
+  },
+  {
+    "de": "fahren",
+    "ar": "يسوق / يسافر بمركبة",
+    "pl": "Verbe (فعل)",
+    "syn": "lenken / steuern",
+    "ant": "halten / gehen"
+  },
+  {
+    "de": "das Spiel",
+    "ar": "اللعبة / المباراة",
+    "pl": "die Spiele",
+    "syn": "die Partie / das Match",
+    "ant": "der Ernst"
+  },
+  {
+    "de": "das Fußballspiel",
+    "ar": "مباراة كرة قدم",
+    "pl": "die Fußballspiele",
+    "syn": "das Match",
+    "ant": "-"
+  },
+  {
+    "de": "der Gegenstand",
+    "ar": "الشيء المادي / الغرض",
+    "pl": "die Gegenstände",
+    "syn": "die Sache / das Ding",
+    "ant": "-"
+  },
+  {
+    "de": "die Sache",
+    "ar": "الشيء / الأمر / القضية",
+    "pl": "die Sachen",
+    "syn": "der Gegenstand / etwas",
+    "ant": "-"
+  },
+  {
+    "de": "etwas",
+    "ar": "شيء ما / قليلاً",
+    "pl": "Pronom (ضمير)",
+    "syn": "ein bisschen / ein wenig",
+    "ant": "nichts (لا شيء)"
+  },
+  {
+    "de": "als",
+    "ar": "عندما (في الماضي) / كـ (مثل)",
+    "pl": "Conjonction (أداة ربط)",
+    "syn": "wie",
+    "ant": "-"
+  },
+  {
+    "de": "die Uhr",
+    "ar": "الساعة (الآلة أو التوقيت)",
+    "pl": "die Uhren",
+    "syn": "die Armbanduhr",
+    "ant": "-"
+  },
+  {
+    "de": "die Stunde",
+    "ar": "ساعة زمنية (60 دقيقة) / حصة",
+    "pl": "die Stunden",
+    "syn": "die Unterrichtsstunde",
+    "ant": "-"
+  },
+  {
+    "de": "aber",
+    "ar": "ولكن",
+    "pl": "Conjonction (أداة ربط)",
+    "syn": "jedoch / doch",
+    "ant": "-"
+  },
+  {
+    "de": "verheiratet",
+    "ar": "متزوج / متزوجة",
+    "pl": "Adjectif (صفة)",
+    "syn": "vermählt",
+    "ant": "ledig / geschieden"
+  },
+  {
+    "de": "ledig",
+    "ar": "أعزب / عزباء (غير متزوج)",
+    "pl": "Adjectif (صفة)",
+    "syn": "unverheiratet / Single",
+    "ant": "verheiratet"
+  },
+  {
+    "de": "noch",
+    "ar": "لا زال / ما زال (noch nicht = ليس بعد)",
+    "pl": "Adverbe (ظرف)",
+    "syn": "weiterhin",
+    "ant": "nicht mehr / schon"
+  },
+  {
+    "de": "schon / schön",
+    "ar": "بالفعل (schon) / جميل (schön)",
+    "pl": "Adverbe / Adjectif",
+    "syn": "bereits / hübsch",
+    "ant": "noch nicht / hässlich"
+  },
+  {
+    "de": "die Eltern",
+    "ar": "الوالدين",
+    "pl": "die Eltern (Pluriel)",
+    "syn": "Vater und Mutter",
+    "ant": "die Kinder"
+  },
+  {
+    "de": "die Großeltern",
+    "ar": "الأجداد",
+    "pl": "die Großeltern (Pluriel)",
+    "syn": "Oma und Opa",
+    "ant": "die Enkelkinder"
+  },
+  {
+    "de": "mit",
+    "ar": "مع / بـ",
+    "pl": "Préposition (حرف جر)",
+    "syn": "zusammen mit",
+    "ant": "ohne (بدون)"
+  },
+  {
+    "de": "ohne",
+    "ar": "بدون",
+    "pl": "Préposition (حرف جر)",
+    "syn": "exklusive",
+    "ant": "mit (مع)"
+  },
+  {
+    "de": "der Deutsche",
+    "ar": "ألماني",
+    "pl": "die Deutschen",
+    "syn": "-",
+    "ant": "der Ausländer"
+  },
+  {
+    "de": "der Marokkaner",
+    "ar": "مغربي",
+    "pl": "die Marokkaner",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "Auf Wiedersehen",
+    "ar": "إلى اللقاء",
+    "pl": "Salutation (تحية وداع)",
+    "syn": "Tschüss / Bis bald",
+    "ant": "Hallo / Guten Tag"
+  },
+  {
+    "de": "der Morgen",
+    "ar": "الصباح",
+    "pl": "die Morgen",
+    "syn": "der Vormittag",
+    "ant": "der Abend (المساء)"
+  },
+  {
+    "de": "morgen",
+    "ar": "غداً",
+    "pl": "Adverbe (ظرف زمان)",
+    "syn": "der nächste Tag",
+    "ant": "gestern / heute"
+  },
+  {
+    "de": "heute",
+    "ar": "اليوم",
+    "pl": "Adverbe (ظرف زمان)",
+    "syn": "heutzutage",
+    "ant": "gestern / morgen"
+  },
+  {
+    "de": "oder",
+    "ar": "أو",
+    "pl": "Conjonction (أداة ربط)",
+    "syn": "beziehungsweise",
+    "ant": "und (وَ)"
+  },
+  {
+    "de": "allein",
+    "ar": "وحيد / بمفرده",
+    "pl": "Adjectif (صفة / ظرف)",
+    "syn": "einsam / selbst",
+    "ant": "zusammen / gemeinsam"
+  },
+  {
+    "de": "zusammen",
+    "ar": "معاً / سوياً",
+    "pl": "Adverbe (ظرف)",
+    "syn": "gemeinsam / miteinander",
+    "ant": "allein / getrennt"
+  },
+  {
+    "de": "Wien",
+    "ar": "فيينا (عاصمة النمسا)",
+    "pl": "Ville (اسم مدينة)",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "der Wein",
+    "ar": "النبيذ / الخمر",
+    "pl": "die Weine",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "das Bier",
+    "ar": "البيرة / الجعة",
+    "pl": "die Biere",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "kochen",
+    "ar": "يطبخ",
+    "pl": "Verbe (فعل)",
+    "syn": "zubereiten / braten",
+    "ant": "-"
+  },
+  {
+    "de": "der Koch",
+    "ar": "الطباخ",
+    "pl": "die Köche",
+    "syn": "der Küchenchef",
+    "ant": "die Köchin"
+  },
+  {
+    "de": "die Köchin",
+    "ar": "الطباخة",
+    "pl": "die Köchinnen",
+    "syn": "-",
+    "ant": "der Koch"
+  },
+  {
+    "de": "die Sprache",
+    "ar": "اللغة",
+    "pl": "die Sprachen",
+    "syn": "der Dialekt",
+    "ant": "-"
+  },
+  {
+    "de": "die Muttersprache",
+    "ar": "اللغة الأم",
+    "pl": "die Muttersprachen",
+    "syn": "die Erstsprache",
+    "ant": "die Fremdsprache"
+  },
+  {
+    "de": "die Fremdsprache",
+    "ar": "اللغة الأجنبية",
+    "pl": "die Fremdsprachen",
+    "syn": "die Zweitsprache",
+    "ant": "die Muttersprache"
+  },
+  {
+    "de": "im Moment",
+    "ar": "في هذه اللحظة / حالياً",
+    "pl": "Adverbe (ظرف زمان)",
+    "syn": "zurzeit / momentan / jetzt",
+    "ant": "später"
+  },
+  {
+    "de": "zurzeit",
+    "ar": "في الوقت الحالي / حالياً",
+    "pl": "Adverbe (ظرف زمان)",
+    "syn": "im Moment / gegenwärtig",
+    "ant": "früher"
+  },
+  {
+    "de": "das Land",
+    "ar": "البلد / الدولة / الريف",
+    "pl": "die Länder",
+    "syn": "der Staat / die Nation",
+    "ant": "die Stadt (المدينة)"
+  },
+  {
+    "de": "Text zu / Buch zu",
+    "ar": "إغلاق النص / إغلاق الكتاب",
+    "pl": "Expression (تعبير)",
+    "syn": "geschlossen",
+    "ant": "Text auf / Buch auf"
+  },
+  {
+    "de": "Text auf / Buch auf",
+    "ar": "فتح النص / فتح الكتاب",
+    "pl": "Expression (تعبير)",
+    "syn": "offen / geöffnet",
+    "ant": "Text zu / Buch zu"
+  },
+  {
+    "de": "das Gegenteil",
+    "ar": "العكس / الضد",
+    "pl": "die Gegenteile",
+    "syn": "der Gegensatz",
+    "ant": "das Synonym"
+  },
+  {
+    "de": "das Kind",
+    "ar": "الطفل",
+    "pl": "die Kinder",
+    "syn": "das Baby / der Junge",
+    "ant": "der Erwachsene"
+  },
+  {
+    "de": "der Wohnort",
+    "ar": "مكان السكن / محل الإقامة",
+    "pl": "die Wohnorte",
+    "syn": "der Wohnsitz / die Adresse",
+    "ant": "-"
+  },
+  {
+    "de": "der Familienstand",
+    "ar": "الحالة الاجتماعية",
+    "pl": "die Familienstände",
+    "syn": "der Zivilstand",
+    "ant": "-"
+  },
+  {
+    "de": "das Ohr",
+    "ar": "الأذن",
+    "pl": "die Ohren",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "ein bisschen",
+    "ar": "قليلاً",
+    "pl": "Quantité (تعبير كمية)",
+    "syn": "ein wenig / etwas",
+    "ant": "viel / sehr"
+  },
+  {
+    "de": "ein wenig",
+    "ar": "قليلاً",
+    "pl": "Quantité (تعبير كمية)",
+    "syn": "ein bisschen / kaum",
+    "ant": "viel"
+  },
+  {
+    "de": "toll",
+    "ar": "رائع / ممتاز",
+    "pl": "Adjectif (صفة)",
+    "syn": "super / prima / wunderbar",
+    "ant": "schlecht / schrecklich"
+  },
+  {
+    "de": "super",
+    "ar": "رائع جداً / ممتاز",
+    "pl": "Adjectif (صفة)",
+    "syn": "toll / klasse / großartig",
+    "ant": "schlecht / mies"
+  },
+  {
+    "de": "die Frage",
+    "ar": "السؤال",
+    "pl": "die Fragen",
+    "syn": "die Erkundigung",
+    "ant": "die Antwort"
+  },
+  {
+    "de": "die Antwort",
+    "ar": "الجواب / الإجابة",
+    "pl": "die Antworten",
+    "syn": "die Reaktion / die Erwiderung",
+    "ant": "die Frage"
+  },
+  {
+    "de": "fragen",
+    "ar": "يسأل",
+    "pl": "Verbe (فعل)",
+    "syn": "sich erkundigen",
+    "ant": "antworten"
+  },
+  {
+    "de": "antworten",
+    "ar": "يجيب",
+    "pl": "Verbe (فعل)",
+    "syn": "beantworten / reagieren",
+    "ant": "fragen"
+  },
+  {
+    "de": "der Elektroherd",
+    "ar": "الفرن الكهربائي",
+    "pl": "die Elektroherde",
+    "syn": "der Herd / der Ofen",
+    "ant": "der Gasherd"
+  },
+  {
+    "de": "der Gasherd",
+    "ar": "فرن الغاز",
+    "pl": "die Gasherde",
+    "syn": "der Herd",
+    "ant": "der Elektroherd"
+  },
+  {
+    "de": "der Tisch",
+    "ar": "الطاولة",
+    "pl": "die Tische",
+    "syn": "der Schreibtisch",
+    "ant": "der Stuhl"
+  },
+  {
+    "de": "das Büro",
+    "ar": "المكتب",
+    "pl": "die Büros",
+    "syn": "das Arbeitszimmer",
+    "ant": "-"
+  },
+  {
+    "de": "das Foto",
+    "ar": "الصورة الفوتوغرافية",
+    "pl": "die Fotos",
+    "syn": "das Bild / die Aufnahme",
+    "ant": "-"
+  },
+  {
+    "de": "das Bild",
+    "ar": "الصورة / اللوحة الفنية",
+    "pl": "die Bilder",
+    "syn": "das Gemälde / das Foto",
+    "ant": "-"
+  },
+  {
+    "de": "der Kugelschreiber",
+    "ar": "قلم الحبر الجاف",
+    "pl": "die Kugelschreiber",
+    "syn": "der Kuli / der Stift",
+    "ant": "der Bleistift"
+  },
+  {
+    "de": "das Waschbecken",
+    "ar": "حوض الغسيل (المغسلة)",
+    "pl": "die Waschbecken",
+    "syn": "das Becken / die Spüle",
+    "ant": "-"
+  },
+  {
+    "de": "verneinen",
+    "ar": "ينفي / يجاوب بـ لا",
+    "pl": "Verbe (فعل)",
+    "syn": "ablehnen / nein sagen",
+    "ant": "bejahen"
+  },
+  {
+    "de": "bejahen",
+    "ar": "يؤكد / يوافق",
+    "pl": "Verbe (فعل)",
+    "syn": "zustimmen / bestätigen",
+    "ant": "verneinen"
+  },
+  {
+    "de": "übermorgen",
+    "ar": "بعد غد",
+    "pl": "Adverbe (ظرف زمان)",
+    "syn": "in zwei Tagen",
+    "ant": "vorgestern (أول أمس)"
+  },
+  {
+    "de": "mitnehmen",
+    "ar": "يأخذ معه",
+    "pl": "Verbe (فعل)",
+    "syn": "mitbringen",
+    "ant": "dalassen"
+  },
+  {
+    "de": "die Zeit",
+    "ar": "الوقت / الزمن",
+    "pl": "die Zeiten",
+    "syn": "die Dauer / die Epoche",
+    "ant": "-"
+  },
+  {
+    "de": "beschäftigt",
+    "ar": "مشغول",
+    "pl": "Adjectif (صفة)",
+    "syn": "ausgelastet / im Stress",
+    "ant": "frei (متفرغ)"
+  },
+  {
+    "de": "immer",
+    "ar": "دائماً",
+    "pl": "Adverbe (ظرف)",
+    "syn": "ständig / stets",
+    "ant": "nie / niemals"
+  },
+  {
+    "de": "nie",
+    "ar": "أبداً",
+    "pl": "Adverbe (ظرف)",
+    "syn": "niemals / keinesfalls",
+    "ant": "immer"
+  },
+  {
+    "de": "der Zug",
+    "ar": "القطار",
+    "pl": "die Züge",
+    "syn": "die Bahn / die Eisenbahn",
+    "ant": "-"
+  },
+  {
+    "de": "die Kamera",
+    "ar": "الكاميرا",
+    "pl": "die Kameras",
+    "syn": "der Fotoapparat",
+    "ant": "-"
+  },
+  {
+    "de": "tanzen",
+    "ar": "يرقص",
+    "pl": "Verbe (فعل)",
+    "syn": "sich bewegen",
+    "ant": "-"
+  },
+  {
+    "de": "singen",
+    "ar": "يغني",
+    "pl": "Verbe (فعل)",
+    "syn": "trällern",
+    "ant": "schweigen"
+  },
+  {
+    "de": "unterstreichen",
+    "ar": "يضع خطاً تحت الكلمة",
+    "pl": "Verbe (فعل)",
+    "syn": "markieren / betonen",
+    "ant": "durchstreichen"
+  },
+  {
+    "de": "der Kurs",
+    "ar": "الدرس / الدورة التدريبية",
+    "pl": "die Kurse",
+    "syn": "der Lehrgang / der Unterricht",
+    "ant": "-"
+  },
+  {
+    "de": "der Unterricht",
+    "ar": "الحصة الدراسية / التدريس",
+    "pl": "Sans pluriel",
+    "syn": "die Stunde / die Schulstunde",
+    "ant": "die Pause"
+  },
+  {
+    "de": "der Sprachkurs",
+    "ar": "دورة لتعلم اللغة",
+    "pl": "die Sprachkurse",
+    "syn": "der Deutschkurs",
+    "ant": "-"
+  },
+  {
+    "de": "die Glühbirne",
+    "ar": "المصباح الكهربائي",
+    "pl": "die Glühbirnen",
+    "syn": "die Lampe / das Licht",
+    "ant": "-"
+  },
+  {
+    "de": "die Birne",
+    "ar": "الإجاص (الكمثرى) / المصباح",
+    "pl": "die Birnen",
+    "syn": "die Frucht / die Glühbirne",
+    "ant": "-"
+  },
+  {
+    "de": "der Stuhl",
+    "ar": "الكرسي",
+    "pl": "die Stühle",
+    "syn": "der Sitz / der Sessel",
+    "ant": "der Tisch"
+  },
+  {
+    "de": "berufstätig",
+    "ar": "نشيط في عمل / موظف",
+    "pl": "Adjectif (صفة)",
+    "syn": "arbeitend / beschäftigt",
+    "ant": "arbeitslos"
+  },
+  {
+    "de": "arbeitslos",
+    "ar": "عاطل عن العمل",
+    "pl": "Adjectif (صفة)",
+    "syn": "ohne Arbeit / erwerbslos",
+    "ant": "berufstätig"
+  },
+  {
+    "de": "erziehen",
+    "ar": "يربي",
+    "pl": "Verbe (فعل)",
+    "syn": "großziehen / bilden",
+    "ant": "vernachlässigen"
+  },
+  {
+    "de": "die Erziehung",
+    "ar": "التربية",
+    "pl": "Sans pluriel",
+    "syn": "die Bildung / die Pädagogik",
+    "ant": "-"
+  },
+  {
+    "de": "leicht",
+    "ar": "سهل / خفيف الوزن",
+    "pl": "Adjectif (صفة)",
+    "syn": "einfach / mühelos",
+    "ant": "schwer / schwierig"
+  },
+  {
+    "de": "schwer",
+    "ar": "صعب / ثقيل الوزن",
+    "pl": "Adjectif (صفة)",
+    "syn": "schwierig / kompliziert",
+    "ant": "leicht / einfach"
+  },
+  {
+    "de": "das Klavier",
+    "ar": "البيانو",
+    "pl": "die Klaviere",
+    "syn": "das Piano / der Flügel",
+    "ant": "-"
+  },
+  {
+    "de": "das Hobby",
+    "ar": "الهواية",
+    "pl": "die Hobbys",
+    "syn": "die Freizeitbeschäftigung",
+    "ant": "die Arbeit / die Pflicht"
+  },
+  {
+    "de": "klein",
+    "ar": "صغير / قصير القامة",
+    "pl": "Adjectif (صفة)",
+    "syn": "winzig / kurz",
+    "ant": "groß"
+  },
+  {
+    "de": "groß",
+    "ar": "كبير / طويل القامة",
+    "pl": "Adjectif (صفة)",
+    "syn": "riesig / hoch / lang",
+    "ant": "klein"
+  },
+  {
+    "de": "verwitwet",
+    "ar": "أرمل / أرملة",
+    "pl": "Adjectif (صفة)",
+    "syn": "-",
+    "ant": "verheiratet"
+  },
+  {
+    "de": "geschieden",
+    "ar": "مطلق / مطلقة",
+    "pl": "Adjectif (صفة)",
+    "syn": "getrennt",
+    "ant": "verheiratet"
+  },
+  {
+    "de": "getrennt",
+    "ar": "منفصل / منفصلة",
+    "pl": "Adjectif (صفة)",
+    "syn": "geschieden / separat",
+    "ant": "zusammen / vereint"
+  },
+  {
+    "de": "sehen",
+    "ar": "يرى / يشاهد",
+    "pl": "Verbe (فعل)",
+    "syn": "blicken / schauen / gucken",
+    "ant": "übersehen"
+  },
+  {
+    "de": "kaufen",
+    "ar": "يشتري",
+    "pl": "Verbe (فعل)",
+    "syn": "erwerben / einkaufen",
+    "ant": "verkaufen"
+  },
+  {
+    "de": "der Käufer",
+    "ar": "المشتري / الزبون",
+    "pl": "die Käufer",
+    "syn": "der Kunde",
+    "ant": "der Verkäufer"
+  },
+  {
+    "de": "verkaufen",
+    "ar": "يبيع",
+    "pl": "Verbe (فعل)",
+    "syn": "handeln / abgeben",
+    "ant": "kaufen"
+  },
+  {
+    "de": "das Reisen",
+    "ar": "السفر / الترحال",
+    "pl": "die Reisen (die Reise)",
+    "syn": "die Fahrt / der Urlaub",
+    "ant": "das Bleiben"
+  },
+  {
+    "de": "die Firma",
+    "ar": "الشركة",
+    "pl": "die Firmen",
+    "syn": "das Unternehmen / der Betrieb",
+    "ant": "-"
+  },
+  {
+    "de": "der Bauernhof",
+    "ar": "المزرعة / ضيعة الفلاح",
+    "pl": "die Bauernhöfe",
+    "syn": "der Hof / das Landgut",
+    "ant": "-"
+  },
+  {
+    "de": "oft",
+    "ar": "غالباً / كثيراً ما",
+    "pl": "Adverbe (ظرف)",
+    "syn": "häufig / mehrmals",
+    "ant": "selten / nie"
+  },
+  {
+    "de": "der Landwirt",
+    "ar": "الفلاح / المزارع",
+    "pl": "die Landwirte",
+    "syn": "der Bauer / der Farmer",
+    "ant": "-"
+  },
+  {
+    "de": "der Bauer",
+    "ar": "الفلاح / المزارع",
+    "pl": "die Bauern",
+    "syn": "der Landwirt",
+    "ant": "-"
+  },
+  {
+    "de": "der Junge",
+    "ar": "الفتى / الشاب / الولد",
+    "pl": "die Jungen / die Jungs",
+    "syn": "der Knabe",
+    "ant": "das Mädchen"
+  },
+  {
+    "de": "das Mädchen",
+    "ar": "الفتاة / البنت",
+    "pl": "die Mädchen",
+    "syn": "die junge Frau",
+    "ant": "der Junge"
+  },
+  {
+    "de": "möchten",
+    "ar": "يود / يرغب",
+    "pl": "Verbe (فعل)",
+    "syn": "wollen / wünschen",
+    "ant": "ablehnen"
+  },
+  {
+    "de": "werden",
+    "ar": "يصبح / سوف",
+    "pl": "Verbe (فعل)",
+    "syn": "entstehen",
+    "ant": "bleiben"
+  },
+  {
+    "de": "der Bleistift",
+    "ar": "قلم رصاص",
+    "pl": "die Bleistifte",
+    "syn": "der Stift",
+    "ant": "der Kugelschreiber"
+  },
+  {
+    "de": "der Stift",
+    "ar": "قلم",
+    "pl": "die Stifte",
+    "syn": "der Bleistift / der Kuli",
+    "ant": "-"
+  },
+  {
+    "de": "das Buch",
+    "ar": "كتاب",
+    "pl": "die Bücher",
+    "syn": "das Werk",
+    "ant": "-"
+  },
+  {
+    "de": "das Heft",
+    "ar": "دفتر",
+    "pl": "die Hefte",
+    "syn": "das Notizbuch",
+    "ant": "-"
+  },
+  {
+    "de": "die Freundin",
+    "ar": "صديقة",
+    "pl": "die Freundinnen",
+    "syn": "die Kameradin",
+    "ant": "der Freund / die Feindin"
+  },
+  {
+    "de": "der Freund",
+    "ar": "صديق",
+    "pl": "die Freunde",
+    "syn": "der Kumpel / der Kamerad",
+    "ant": "die Freundin / der Feind"
+  },
+  {
+    "de": "die Tante",
+    "ar": "الخالة / العمة",
+    "pl": "die Tanten",
+    "syn": "-",
+    "ant": "der Onkel"
+  },
+  {
+    "de": "der Onkel",
+    "ar": "الخال / العم",
+    "pl": "die Onkel",
+    "syn": "-",
+    "ant": "die Tante"
+  },
+  {
+    "de": "die Schwester",
+    "ar": "أخت",
+    "pl": "die Schwestern",
+    "syn": "-",
+    "ant": "der Bruder"
+  },
+  {
+    "de": "der Bruder",
+    "ar": "أخ",
+    "pl": "die Brüder",
+    "syn": "-",
+    "ant": "die Schwester"
+  },
+  {
+    "de": "die Mutter",
+    "ar": "الأم",
+    "pl": "die Mütter",
+    "syn": "die Mama",
+    "ant": "der Vater"
+  },
+  {
+    "de": "der Vater",
+    "ar": "الأب",
+    "pl": "die Väter",
+    "syn": "der Papa",
+    "ant": "die Mutter"
+  },
+  {
+    "de": "die Person",
+    "ar": "شخص",
+    "pl": "die Personen",
+    "syn": "der Mensch",
+    "ant": "-"
+  },
+  {
+    "de": "das Datum",
+    "ar": "التاريخ",
+    "pl": "die Daten",
+    "syn": "der Termin",
+    "ant": "-"
+  },
+  {
+    "de": "heißen",
+    "ar": "يسمى / يُدعى",
+    "pl": "Verbe (فعل)",
+    "syn": "genannt werden",
+    "ant": "-"
+  },
+  {
+    "de": "kommen",
+    "ar": "يأتي",
+    "pl": "Verbe (فعل)",
+    "syn": "erscheinen / eintreffen",
+    "ant": "gehen (يذهب)"
+  },
+  {
+    "de": "wohnen",
+    "ar": "يسكن",
+    "pl": "Verbe (فعل)",
+    "syn": "leben / residieren",
+    "ant": "ausziehen"
+  },
+  {
+    "de": "lernen",
+    "ar": "يدرس / يتعلم",
+    "pl": "Verbe (فعل)",
+    "syn": "studieren / üben",
+    "ant": "lehren / vergessen"
+  },
+  {
+    "de": "spielen",
+    "ar": "يلعب",
+    "pl": "Verbe (فعل)",
+    "syn": "zocken",
+    "ant": "arbeiten"
+  },
+  {
+    "de": "sprechen",
+    "ar": "يتكلم",
+    "pl": "Verbe (فعل)",
+    "syn": "reden / sagen",
+    "ant": "schweigen"
+  },
+  {
+    "de": "hören",
+    "ar": "يسمع",
+    "pl": "Verbe (فعل)",
+    "syn": "lauschen / zuhören",
+    "ant": "überhören"
+  },
+  {
+    "de": "schreiben",
+    "ar": "يكتب",
+    "pl": "Verbe (فعل)",
+    "syn": "notieren / verfassen",
+    "ant": "lesen (يقرأ)"
+  },
+  {
+    "de": "leben",
+    "ar": "يعيش",
+    "pl": "Verbe (فعل)",
+    "syn": "wohnen / existieren",
+    "ant": "sterben (يموت)"
+  },
+  {
+    "de": "lieben",
+    "ar": "يحب",
+    "pl": "Verbe (فعل)",
+    "syn": "mögen / gern haben",
+    "ant": "hassen (يكره)"
+  },
+  {
+    "de": "lesen",
+    "ar": "يقرأ",
+    "pl": "Verbe (فعل)",
+    "syn": "studieren",
+    "ant": "schreiben"
+  },
+  {
+    "de": "die E-Mail",
+    "ar": "البريد الإلكتروني",
+    "pl": "die E-Mails",
+    "syn": "die Nachricht",
+    "ant": "der Brief"
+  },
+  {
+    "de": "jetzt",
+    "ar": "الآن",
+    "pl": "Adverbe (ظرف زمان)",
+    "syn": "nun / im Moment",
+    "ant": "später / früher"
+  },
+  {
+    "de": "machen",
+    "ar": "يفعل / يصنع",
+    "pl": "Verbe (فعل)",
+    "syn": "tun / erledigen",
+    "ant": "unterlassen"
+  },
+  {
+    "de": "schnell",
+    "ar": "سريع",
+    "pl": "Adjectif (صفة)",
+    "syn": "rasch / zügig",
+    "ant": "langsam"
+  },
+  {
+    "de": "langsam",
+    "ar": "بطيء",
+    "pl": "Adjectif (صفة)",
+    "syn": "gemächlich / träge",
+    "ant": "schnell"
+  },
+  {
+    "de": "die Stadt",
+    "ar": "المدينة",
+    "pl": "die Städte",
+    "syn": "der Ort / die Metropole",
+    "ant": "das Dorf / das Land"
+  },
+  {
+    "de": "hier",
+    "ar": "هنا",
+    "pl": "Adverbe (ظرف مكان)",
+    "syn": "da",
+    "ant": "dort"
+  },
+  {
+    "de": "dort",
+    "ar": "هناك",
+    "pl": "Adverbe (ظرف مكان)",
+    "syn": "da drüben",
+    "ant": "hier"
+  },
+  {
+    "de": "das Schach",
+    "ar": "الشطرنج",
+    "pl": "Sans pluriel",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "der Großvater",
+    "ar": "الجد",
+    "pl": "die Großväter",
+    "syn": "der Opa",
+    "ant": "die Großmutter"
+  },
+  {
+    "de": "krank",
+    "ar": "مريض",
+    "pl": "Adjectif (صفة)",
+    "syn": "unwohl / leidend",
+    "ant": "gesund"
+  },
+  {
+    "de": "gesund",
+    "ar": "معافى / سليم",
+    "pl": "Adjectif (صفة)",
+    "syn": "fit / wohlauf",
+    "ant": "krank"
+  },
+  {
+    "de": "wichtig",
+    "ar": "مهم",
+    "pl": "Adjectif (صفة)",
+    "syn": "bedeutend / wesentlich",
+    "ant": "unwichtig / egal"
+  },
+  {
+    "de": "die Hauptstadt",
+    "ar": "العاصمة",
+    "pl": "die Hauptstädte",
+    "syn": "die Metropole",
+    "ant": "die Provinz"
+  },
+  {
+    "de": "sein",
+    "ar": "يكون",
+    "pl": "Verbe (فعل)",
+    "syn": "existieren",
+    "ant": "-"
+  },
+  {
+    "de": "fleißig",
+    "ar": "مجتهد / نشيط",
+    "pl": "Adjectif (صفة)",
+    "syn": "arbeitsam / tüchtig",
+    "ant": "faul"
+  },
+  {
+    "de": "faul",
+    "ar": "كسول",
+    "pl": "Adjectif (صفة)",
+    "syn": "träge / untätig",
+    "ant": "fleißig"
+  },
+  {
+    "de": "haben",
+    "ar": "يملك / لديه",
+    "pl": "Verbe (فعل)",
+    "syn": "besitzen",
+    "ant": "verlieren"
+  },
+  {
+    "de": "viel",
+    "ar": "كثير",
+    "pl": "Adjectif / Adverbe",
+    "syn": "reichlich / zahlreich",
+    "ant": "wenig"
+  },
+  {
+    "de": "wenig",
+    "ar": "قليل",
+    "pl": "Adjectif / Adverbe",
+    "syn": "gering / kaum / ein bisschen",
+    "ant": "viel"
+  },
+  {
+    "de": "das Geld",
+    "ar": "النقود / المال",
+    "pl": "die Gelder",
+    "syn": "das Bargeld",
+    "ant": "-"
+  },
+  {
+    "de": "die Übung",
+    "ar": "التمرين / التدريب",
+    "pl": "die Übungen",
+    "syn": "das Training / die Aufgabe",
+    "ant": "-"
+  },
+  {
+    "de": "ergänzen",
+    "ar": "يُكمل / يملأ الفراغ",
+    "pl": "Verbe (فعل)",
+    "syn": "ausfüllen / vervollständigen",
+    "ant": "weglassen"
+  },
+  {
+    "de": "das Handy",
+    "ar": "الهاتف المحمول",
+    "pl": "die Handys",
+    "syn": "das Smartphone",
+    "ant": "das Festnetztelefon"
+  },
+  {
+    "de": "das Auto",
+    "ar": "السيارة",
+    "pl": "die Autos",
+    "syn": "der Wagen / der Pkw",
+    "ant": "-"
+  },
+  {
+    "de": "die Tasche",
+    "ar": "الحقيبة / المحفظة",
+    "pl": "die Taschen",
+    "syn": "der Beutel / der Rucksack",
+    "ant": "-"
+  },
+  {
+    "de": "der Beruf",
+    "ar": "المهنة / الوظيفة",
+    "pl": "die Berufe",
+    "syn": "der Job / die Arbeit",
+    "ant": "-"
+  },
+  {
+    "de": "der Lehrer",
+    "ar": "الأستاذ",
+    "pl": "die Lehrer",
+    "syn": "der Pädagoge / der Dozent",
+    "ant": "der Schüler"
+  },
+  {
+    "de": "der Taxifahrer",
+    "ar": "سائق تاكسي",
+    "pl": "die Taxifahrer",
+    "syn": "der Chauffeur",
+    "ant": "der Fahrgast"
+  },
+  {
+    "de": "die Arbeit",
+    "ar": "العمل",
+    "pl": "die Arbeiten",
+    "syn": "der Job / der Beruf",
+    "ant": "die Freizeit / die Pause"
+  },
+  {
+    "de": "Sie / sie",
+    "ar": "حضرتك (Sie) / هي أو هم (sie)",
+    "pl": "Pronom (ضمير)",
+    "syn": "-",
+    "ant": "du / ihr / er"
+  },
+  {
+    "de": "er",
+    "ar": "هو",
+    "pl": "Pronom (ضمير)",
+    "syn": "-",
+    "ant": "sie (هي)"
+  },
+  {
+    "de": "die Hausfrau",
+    "ar": "ربة بيت",
+    "pl": "die Hausfrauen",
+    "syn": "-",
+    "ant": "der Hausmann"
+  },
+  {
+    "de": "der Hausmann",
+    "ar": "رب بيت",
+    "pl": "die Hausmänner",
+    "syn": "-",
+    "ant": "die Hausfrau"
+  },
+  {
+    "de": "der Rentner",
+    "ar": "المتقاعد",
+    "pl": "die Rentner",
+    "syn": "der Pensionär",
+    "ant": "die Rentnerin"
+  },
+  {
+    "de": "die Rentnerin",
+    "ar": "المتقاعدة",
+    "pl": "die Rentnerinnen",
+    "syn": "die Pensionärin",
+    "ant": "der Rentner"
+  },
+  {
+    "de": "das Alter",
+    "ar": "العمر / السن",
+    "pl": "Sans pluriel",
+    "syn": "das Lebensjahr",
+    "ant": "die Jugend"
+  },
+  {
+    "de": "jung",
+    "ar": "شاب / صغير في السن",
+    "pl": "Adjectif (صفة)",
+    "syn": "jugendlich",
+    "ant": "alt"
+  },
+  {
+    "de": "sportlich",
+    "ar": "رياضي",
+    "pl": "Adjectif (صفة)",
+    "syn": "fit / athletisch",
+    "ant": "unsportlich"
+  },
+  {
+    "de": "alt",
+    "ar": "مسن / قديم",
+    "pl": "Adjectif (صفة)",
+    "syn": "betagt / antik",
+    "ant": "jung / neu"
+  }
+]

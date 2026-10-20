@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deutsch Lernen - Vocabulaire Dynamique</title>
+    <style>
+        :root {
+            --der: #2563eb;
+            --die: #dc2626;
+            --das: #16a34a;
+            --other: #7c3aed;
+            --bg: #f1f5f9;
+        }
+        * { box-sizing: border-box; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; -webkit-tap-highlight-color: transparent; }
+        body { background: var(--bg); margin: 0; padding: 15px; display: flex; justify-content: center; color: #1e293b; }
+        .app { width: 100%; max-width: 640px; background: white; border-radius: 20px; padding: 20px; box-shadow: 0 10px 35px rgba(0,0,0,0.08); }
+        
+        button * { pointer-events: none; }
+        button { cursor: pointer; user-select: none; -webkit-user-select: none; touch-action: manipulation; }
+
+        .header { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 15px; border-bottom: 2px solid #f1f5f9; padding-bottom: 12px; flex-wrap: wrap; }
+        .header h1 { font-size: 1.3rem; margin: 0; color: #0f172a; }
+        .admin-toggle-btn { background: #1e293b; color: white; border: none; padding: 10px 14px; border-radius: 10px; font-weight: bold; font-size: 0.85rem; transition: background 0.2s; }
+        .admin-toggle-btn:hover { background: #334155; }
+        
+        .status-bar { display: flex; justify-content: space-between; align-items: center; background: #f8fafc; padding: 12px 16px; border-radius: 12px; font-weight: bold; color: #475569; margin-bottom: 15px; border: 1px solid #e2e8f0; }
+        .sync-badge { font-size: 0.8rem; padding: 4px 10px; border-radius: 20px; background: #e2e8f0; color: #334155; }
+        .sync-badge.online { background: #dcfce7; color: #15803d; }
+
+        .search-input { width: 100%; padding: 12px 15px; border: 2px solid #cbd5e1; border-radius: 12px; font-size: 1rem; margin-bottom: 12px; outline: none; transition: border-color 0.2s; }
+        .search-input:focus { border-color: #2563eb; }
+        
+        .filters { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 15px; }
+        .filter-btn { padding: 8px 14px; border: none; border-radius: 8px; background: #e2e8f0; color: #334155; font-weight: bold; white-space: nowrap; font-size: 0.85rem; transition: all 0.15s; }
+        .filter-btn.active { background: #0f172a; color: white; }
+
+        .card { border-radius: 16px; padding: 25px 20px; text-align: center; background: #ffffff; border: 2px solid #e2e8f0; border-top: 10px solid var(--der); box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; position: relative; }
+        .badge { display: inline-block; padding: 5px 14px; border-radius: 20px; color: white; font-weight: bold; font-size: 0.85rem; margin-bottom: 10px; }
+        .word-main { font-size: 2.1rem; font-weight: 800; color: #0f172a; margin: 10px 0; display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
+        .audio-btn { background: #eff6ff; border: 2px solid #bfdbfe; border-radius: 50%; width: 44px; height: 44px; font-size: 1.2rem; display: inline-flex; align-items: center; justify-content: center; transition: transform 0.1s; }
+        .audio-btn:active { transform: scale(0.92); }
+        
+        .toggle-details-btn { background: #f8fafc; color: #334155; border: 2px dashed #cbd5e1; width: 100%; padding: 14px; border-radius: 12px; font-weight: bold; font-size: 1rem; margin-top: 10px; display: block; transition: background 0.15s; }
+        .toggle-details-btn:hover { background: #f1f5f9; }
+        .details-box { display: none; margin-top: 18px; background: #f8fafc; padding: 15px; border-radius: 12px; border: 1px solid #e2e8f0; }
+        .details-box.show { display: block; }
+        .detail-item { padding: 10px 0; border-bottom: 1px solid #e2e8f0; font-size: 1.05rem; display: flex; justify-content: space-between; align-items: center; direction: rtl; gap: 10px; }
+        .detail-item:last-child { border-bottom: none; }
+        .detail-label { font-weight: bold; color: #475569; }
+        .detail-val { font-weight: 700; color: #0f172a; }
+        .de-text { direction: ltr; font-weight: 700; color: #2563eb; }
+
+        .nav-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 15px; }
+        .btn { padding: 14px 10px; border: none; border-radius: 12px; font-size: 0.95rem; font-weight: bold; color: white; transition: transform 0.1s, opacity 0.1s; width: 100%; display: flex; align-items: center; justify-content: center; text-align: center; }
+        .btn:active { transform: scale(0.96); opacity: 0.9; }
+        .btn-nav { background: #2563eb; }
+        .btn-rand { background: #64748b; }
+
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.65); z-index: 9999; justify-content: center; align-items: center; padding: 15px; }
+        .modal-overlay.active { display: flex; }
+        .modal-box { background: white; padding: 22px; border-radius: 16px; width: 100%; max-width: 380px; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.25); }
+        .modal-box h3 { margin-top: 0; color: #0f172a; }
+
+        .admin-panel { display: none; margin-top: 20px; padding: 20px; background: #f8fafc; border-radius: 16px; border: 2px solid #cbd5e1; }
+        .admin-panel.open { display: block; }
+        .admin-panel h3 { margin-top: 0; color: #0f172a; display: flex; justify-content: space-between; align-items: center; }
+        .form-group { margin-bottom: 10px; }
+        .form-group label { display: block; font-size: 0.85rem; font-weight: bold; margin-bottom: 4px; color: #475569; }
+        .form-input { width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.95rem; outline: none; }
+        .form-input:focus { border-color: #2563eb; }
+        .admin-actions { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+        
+        .gh-box { margin-top: 16px; padding: 14px; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; }
+        .gh-box h4 { margin: 0 0 8px 0; font-size: 0.92rem; color: #1e3a8a; }
+        .gh-box p { margin: 0 0 10px 0; font-size: 0.8rem; color: #334155; line-height: 1.4; }
+        .gh-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+
+        .list-container { max-height: 300px; overflow-y: auto; margin-top: 10px; border: 1px solid #e2e8f0; border-radius: 10px; padding: 5px; display: none; }
+        .list-container.open { display: block; }
+        .list-item { padding: 12px; border-bottom: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-size: 0.95rem; }
+        .list-item:hover { background: #eff6ff; }
+        .del-btn { background: #fee2e2; color: #dc2626; border: none; border-radius: 6px; padding: 6px 10px; font-weight: bold; display: none; }
+        .is-admin .del-btn { display: inline-block; }
+        
+        .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #0f172a; color: white; padding: 12px 20px; border-radius: 10px; font-weight: bold; font-size: 0.9rem; display: none; z-index: 10000; box-shadow: 0 5px 15px rgba(0,0,0,0.2); text-align: center; max-width: 90%; }
+    </style>
+</head>
+<body>
+
+<div class="toast" id="toastMsg">Message</div>
+
+<div class="modal-overlay" id="pwdModal">
+    <div class="modal-box">
+        <h3>🔐 Accès Administrateur</h3>
+        <p style="font-size:0.9rem;color:#475569;margin-bottom:12px;">Saisis le mot de passe administrateur :</p>
+        <input type="password" id="pwdInput" class="form-input" placeholder="Mot de passe admin" autocomplete="current-password" style="text-align:center;font-weight:bold;margin-bottom:12px;" onkeydown="if(event.key==='Enter') checkAdminPwd()">
+        <div style="display:flex;gap:8px;">
+            <button type="button" class="btn btn-rand" onclick="closePwdModal()">Annuler</button>
+            <button type="button" class="btn btn-nav" onclick="checkAdminPwd()">Valider</button>
+        </div>
+    </div>
+</div>
+
+<div class="app" id="appRoot">
+    <div class="header">
+        <h1>🇩🇪 Deutsch Vocabulaire</h1>
+        <button type="button" class="admin-toggle-btn" id="adminBtn" onclick="openAdminModal()">🔒 Admin (Ajouter Nouveau mots)</button>
+    </div>
+
+    <div class="status-bar">
+        <span id="counterText">Chargement...</span>
+        <span class="sync-badge online" id="syncBadge">⚡ Base JSON synchronisée</span>
+    </div>
+
+    <input type="text" id="searchInput" class="search-input" placeholder="🔍 Rechercher un mot en Allemand ou en Arabe..." oninput="applySearchAndFilter()">
+
+    <div class="filters">
+        <button type="button" class="filter-btn active" id="f-all" onclick="setFilter('all')">Tous</button>
+        <button type="button" class="filter-btn" id="f-der" onclick="setFilter('der')" style="color:#2563eb">🔵 der</button>
+        <button type="button" class="filter-btn" id="f-die" onclick="setFilter('die')" style="color:#dc2626">🔴 die</button>
+        <button type="button" class="filter-btn" id="f-das" onclick="setFilter('das')" style="color:#16a34a">🟢 das</button>
+        <button type="button" class="filter-btn" id="f-other" onclick="setFilter('other')" style="color:#7c3aed">🟣 Verbes / Autres</button>
+    </div>
+
+    <div class="card" id="mainCard">
+        <span class="badge" id="badgeType">...</span>
+        <div class="word-main">
+            <span id="wordDe">Chargement...</span>
+            <button type="button" class="audio-btn" onclick="speakWord()" title="Écouter">🔊</button>
+        </div>
+        <button type="button" class="toggle-details-btn" onclick="toggleDetailsBox()">👁️ Afficher / Masquer l'explication (إظهار الشرح)</button>
+
+        <div class="details-box" id="detailsBox">
+            <div class="detail-item">
+                <span class="detail-label">الترجمة (Traduction) :</span>
+                <span class="detail-val" id="wordAr">-</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">الجمع (Pluriel) :</span>
+                <span class="detail-val de-text" id="wordPl">-</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">المرادف (Synonyme) :</span>
+                <span class="detail-val de-text" id="wordSyn">-</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">العكس (Contraire) :</span>
+                <span class="detail-val de-text" id="wordAnt">-</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav-grid">
+        <button type="button" class="btn btn-nav" onclick="goPrev()">⬅️ Précédent</button>
+        <button type="button" class="btn btn-rand" onclick="goRandom()">🎲 Aléatoire</button>
+        <button type="button" class="btn btn-nav" onclick="goNext()">Suivant ➡️</button>
+    </div>
+
+    <div class="admin-panel" id="adminPanel">
+        <h3>
+            <span>🛠️ Admin (Ajouter Nouveau mots)</span>
+            <button type="button" onclick="lockAdmin()" style="background:#ef4444;color:white;border:none;padding:6px 12px;border-radius:6px;font-weight:bold;">Fermer</button>
+        </h3>
+
+        <input type="hidden" id="editOriginalDe" value="">
+
+        <div class="form-group">
+            <label>Mot en Allemand + Article (der / die / das) :</label>
+            <input type="text" id="inDe" class="form-input" placeholder="Ex: der Tisch">
+        </div>
+        <div class="form-group">
+            <label>Traduction en Arabe (الترجمة) :</label>
+            <input type="text" id="inAr" class="form-input" dir="rtl" placeholder="Ex: الطاولة">
+        </div>
+        <div class="form-group">
+            <label>Pluriel avec Article (الجمع) :</label>
+            <input type="text" id="inPl" class="form-input" placeholder="Ex: die Tische">
+        </div>
+        <div class="form-group">
+            <label>Synonyme / Mot proche (المرادف) :</label>
+            <input type="text" id="inSyn" class="form-input" placeholder="Ex: der Schreibtisch">
+        </div>
+        <div class="form-group">
+            <label>Contraire / Opposé (العكس) :</label>
+            <input type="text" id="inAnt" class="form-input" placeholder="Ex: der Stuhl">
+        </div>
+
+        <button type="button" class="btn btn-nav" id="saveWordBtn" style="background:#10b981;margin-top:6px;" onclick="addOrUpdateWord()">➕ Enregistrer dans Data.json</button>
+
+        <div class="admin-actions">
+            <button type="button" class="btn btn-rand" style="flex:1;font-size:0.82rem;" onclick="editCurrentWord()">✏️ Modifier le mot affiché</button>
+            <button type="button" class="btn btn-rand" style="flex:1;font-size:0.82rem;" onclick="connectDataFile()">📂 Lier Data.json (PC)</button>
+            <button type="button" class="btn btn-rand" style="flex:1;font-size:0.82rem;" onclick="exportJSON()">⬇️ Télécharger Data.json</button>
+            <button type="button" class="btn btn-rand" style="flex:1;font-size:0.82rem;" onclick="document.getElementById('importJsonInput').click()">⬆️ Importer Data.json</button>
+            <input id="importJsonInput" type="file" accept=".json,application/json" style="display:none" onchange="importJSONFile(this)">
+        </div>
+
+        <!-- Synchronisation Cloud GitHub directe pour que tous les visiteurs et autres navigateurs voient les nouveaux mots instantanément -->
+        <div class="gh-box">
+            <h4>☁️ Synchronisation Directe GitHub (Tous les utilisateurs & navigateurs)</h4>
+            <p>Connecte ton dépôt GitHub une seule fois : chaque nouveau mot ajouté sera automatiquement enregistré dans <b>Data.json sur GitHub</b> et visible par tout le monde sur n'importe quel navigateur ou téléphone.</p>
+            <div class="gh-grid">
+                <input type="text" id="ghOwner" class="form-input" placeholder="Utilisateur GitHub (ex: tarraf)" style="font-size:0.85rem;">
+                <input type="text" id="ghRepo" class="form-input" placeholder="Nom du Repo (ex: deutsch-app)" style="font-size:0.85rem;">
+            </div>
+            <div class="gh-grid">
+                <input type="text" id="ghBranch" class="form-input" placeholder="Branche (ex: main)" value="main" style="font-size:0.85rem;">
+                <input type="password" id="ghToken" class="form-input" placeholder="GitHub Token (ghp_...)" style="font-size:0.85rem;">
+            </div>
+            <button type="button" class="btn btn-nav" style="padding:10px;font-size:0.85rem;background:#1e3a8a;" onclick="saveGithubConfig()">💾 Activer la synchronisation GitHub automatique</button>
+            <div id="dataFileStatus" style="font-size:0.8rem;color:#1e3a8a;margin-top:8px;font-weight:bold;">État : Prêt.</div>
+        </div>
+    </div>
+
+    <div style="margin-top: 15px;">
+        <button type="button" class="filter-btn" style="width:100%; padding:14px; font-size:0.95rem;" onclick="toggleWordList()">📋 Afficher / Masquer la liste complète</button>
+        <div class="list-container" id="wordListContainer"></div>
+    </div>
+</div>
+
+<script>
+const ADMIN_PASSWORD = "TARRAF";
+let isAdmin = false;
+let dataFileHandle = null;
+let dataFileName = 'Data.json';
+let saveFileQueue = Promise.resolve();
+
+let vocabulary = [];
+let activeList = [];
+let index = 0;
+let currentFilter = 'all';
+
+// Nettoyage définitif de l'ancien brouillon pour éviter tout message popup au démarrage
+try {
+    localStorage.removeItem('tarraf_vocab_draft_v1');
+    localStorage.removeItem('tarraf_learned_v3');
+} catch (e) {}
+
+function showToast(msg) {
+    const t = document.getElementById('toastMsg');
+    t.textContent = msg;
+    t.style.display = 'block';
+    clearTimeout(window._toastTimer);
+    window._toastTimer = setTimeout(() => { t.style.display = 'none'; }, 3000);
+}
+
+// Détection automatique du dépôt si le site est hébergé sur github.io
+function initGithubConfig() {
+    try {
+        const saved = JSON.parse(localStorage.getItem('tarraf_gh_config') || '{}');
+        let owner = saved.owner || '';
+        let repo = saved.repo || '';
+        let branch = saved.branch || 'main';
+        let token = saved.token || '';
+
+        if ((!owner || !repo) && window.location.hostname.endsWith('.github.io')) {
+            owner = window.location.hostname.split('.')[0];
+            const pathParts = window.location.pathname.split('/').filter(Boolean);
+            if (pathParts.length > 0) repo = pathParts[0];
+        }
+
+        document.getElementById('ghOwner').value = owner;
+        document.getElementById('ghRepo').value = repo;
+        document.getElementById('ghBranch').value = branch;
+        document.getElementById('ghToken').value = token;
+        updateSyncStatusText();
+    } catch (e) {}
+}
+
+function getGithubConfig() {
+    return {
+        owner: document.getElementById('ghOwner').value.trim(),
+        repo: document.getElementById('ghRepo').value.trim(),
+        branch: document.getElementById('ghBranch').value.trim() || 'main',
+        token: document.getElementById('ghToken').value.trim()
+    };
+}
+
+function saveGithubConfig() {
+    const cfg = getGithubConfig();
+    try {
+        localStorage.setItem('tarraf_gh_config', JSON.stringify(cfg));
+        updateSyncStatusText();
+        if (cfg.owner && cfg.repo && cfg.token) {
+            showToast('✅ Synchronisation directe GitHub activée !');
+            pushToGithub('Synchronisation manuelle Data.json');
+        } else {
+            showToast('ℹ️ Paramètres enregistrés.');
+        }
+    } catch (e) {}
+}
+
+function updateSyncStatusText() {
+    const status = document.getElementById('dataFileStatus');
+    const cfg = getGithubConfig();
+    if (!status) return;
+    if (cfg.owner && cfg.repo && cfg.token) {
+        status.textContent = `✅ Connecté à GitHub (${cfg.owner}/${cfg.repo}) : chaque ajout met à jour Data.json en direct pour tout le monde.`;
+    } else if (dataFileHandle) {
+        status.textContent = `✅ Fichier local connecté (${dataFileName}) : enregistrement direct activé.`;
+    } else {
+        status.textContent = `ℹ️ Mode lecture Data.json (${vocabulary.length} mots). Configure le Token GitHub ou lie le fichier local pour sauvegarder directement.`;
+    }
+}
+
+// Encodage UTF-8 vers Base64 propre (supporte parfaitement l'Arabe et l'Allemand)
+function utf8ToBase64(str) {
+    const bytes = new TextEncoder().encode(str);
+    let binary = '';
+    for (let i = 0; i < bytes.length; i++) {
+        binary += String.fromCharCode(bytes[i]);
+    }
+    return btoa(binary);
+}
+
+function base64ToUtf8(b64) {
+    const binary = atob(b64.replace(/\s/g, ''));
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++) {
+        bytes[i] = binary.charCodeAt(i);
+    }
+    return new TextDecoder().decode(bytes);
+}
+
+// Enregistre directement dans le fichier Data.json sur le serveur GitHub via l'API GitHub
+async function pushToGithub(commitMsg) {
+    const cfg = getGithubConfig();
+    if (!cfg.owner || !cfg.repo || !cfg.token) return false;
+
+    const status = document.getElementById('dataFileStatus');
+    const badge = document.getElementById('syncBadge');
+    try {
+        if (status) status.textContent = '⏳ Enregistrement en cours sur GitHub Data.json...';
+        if (badge) badge.textContent = '⏳ Mise à jour GitHub...';
+
+        const apiUrl = `https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/Data.json`;
+        const headers = {
+            'Authorization': `Bearer ${cfg.token}`,
+            'Accept': 'application/vnd.github+json'
+        };
+
+        // 1. Récupère le SHA actuel de Data.json sur GitHub
+        let sha = null;
+        const getRes = await fetch(`${apiUrl}?ref=${encodeURIComponent(cfg.branch)}&_=${Date.now()}`, { headers, cache: 'no-store' });
+        if (getRes.ok) {
+            const fileMeta = await getRes.json();
+            sha = fileMeta.sha;
+        }
+
+        // 2. Envoie le nouveau contenu de Data.json sur GitHub
+        const jsonString = JSON.stringify(vocabulary, null, 2);
+        const body = {
+            message: commitMsg || 'Mise à jour de Data.json depuis Admin',
+            content: utf8ToBase64(jsonString),
+            branch: cfg.branch
+        };
+        if (sha) body.sha = sha;
+
+        const putRes = await fetch(apiUrl, {
+            method: 'PUT',
+            headers: { ...headers, 'Content-Type': 'application/json' },
+            body: JSON.stringify(body)
+        });
+
+        if (!putRes.ok) {
+            const errData = await putRes.json().catch(() => ({}));
+            throw new Error(errData.message || `Erreur HTTP ${putRes.status}`);
+        }
+
+        if (status) status.textContent = `✅ Data.json mis à jour sur GitHub (${vocabulary.length} mots) ! Visible sur tous les navigateurs.`;
+        if (badge) badge.textContent = '✅ Synchronisé sur GitHub';
+        return true;
+    } catch (e) {
+        console.error('Erreur API GitHub :', e);
+        if (status) status.textContent = `❌ Erreur GitHub : ${e.message}`;
+        if (badge) badge.textContent = '⚠️ Erreur sync GitHub';
+        return false;
+    }
+}
+
+// Charge toujours Data.json avec la dernière mise à jour (sans aucun message de brouillon)
+async function loadData() {
+    initGithubConfig();
+    const cfg = getGithubConfig();
+    let loaded = null;
+
+    try {
+        // Si les infos du dépôt GitHub sont connues, lecture ultra-fraîche via l'API ou Raw pour éviter le cache CDN
+        if (cfg.owner && cfg.repo) {
+            try {
+                const apiUrl = `https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/Data.json?ref=${encodeURIComponent(cfg.branch)}&_=${Date.now()}`;
+                const headers = { 'Accept': 'application/vnd.github+json' };
+                if (cfg.token) headers['Authorization'] = `Bearer ${cfg.token}`;
+                const apiRes = await fetch(apiUrl, { headers, cache: 'no-store' });
+                if (apiRes.ok) {
+                    const meta = await apiRes.json();
+                    if (meta && meta.content) {
+                        loaded = JSON.parse(base64ToUtf8(meta.content));
+                    }
+                }
+            } catch (apiErr) {
+                console.warn('Fallback vers lecture directe ./Data.json');
+            }
+        }
+
+        // Lecture directe de ./Data.json avec anti-cache pour toujours lire la dernière mise à jour
+        if (!loaded) {
+            const dataUrl = new URL('./Data.json', window.location.href);
+            const response = await fetch(dataUrl.href + (dataUrl.search ? '&' : '?') + 'v=' + Date.now(), {
+                cache: 'no-store',
+                headers: { 'Pragma': 'no-cache', 'Cache-Control': 'no-cache' }
+            });
+            if (!response.ok) throw new Error('HTTP ' + response.status);
+            loaded = await response.json();
+        }
+
+        if (!Array.isArray(loaded)) {
+            throw new Error('Le fichier Data.json ne contient pas un tableau JSON valide.');
+        }
+
+        vocabulary = loaded.map(w => ({
+            de: String(w.de || '').trim(),
+            ar: String(w.ar || '').trim(),
+            pl: String(w.pl || '-').trim(),
+            syn: String(w.syn || '-').trim(),
+            ant: String(w.ant || '-').trim()
+        })).filter(w => w.de && w.ar);
+
+        updateSyncStatusText();
+    } catch (e) {
+        vocabulary = [];
+        console.error('Chargement de Data.json impossible :', e);
+        const status = document.getElementById('dataFileStatus');
+        if (status) status.textContent = '❌ Data.json introuvable. Place index.html et Data.json dans le même dossier sur GitHub.';
+        showToast('⚠️ Impossible de charger Data.json.');
+    }
+
+    applySearchAndFilter();
+}
+
+// Sélectionne le Data.json sur PC pour écriture directe sur le disque
+async function connectDataFile() {
+    if (!isAdmin) { showToast('Ouvre d’abord l’espace Admin.'); return; }
+    if (!window.showOpenFilePicker) {
+        showToast('Utilise la synchronisation GitHub ci-dessous ou le bouton Télécharger Data.json.');
+        return;
+    }
+    try {
+        const [handle] = await window.showOpenFilePicker({
+            multiple: false,
+            types: [{ description: 'Fichier JSON', accept: { 'application/json': ['.json'] } }]
+        });
+        if (!handle) return;
+        const file = await handle.getFile();
+        const parsed = JSON.parse(await file.text());
+        if (!Array.isArray(parsed)) throw new Error('Format JSON invalide.');
+
+        dataFileHandle = handle;
+        dataFileName = file.name;
+        vocabulary = parsed.map(w => ({
+            de: String(w.de || '').trim(),
+            ar: String(w.ar || '').trim(),
+            pl: String(w.pl || '-').trim(),
+            syn: String(w.syn || '-').trim(),
+            ant: String(w.ant || '-').trim()
+        })).filter(w => w.de && w.ar);
+
+        applySearchAndFilter();
+        updateSyncStatusText();
+        showToast(`✅ ${dataFileName} connecté (${vocabulary.length} mots).`);
+    } catch (e) {
+        if (e.name !== 'AbortError') showToast('Erreur : ' + (e.message || 'lecture impossible'));
+    }
+}
+
+async function saveDataJsonDirectly() {
+    if (!dataFileHandle) return false;
+    try {
+        saveFileQueue = saveFileQueue.then(async () => {
+            const writable = await dataFileHandle.createWritable();
+            await writable.write(JSON.stringify(vocabulary, null, 2));
+            await writable.close();
+        });
+        await saveFileQueue;
+        updateSyncStatusText();
+        return true;
+    } catch (e) {
+        console.error('Écriture directe impossible :', e);
+        return false;
+    }
+}
+
+async function persistVocabularyChange(actionMsg) {
+    // 1. Écriture directe dans le fichier local si connecté
+    const savedLocalFile = await saveDataJsonDirectly();
+    // 2. Écriture directe sur GitHub si configuré (pour tous les utilisateurs et navigateurs)
+    const savedGithub = await pushToGithub(actionMsg);
+
+    if (savedGithub) {
+        showToast(`✅ ${actionMsg} et publié sur GitHub pour tout le monde !`);
+    } else if (savedLocalFile) {
+        showToast(`✅ ${actionMsg} dans ${dataFileName} !`);
+    } else {
+        showToast(`✅ ${actionMsg} ! Télécharge Data.json ou active GitHub Sync pour partager.`);
+    }
+}
+
+function goNext() {
+    if (!activeList.length) return;
+    index = (index + 1) % activeList.length;
+    renderCard();
+}
+
+function goPrev() {
+    if (!activeList.length) return;
+    index = (index - 1 + activeList.length) % activeList.length;
+    renderCard();
+}
+
+function goRandom() {
+    if (activeList.length <= 1) return;
+    let nextIdx = index;
+    while (nextIdx === index) {
+        nextIdx = Math.floor(Math.random() * activeList.length);
+    }
+    index = nextIdx;
+    renderCard();
+}
+
+function toggleDetailsBox() {
+    document.getElementById('detailsBox').classList.toggle('show');
+}
+
+function toggleWordList() {
+    document.getElementById('wordListContainer').classList.toggle('open');
+}
+
+function speakWord() {
+    if (!activeList.length) return;
+    const cleanWord = activeList[index].de.split('/')[0].replace(/\(.*\)/, '').trim();
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(cleanWord);
+        u.lang = 'de-DE';
+        u.rate = 0.9;
+        window.speechSynthesis.speak(u);
+    } else {
+        showToast("Audio non supporté sur cet appareil");
+    }
+}
+
+function openAdminModal() {
+    if (isAdmin) {
+        document.getElementById('adminPanel').classList.toggle('open');
+        return;
+    }
+    document.getElementById('pwdInput').value = '';
+    document.getElementById('pwdModal').classList.add('active');
+    setTimeout(() => document.getElementById('pwdInput').focus(), 100);
+}
+
+function closePwdModal() {
+    document.getElementById('pwdModal').classList.remove('active');
+}
+
+function checkAdminPwd() {
+    const password = document.getElementById('pwdInput').value;
+    if (password !== ADMIN_PASSWORD) {
+        showToast('❌ Mot de passe incorrect.');
+        return;
+    }
+    isAdmin = true;
+    closePwdModal();
+    document.getElementById('adminPanel').classList.add('open');
+    document.getElementById('appRoot').classList.add('is-admin');
+    document.getElementById('adminBtn').textContent = '🔓 Admin (Ajouter Nouveau mots)';
+    document.getElementById('adminBtn').style.background = '#16a34a';
+    buildList();
+    showToast('✅ Mode Admin activé.');
+}
+
+function lockAdmin() {
+    document.getElementById('adminPanel').classList.remove('open');
+    isAdmin = false;
+    document.getElementById('appRoot').classList.remove('is-admin');
+    document.getElementById('adminBtn').textContent = '🔒 Admin (Ajouter Nouveau mots)';
+    document.getElementById('adminBtn').style.background = '';
+    resetAdminForm();
+    buildList();
+}
+
+function resetAdminForm() {
+    for (const id of ['inDe', 'inAr', 'inPl', 'inSyn', 'inAnt', 'editOriginalDe']) {
+        document.getElementById(id).value = '';
+    }
+    document.getElementById('saveWordBtn').textContent = '➕ Enregistrer dans Data.json';
+}
+
+function smartLocalFormat(rawDe) {
+    let w = rawDe.trim();
+    if (!w) return "";
+    const parts = w.split(/\s+/);
+    if (parts.length === 2 && ['der', 'die', 'das'].includes(parts[0].toLowerCase())) {
+        const art = parts[0].toLowerCase();
+        const noun = parts[1].charAt(0).toUpperCase() + parts[1].slice(1);
+        return art + " " + noun;
+    }
+    return w;
+}
+
+async function addOrUpdateWord() {
+    if (!isAdmin) return;
+    const de = smartLocalFormat(document.getElementById('inDe').value);
+    const ar = document.getElementById('inAr').value.trim();
+    const pl = document.getElementById('inPl').value.trim() || "-";
+    const syn = document.getElementById('inSyn').value.trim() || "-";
+    const ant = document.getElementById('inAnt').value.trim() || "-";
+    const editOriginalDe = document.getElementById('editOriginalDe').value.trim();
+
+    if (!de || !ar) {
+        showToast("⚠️ Remplis le mot en Allemand et la traduction en Arabe.");
+        return;
+    }
+
+    const normalizeGerman = value => String(value || '').trim().replace(/\s+/g, ' ').toLocaleLowerCase('de');
+    const normalizedDe = normalizeGerman(de);
+
+    if (editOriginalDe) {
+        const origNorm = normalizeGerman(editOriginalDe);
+        const duplicateOther = vocabulary.some(w => normalizeGerman(w.de) === normalizedDe && normalizeGerman(w.de) !== origNorm);
+        if (duplicateOther) {
+            showToast(`⚠️ Le mot « ${de} » existe déjà !`);
+            return;
+        }
+        const targetIdx = vocabulary.findIndex(w => normalizeGerman(w.de) === origNorm);
+        if (targetIdx > -1) {
+            vocabulary[targetIdx] = { de, ar, pl, syn, ant };
+        } else {
+            vocabulary.unshift({ de, ar, pl, syn, ant });
+        }
+        resetAdminForm();
+        applySearchAndFilter();
+        await persistVocabularyChange(`Mot « ${de} » modifié`);
+    } else {
+        const exists = vocabulary.some(w => normalizeGerman(w.de) === normalizedDe);
+        if (exists) {
+            showToast(`⚠️ Le mot « ${de} » existe déjà !`);
+            return;
+        }
+        vocabulary.unshift({ de, ar, pl, syn, ant });
+        resetAdminForm();
+        index = 0;
+        applySearchAndFilter();
+        await persistVocabularyChange(`Nouveau mot « ${de} » ajouté`);
+    }
+}
+
+function editCurrentWord() {
+    if (!activeList.length) return;
+    const item = activeList[index];
+    document.getElementById('editOriginalDe').value = item.de;
+    document.getElementById('inDe').value = item.de;
+    document.getElementById('inAr').value = item.ar;
+    document.getElementById('inPl').value = item.pl;
+    document.getElementById('inSyn').value = item.syn;
+    document.getElementById('inAnt').value = item.ant;
+    document.getElementById('saveWordBtn').textContent = '💾 Enregistrer la modification';
+    showToast("✏️ Modifie les champs puis clique sur Enregistrer");
+}
+
+async function deleteWordByIndex(idxInActive, event) {
+    if (event) event.stopPropagation();
+    if (!isAdmin) return;
+    const targetWord = activeList[idxInActive]?.de;
+    if (!targetWord) return;
+    if (!confirm(`Supprimer définitivement « ${targetWord} » de Data.json ?`)) return;
+    vocabulary = vocabulary.filter(w => w.de !== targetWord);
+    applySearchAndFilter();
+    await persistVocabularyChange(`Mot « ${targetWord} » supprimé`);
+}
+
+function renderCard() {
+    const wordDe = document.getElementById('wordDe');
+    const wordAr = document.getElementById('wordAr');
+    const wordPl = document.getElementById('wordPl');
+    const wordSyn = document.getElementById('wordSyn');
+    const wordAnt = document.getElementById('wordAnt');
+    const badge = document.getElementById('badgeType');
+    const card = document.getElementById('mainCard');
+    const counter = document.getElementById('counterText');
+
+    if (activeList.length === 0) {
+        wordDe.textContent = "Aucun mot trouvé";
+        wordAr.textContent = "-";
+        wordPl.textContent = "-";
+        wordSyn.textContent = "-";
+        wordAnt.textContent = "-";
+        badge.textContent = "...";
+        counter.textContent = `Mots : 0 / ${vocabulary.length}`;
+        return;
+    }
+
+    if (index >= activeList.length) index = 0;
+    if (index < 0) index = activeList.length - 1;
+
+    const item = activeList[index];
+    wordDe.textContent = item.de;
+    wordAr.textContent = item.ar;
+    wordPl.textContent = item.pl;
+    wordSyn.textContent = item.syn;
+    wordAnt.textContent = item.ant;
+
+    if (item.de.startsWith('der ')) {
+        badge.style.backgroundColor = '#2563eb';
+        card.style.borderTopColor = '#2563eb';
+        badge.textContent = 'Masculin (der)';
+    } else if (item.de.startsWith('die ')) {
+        badge.style.backgroundColor = '#dc2626';
+        card.style.borderTopColor = '#dc2626';
+        badge.textContent = 'Féminin / Pluriel (die)';
+    } else if (item.de.startsWith('das ')) {
+        badge.style.backgroundColor = '#16a34a';
+        card.style.borderTopColor = '#16a34a';
+        badge.textContent = 'Neutre (das)';
+    } else {
+        badge.style.backgroundColor = '#7c3aed';
+        card.style.borderTopColor = '#7c3aed';
+        badge.textContent = item.pl;
+    }
+
+    counter.textContent = `Mot : ${index + 1} / ${activeList.length} (Total : ${vocabulary.length})`;
+}
+
+function setFilter(cat) {
+    currentFilter = cat;
+    document.querySelectorAll('.filters .filter-btn').forEach(b => b.classList.remove('active'));
+    const btn = document.getElementById('f-' + cat);
+    if (btn) btn.classList.add('active');
+    applySearchAndFilter();
+}
+
+function applySearchAndFilter() {
+    const q = document.getElementById('searchInput').value.trim().toLowerCase();
+    activeList = vocabulary.filter(w => {
+        const deStr = String(w.de || '').toLowerCase();
+        const arStr = String(w.ar || '').toLowerCase();
+        const matchQ = !q || deStr.includes(q) || arStr.includes(q);
+        if (!matchQ) return false;
+        if (currentFilter === 'der') return w.de.startsWith('der ');
+        if (currentFilter === 'die') return w.de.startsWith('die ');
+        if (currentFilter === 'das') return w.de.startsWith('das ');
+        if (currentFilter === 'other') return !w.de.startsWith('der ') && !w.de.startsWith('die ') && !w.de.startsWith('das ');
+        return true;
+    });
+    index = 0;
+    renderCard();
+    buildList();
+}
+
+function selectWordFromList(idx) {
+    index = idx;
+    document.getElementById('detailsBox').classList.add('show');
+    renderCard();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function buildList() {
+    const container = document.getElementById('wordListContainer');
+    container.replaceChildren();
+    activeList.forEach((item, idx) => {
+        const div = document.createElement('div');
+        div.className = 'list-item';
+        div.addEventListener('click', () => selectWordFromList(idx));
+
+        const title = document.createElement('span');
+        title.style.fontWeight = 'bold';
+        title.textContent = `${idx + 1}. ${item.de}`;
+
+        const right = document.createElement('div');
+        right.style.cssText = 'display:flex;align-items:center;gap:8px;min-width:0;';
+
+        const translation = document.createElement('span');
+        translation.style.color = '#64748b';
+        translation.textContent = item.ar;
+
+        const del = document.createElement('button');
+        del.type = 'button';
+        del.className = 'del-btn';
+        del.textContent = '🗑️';
+        del.setAttribute('aria-label', `Supprimer ${item.de}`);
+        del.addEventListener('click', (event) => deleteWordByIndex(idx, event));
+
+        right.append(translation, del);
+        div.append(title, right);
+        container.appendChild(div);
+    });
+}
+
+function exportJSON() {
+    const blob = new Blob([JSON.stringify(vocabulary, null, 2)], { type: "application/json;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = "Data.json";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    showToast("⬇️ Data.json téléchargé !");
+}
+
+async function importJSONFile(input) {
+    if (!isAdmin) { showToast('Ouvre d’abord l’espace Admin.'); input.value = ''; return; }
+    const file = input.files && input.files[0];
+    if (!file) return;
+    try {
+        const parsed = JSON.parse(await file.text());
+        if (!Array.isArray(parsed)) throw new Error('Le fichier doit contenir un tableau JSON valide.');
+        const normalized = parsed.map(w => ({
+            de: String(w.de || '').trim(),
+            ar: String(w.ar || '').trim(),
+            pl: String(w.pl || '-').trim(),
+            syn: String(w.syn || '-').trim(),
+            ant: String(w.ant || '-').trim()
+        })).filter(w => w.de && w.ar);
+
+        vocabulary = normalized;
+        index = 0;
+        applySearchAndFilter();
+        await persistVocabularyChange(`Importation de ${normalized.length} mots`);
+    } catch (e) {
+        showToast('Import impossible : ' + (e.message || 'fichier JSON invalide'));
+    } finally {
+        input.value = '';
+    }
+}
+
+loadData();
+</script>
+</body>
+</html>
