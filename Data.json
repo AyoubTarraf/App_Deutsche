@@ -1,5 +1,12 @@
 [
   {
+    "de": "der Ausländer",
+    "ar": "أجنبي",
+    "pl": "die Ausländer",
+    "syn": "-",
+    "ant": "der Inländer"
+  },
+  {
     "de": "das Inland",
     "ar": "بلد داخلي",
     "pl": "-",
