@@ -210,13 +210,6 @@
     "ant": "-"
   },
   {
-    "de": "das Lied",
-    "ar": "الأغنية",
-    "pl": "die Lieder",
-    "syn": "-",
-    "ant": "-"
-  },
-  {
     "de": "die Lieblingsmusik",
     "ar": "الموسيقى المفضلة",
     "pl": "die Lieblingsmusiken",
@@ -798,13 +791,6 @@
     "ant": "trotzdem"
   },
   {
-    "de": "fahren",
-    "ar": "يسوق / يسافر بمركبة",
-    "pl": "Verbe (فعل)",
-    "syn": "lenken / steuern",
-    "ant": "halten / gehen"
-  },
-  {
     "de": "das Spiel",
     "ar": "اللعبة / المباراة",
     "pl": "die Spiele",
@@ -1062,13 +1048,6 @@
     "pl": "Adverbe (ظرف زمان)",
     "syn": "im Moment / gegenwärtig",
     "ant": "früher"
-  },
-  {
-    "de": "das Land",
-    "ar": "البلد / الدولة / الريف",
-    "pl": "die Länder",
-    "syn": "der Staat / die Nation",
-    "ant": "die Stadt (المدينة)"
   },
   {
     "de": "Text zu / Buch zu",
@@ -1540,13 +1519,6 @@
     "ant": "der Junge"
   },
   {
-    "de": "möchten",
-    "ar": "يود / يرغب",
-    "pl": "Verbe (فعل)",
-    "syn": "wollen / wünschen",
-    "ant": "ablehnen"
-  },
-  {
     "de": "werden",
     "ar": "يصبح / سوف",
     "pl": "Verbe (فعل)",
@@ -1769,13 +1741,6 @@
     "pl": "die Städte",
     "syn": "der Ort / die Metropole",
     "ant": "das Dorf / das Land"
-  },
-  {
-    "de": "hier",
-    "ar": "هنا",
-    "pl": "Adverbe (ظرف مكان)",
-    "syn": "da",
-    "ant": "dort"
   },
   {
     "de": "dort",
