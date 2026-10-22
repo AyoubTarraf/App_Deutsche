@@ -1,5 +1,194 @@
 [
   {
+    "de": "der Alkohol",
+    "ar": "الخمر",
+    "pl": "die Alkohole",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "Verzeihung",
+    "ar": "عفواً / المعذرة",
+    "pl": "-",
+    "syn": "Entschuldigung",
+    "ant": "-"
+  },
+  {
+    "de": "Entschuldigung",
+    "ar": "عفواً / عذراً",
+    "pl": "die Entschuldigungen",
+    "syn": "Verzeihung",
+    "ant": "-"
+  },
+  {
+    "de": "der Erfolg",
+    "ar": "النجاح",
+    "pl": "die Erfolge",
+    "syn": "-",
+    "ant": "der Misserfolg"
+  },
+  {
+    "de": "Viel Erfolg",
+    "ar": "تمني النجاح / بالتوفيق",
+    "pl": "-",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "das Lied",
+    "ar": "الأغنية",
+    "pl": "die Lieder",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "wirklich",
+    "ar": "حقاً / فعلاً",
+    "pl": "Adverbe",
+    "syn": "echt",
+    "ant": "-"
+  },
+  {
+    "de": "echt",
+    "ar": "حقاً / حقيقي",
+    "pl": "Adjectif",
+    "syn": "wirklich",
+    "ant": "falsch"
+  },
+  {
+    "de": "Gott sei Dank",
+    "ar": "الحمد لله",
+    "pl": "-",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "kommunizieren",
+    "ar": "يتواصل",
+    "pl": "Verbe (فعل)",
+    "syn": "sich verständigen",
+    "ant": "-"
+  },
+  {
+    "de": "das Land",
+    "ar": "الدولة / البلد",
+    "pl": "die Länder",
+    "syn": "der Staat",
+    "ant": "-"
+  },
+  {
+    "de": "von",
+    "ar": "من",
+    "pl": "Préposition (حرف جر)",
+    "syn": "-",
+    "ant": "bis / nach"
+  },
+  {
+    "de": "hier",
+    "ar": "هنا",
+    "pl": "Adverbe",
+    "syn": "-",
+    "ant": "dort"
+  },
+  {
+    "de": "fahren",
+    "ar": "يسافر / يقود",
+    "pl": "Verbe (فعل)",
+    "syn": "reisen",
+    "ant": "gehen"
+  },
+  {
+    "de": "das Autokennzeichen",
+    "ar": "لوحة سيارة",
+    "pl": "die Autokennzeichen",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "der Platz",
+    "ar": "المكان / المقعد",
+    "pl": "die Plätze",
+    "syn": "der Ort",
+    "ant": "-"
+  },
+  {
+    "de": "besetzt",
+    "ar": "مشغول / محجوز",
+    "pl": "Adjectif",
+    "syn": "vergeben",
+    "ant": "frei"
+  },
+  {
+    "de": "das Feuerzeug",
+    "ar": "ولااعة",
+    "pl": "die Feuerzeuge",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "möchten",
+    "ar": "يريد / أرادة",
+    "pl": "Verbe (فعل)",
+    "syn": "wollen",
+    "ant": "-"
+  },
+  {
+    "de": "nach",
+    "ar": "إلى (للدول والمدن) / بعد",
+    "pl": "Préposition",
+    "syn": "-",
+    "ant": "vor"
+  },
+  {
+    "de": "warten",
+    "ar": "ينتظر",
+    "pl": "Verbe (فعل)",
+    "syn": "abwarten",
+    "ant": "-"
+  },
+  {
+    "de": "lange",
+    "ar": "طويلاً / لفترة طويلة",
+    "pl": "Adverbe",
+    "syn": "-",
+    "ant": "kurz"
+  },
+  {
+    "de": "lange Zeit",
+    "ar": "وقت طويل",
+    "pl": "-",
+    "syn": "-",
+    "ant": "kurze Zeit"
+  },
+  {
+    "de": "es geht",
+    "ar": "الحال ماشي / ليس سيئاً جداً",
+    "pl": "Expression",
+    "syn": "so lala",
+    "ant": "-"
+  },
+  {
+    "de": "kein Problem",
+    "ar": "لا مشكلة",
+    "pl": "-",
+    "syn": "macht nichts",
+    "ant": "-"
+  },
+  {
+    "de": "wohin",
+    "ar": "إلى أين",
+    "pl": "Adverbe",
+    "syn": "-",
+    "ant": "woher"
+  },
+  {
+    "de": "woher",
+    "ar": "من أين",
+    "pl": "Adverbe",
+    "syn": "-",
+    "ant": "wohin"
+  },
+  {
     "de": "arbeitstätig",
     "ar": "نشيط في عمل / موظف",
     "pl": "Adjectif (صفة)",
