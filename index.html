@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deutsch Lernen - Vocabulaire & Quiz</title>
     <style>
-        :root {
+        :root {F
             --der: #2563eb;
             --die: #dc2626;
             --das: #16a34a;
@@ -60,7 +60,7 @@
         .btn-nav { background: #2563eb; }
         .btn-rand { background: #64748b; }
 
-        /* Styles du Test de connaissances */
+        /* Styles du Test de Connaissances */
         .quiz-container { display: none; margin-top: 10px; }
         .quiz-container.active { display: block; }
         .quiz-options { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 18px; direction: rtl; }
@@ -118,7 +118,7 @@
     <div class="header">
         <h1>🇩🇪 Deutsch Vocabulaire</h1>
         <div class="header-actions">
-            <button type="button" class="quiz-toggle-btn" id="quizBtn" onclick="toggleQuizMode()">🎮 Test de connaissances</button>
+            <button type="button" class="quiz-toggle-btn" id="quizBtn" onclick="toggleQuizMode()">🎮 Test de Connaissances</button>
             <button type="button" class="admin-toggle-btn" id="adminBtn" onclick="openAdminModal()">🔒 Admin</button>
         </div>
     </div>
@@ -128,7 +128,7 @@
         <span class="sync-badge online" id="syncBadge">⚡ Base Data.json</span>
     </div>
 
-    <!-- retourner Normal -->
+    <!-- Retourner Normal -->
     <div id="learningModeSection">
         <input type="text" id="searchInput" class="search-input" placeholder="🔍 Rechercher un mot en Allemand ou en Arabe..." oninput="applySearchAndFilter()">
 
@@ -175,7 +175,7 @@
         </div>
     </div>
 
-    <!-- Test de connaissances Interactif -->
+    <!-- Test de Connaissances Interactif -->
     <div class="quiz-container" id="quizModeSection">
         <div class="card" id="quizCard">
             <span class="badge" id="quizScoreBadge" style="background:#0284c7;">Score : 0 / 0</span>
@@ -264,7 +264,7 @@ let activeList = [];
 let index = 0;
 let currentFilter = 'all';
 
-// Variables pour le Test de connaissances
+// Variables pour le Test de Connaissances
 let isQuizActive = false;
 let quizPool = [];
 let quizCurrentIndex = 0;
@@ -533,7 +533,7 @@ async function persistVocabularyChange(actionMsg) {
     }
 }
 
-/* ==================== GESTION DU Test de connaissances ==================== */
+/* ==================== GESTION DU Test de Connaissances ==================== */
 function toggleQuizMode() {
     isQuizActive = !isQuizActive;
     const learningSec = document.getElementById('learningModeSection');
@@ -550,14 +550,14 @@ function toggleQuizMode() {
         learningSec.style.display = 'none';
         listWrapper.style.display = 'none';
         quizSec.classList.add('active');
-        quizBtn.textContent = '📚 retourner';
+        quizBtn.textContent = '📚 Retourner';
         quizBtn.style.background = '#16a34a';
         startQuiz();
     } else {
         learningSec.style.display = 'block';
         listWrapper.style.display = 'block';
         quizSec.classList.remove('active');
-        quizBtn.textContent = '🎮 Test de connaissances';
+        quizBtn.textContent = '🎮 Test de Connaissances';
         quizBtn.style.background = '';
     }
 }
