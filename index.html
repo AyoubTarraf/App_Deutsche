@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deutsch Lernen - Vocabulaire Dynamique</title>
+    <title>Deutsch Lernen - Vocabulaire & Quiz</title>
     <style>
         :root {
             --der: #2563eb;
@@ -21,8 +21,11 @@
 
         .header { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 15px; border-bottom: 2px solid #f1f5f9; padding-bottom: 12px; flex-wrap: wrap; }
         .header h1 { font-size: 1.3rem; margin: 0; color: #0f172a; }
-        .admin-toggle-btn { background: #1e293b; color: white; border: none; padding: 10px 14px; border-radius: 10px; font-weight: bold; font-size: 0.85rem; transition: background 0.2s; }
+        .header-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+        .admin-toggle-btn, .quiz-toggle-btn { background: #1e293b; color: white; border: none; padding: 10px 14px; border-radius: 10px; font-weight: bold; font-size: 0.85rem; transition: background 0.2s; }
+        .quiz-toggle-btn { background: #0284c7; }
         .admin-toggle-btn:hover { background: #334155; }
+        .quiz-toggle-btn:hover { background: #0369a1; }
         
         .status-bar { display: flex; justify-content: space-between; align-items: center; background: #f8fafc; padding: 12px 16px; border-radius: 12px; font-weight: bold; color: #475569; margin-bottom: 15px; border: 1px solid #e2e8f0; }
         .sync-badge { font-size: 0.8rem; padding: 4px 10px; border-radius: 20px; background: #e2e8f0; color: #334155; }
@@ -56,6 +59,15 @@
         .btn:active { transform: scale(0.96); opacity: 0.9; }
         .btn-nav { background: #2563eb; }
         .btn-rand { background: #64748b; }
+
+        /* Styles du mode Quiz */
+        .quiz-container { display: none; margin-top: 10px; }
+        .quiz-container.active { display: block; }
+        .quiz-options { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 18px; direction: rtl; }
+        .quiz-option-btn { background: #f8fafc; border: 2px solid #cbd5e1; color: #0f172a; padding: 14px 16px; border-radius: 12px; font-size: 1.05rem; font-weight: bold; text-align: right; transition: all 0.2s; }
+        .quiz-option-btn:hover:not(:disabled) { background: #eff6ff; border-color: #2563eb; }
+        .quiz-option-btn.correct { background: #dcfce7 !important; border-color: #16a34a !important; color: #15803d !important; }
+        .quiz-option-btn.wrong { background: #fee2e2 !important; border-color: #dc2626 !important; color: #dc2626 !important; }
 
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.65); z-index: 9999; justify-content: center; align-items: center; padding: 15px; }
         .modal-overlay.active { display: flex; }
@@ -105,61 +117,83 @@
 <div class="app" id="appRoot">
     <div class="header">
         <h1>🇩🇪 Deutsch Vocabulaire</h1>
-        <button type="button" class="admin-toggle-btn" id="adminBtn" onclick="openAdminModal()">🔒 Admin (Ajouter Nouveau mots)</button>
+        <div class="header-actions">
+            <button type="button" class="quiz-toggle-btn" id="quizBtn" onclick="toggleQuizMode()">🎮 Mode Quiz</button>
+            <button type="button" class="admin-toggle-btn" id="adminBtn" onclick="openAdminModal()">🔒 Admin</button>
+        </div>
     </div>
 
     <div class="status-bar">
         <span id="counterText">Chargement...</span>
-        <span class="sync-badge online" id="syncBadge">⚡ Base JSON synchronisée</span>
+        <span class="sync-badge online" id="syncBadge">⚡ Base Data_2.json</span>
     </div>
 
-    <input type="text" id="searchInput" class="search-input" placeholder="🔍 Rechercher un mot en Allemand ou en Arabe..." oninput="applySearchAndFilter()">
+    <!-- Mode Apprentissage Normal -->
+    <div id="learningModeSection">
+        <input type="text" id="searchInput" class="search-input" placeholder="🔍 Rechercher un mot en Allemand ou en Arabe..." oninput="applySearchAndFilter()">
 
-    <div class="filters">
-        <button type="button" class="filter-btn active" id="f-all" onclick="setFilter('all')">Tous</button>
-        <button type="button" class="filter-btn" id="f-der" onclick="setFilter('der')" style="color:#2563eb">🔵 der</button>
-        <button type="button" class="filter-btn" id="f-die" onclick="setFilter('die')" style="color:#dc2626">🔴 die</button>
-        <button type="button" class="filter-btn" id="f-das" onclick="setFilter('das')" style="color:#16a34a">🟢 das</button>
-        <button type="button" class="filter-btn" id="f-other" onclick="setFilter('other')" style="color:#7c3aed">🟣 Verbes / Autres</button>
-    </div>
-
-    <div class="card" id="mainCard">
-        <span class="badge" id="badgeType">...</span>
-        <div class="word-main">
-            <span id="wordDe">Chargement...</span>
-            <button type="button" class="audio-btn" onclick="speakWord()" title="Écouter">🔊</button>
+        <div class="filters">
+            <button type="button" class="filter-btn active" id="f-all" onclick="setFilter('all')">Tous</button>
+            <button type="button" class="filter-btn" id="f-der" onclick="setFilter('der')" style="color:#2563eb">🔵 der</button>
+            <button type="button" class="filter-btn" id="f-die" onclick="setFilter('die')" style="color:#dc2626">🔴 die</button>
+            <button type="button" class="filter-btn" id="f-das" onclick="setFilter('das')" style="color:#16a34a">🟢 das</button>
+            <button type="button" class="filter-btn" id="f-other" onclick="setFilter('other')" style="color:#7c3aed">🟣 Verbes / Autres</button>
         </div>
-        <button type="button" class="toggle-details-btn" onclick="toggleDetailsBox()">👁️ Afficher / Masquer l'explication (إظهار الشرح)</button>
 
-        <div class="details-box" id="detailsBox">
-            <div class="detail-item">
-                <span class="detail-label">الترجمة (Traduction) :</span>
-                <span class="detail-val" id="wordAr">-</span>
+        <div class="card" id="mainCard">
+            <span class="badge" id="badgeType">...</span>
+            <div class="word-main">
+                <span id="wordDe">Chargement...</span>
+                <button type="button" class="audio-btn" onclick="speakWord()" title="Écouter">🔊</button>
             </div>
-            <div class="detail-item">
-                <span class="detail-label">الجمع (Pluriel) :</span>
-                <span class="detail-val de-text" id="wordPl">-</span>
+            <button type="button" class="toggle-details-btn" onclick="toggleDetailsBox()">👁️ Afficher / Masquer l'explication (إظهار الشرح)</button>
+
+            <div class="details-box" id="detailsBox">
+                <div class="detail-item">
+                    <span class="detail-label">الترجمة (Traduction) :</span>
+                    <span class="detail-val" id="wordAr">-</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">الجمع (Pluriel) :</span>
+                    <span class="detail-val de-text" id="wordPl">-</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">المرادف (Synonyme) :</span>
+                    <span class="detail-val de-text" id="wordSyn">-</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">العكس (Contraire) :</span>
+                    <span class="detail-val de-text" id="wordAnt">-</span>
+                </div>
             </div>
-            <div class="detail-item">
-                <span class="detail-label">المرادف (Synonyme) :</span>
-                <span class="detail-val de-text" id="wordSyn">-</span>
-            </div>
-            <div class="detail-item">
-                <span class="detail-label">العكس (Contraire) :</span>
-                <span class="detail-val de-text" id="wordAnt">-</span>
-            </div>
+        </div>
+
+        <div class="nav-grid">
+            <button type="button" class="btn btn-nav" onclick="goPrev()">⬅️ Précédent</button>
+            <button type="button" class="btn btn-rand" onclick="goRandom()">🎲 Aléatoire</button>
+            <button type="button" class="btn btn-nav" onclick="goNext()">Suivant ➡️</button>
         </div>
     </div>
 
-    <div class="nav-grid">
-        <button type="button" class="btn btn-nav" onclick="goPrev()">⬅️ Précédent</button>
-        <button type="button" class="btn btn-rand" onclick="goRandom()">🎲 Aléatoire</button>
-        <button type="button" class="btn btn-nav" onclick="goNext()">Suivant ➡️</button>
+    <!-- Mode Quiz Interactif -->
+    <div class="quiz-container" id="quizModeSection">
+        <div class="card" id="quizCard">
+            <span class="badge" id="quizScoreBadge" style="background:#0284c7;">Score : 0 / 0</span>
+            <div style="font-size: 0.9rem; color: #64748b; margin-bottom: 5px;">Choisis la bonne traduction en arabe :</div>
+            <div class="word-main" style="margin: 15px 0;">
+                <span id="quizWordDe">...</span>
+                <button type="button" class="audio-btn" onclick="speakQuizWord()" title="Écouter">🔊</button>
+            </div>
+            <div class="quiz-options" id="quizOptionsContainer"></div>
+            <div id="quizNextBox" style="margin-top: 18px; display: none;">
+                <button type="button" class="btn btn-nav" style="background: #16a34a; padding: 12px;" onclick="nextQuizQuestion()">Question Suivante ➡️</button>
+            </div>
+        </div>
     </div>
 
     <div class="admin-panel" id="adminPanel">
         <h3>
-            <span>🛠️ Admin (Ajouter Nouveau mots)</span>
+            <span>🛠️ Admin (Ajouter Nouveaux mots)</span>
             <button type="button" onclick="lockAdmin()" style="background:#ef4444;color:white;border:none;padding:6px 12px;border-radius:6px;font-weight:bold;">Fermer</button>
         </h3>
 
@@ -186,34 +220,33 @@
             <input type="text" id="inAnt" class="form-input" placeholder="Ex: der Stuhl">
         </div>
 
-        <button type="button" class="btn btn-nav" id="saveWordBtn" style="background:#10b981;margin-top:6px;" onclick="addOrUpdateWord()">➕ Enregistrer dans Data.json</button>
+        <button type="button" class="btn btn-nav" id="saveWordBtn" style="background:#10b981;margin-top:6px;" onclick="addOrUpdateWord()">➕ Enregistrer dans Data_2.json</button>
 
         <div class="admin-actions">
             <button type="button" class="btn btn-rand" style="flex:1;font-size:0.82rem;" onclick="editCurrentWord()">✏️ Modifier le mot affiché</button>
-            <button type="button" class="btn btn-rand" style="flex:1;font-size:0.82rem;" onclick="connectDataFile()">📂 Lier Data.json (PC)</button>
-            <button type="button" class="btn btn-rand" style="flex:1;font-size:0.82rem;" onclick="exportJSON()">⬇️ Télécharger Data.json</button>
-            <button type="button" class="btn btn-rand" style="flex:1;font-size:0.82rem;" onclick="document.getElementById('importJsonInput').click()">⬆️ Importer Data.json</button>
+            <button type="button" class="btn btn-rand" style="flex:1;font-size:0.82rem;" onclick="connectDataFile()">📂 Lier Data_2.json (PC)</button>
+            <button type="button" class="btn btn-rand" style="flex:1;font-size:0.82rem;" onclick="exportJSON()">⬇️ Télécharger Data_2.json</button>
+            <button type="button" class="btn btn-rand" style="flex:1;font-size:0.82rem;" onclick="document.getElementById('importJsonInput').click()">⬆️ Importer</button>
             <input id="importJsonInput" type="file" accept=".json,application/json" style="display:none" onchange="importJSONFile(this)">
         </div>
 
-        <!-- Synchronisation Cloud GitHub directe pour que tous les visiteurs et autres navigateurs voient les nouveaux mots instantanément -->
         <div class="gh-box">
-            <h4>☁️ Synchronisation Directe GitHub (Tous les utilisateurs & navigateurs)</h4>
-            <p>Connecte ton dépôt GitHub une seule fois : chaque nouveau mot ajouté sera automatiquement enregistré dans <b>Data.json sur GitHub</b> et visible par tout le monde sur n'importe quel navigateur ou téléphone.</p>
+            <h4>☁️ Synchronisation Directe GitHub</h4>
+            <p>Chaque nouveau mot ajouté sera automatiquement enregistré dans <b>Data_2.json sur GitHub</b>.</p>
             <div class="gh-grid">
-                <input type="text" id="ghOwner" class="form-input" placeholder="Utilisateur GitHub (ex: tarraf)" style="font-size:0.85rem;">
-                <input type="text" id="ghRepo" class="form-input" placeholder="Nom du Repo (ex: deutsch-app)" style="font-size:0.85rem;">
+                <input type="text" id="ghOwner" class="form-input" placeholder="Utilisateur GitHub" style="font-size:0.85rem;">
+                <input type="text" id="ghRepo" class="form-input" placeholder="Nom du Repo" style="font-size:0.85rem;">
             </div>
             <div class="gh-grid">
                 <input type="text" id="ghBranch" class="form-input" placeholder="Branche (ex: main)" value="main" style="font-size:0.85rem;">
-                <input type="password" id="ghToken" class="form-input" placeholder="GitHub Token (ghp_...)" style="font-size:0.85rem;">
+                <input type="password" id="ghToken" class="form-input" placeholder="GitHub Token" style="font-size:0.85rem;">
             </div>
-            <button type="button" class="btn btn-nav" style="padding:10px;font-size:0.85rem;background:#1e3a8a;" onclick="saveGithubConfig()">💾 Activer la synchronisation GitHub automatique</button>
+            <button type="button" class="btn btn-nav" style="padding:10px;font-size:0.85rem;background:#1e3a8a;" onclick="saveGithubConfig()">💾 Activer la synchro GitHub</button>
             <div id="dataFileStatus" style="font-size:0.8rem;color:#1e3a8a;margin-top:8px;font-weight:bold;">État : Prêt.</div>
         </div>
     </div>
 
-    <div style="margin-top: 15px;">
+    <div style="margin-top: 15px;" id="listViewWrapper">
         <button type="button" class="filter-btn" style="width:100%; padding:14px; font-size:0.95rem;" onclick="toggleWordList()">📋 Afficher / Masquer la liste complète</button>
         <div class="list-container" id="wordListContainer"></div>
     </div>
@@ -223,7 +256,7 @@
 const ADMIN_PASSWORD = "TARRAF";
 let isAdmin = false;
 let dataFileHandle = null;
-let dataFileName = 'Data.json';
+let dataFileName = 'Data_2.json';
 let saveFileQueue = Promise.resolve();
 
 let vocabulary = [];
@@ -231,7 +264,13 @@ let activeList = [];
 let index = 0;
 let currentFilter = 'all';
 
-// Nettoyage définitif de l'ancien brouillon pour éviter tout message popup au démarrage
+// Variables pour le mode Quiz
+let isQuizActive = false;
+let quizPool = [];
+let quizCurrentIndex = 0;
+let quizScore = 0;
+let quizTotalAnswered = 0;
+
 try {
     localStorage.removeItem('tarraf_vocab_draft_v1');
     localStorage.removeItem('tarraf_learned_v3');
@@ -245,10 +284,9 @@ function showToast(msg) {
     window._toastTimer = setTimeout(() => { t.style.display = 'none'; }, 3000);
 }
 
-// Détection automatique du dépôt si le site est hébergé sur github.io
 function initGithubConfig() {
     try {
-        const saved = JSON.parse(localStorage.getItem('tarraf_gh_config') || '{}');
+        const saved = JSON.parse(localStorage.getItem('tarraf_gh_config_v2') || '{}');
         let owner = saved.owner || '';
         let repo = saved.repo || '';
         let branch = saved.branch || 'main';
@@ -280,11 +318,11 @@ function getGithubConfig() {
 function saveGithubConfig() {
     const cfg = getGithubConfig();
     try {
-        localStorage.setItem('tarraf_gh_config', JSON.stringify(cfg));
+        localStorage.setItem('tarraf_gh_config_v2', JSON.stringify(cfg));
         updateSyncStatusText();
         if (cfg.owner && cfg.repo && cfg.token) {
-            showToast('✅ Synchronisation directe GitHub activée !');
-            pushToGithub('Synchronisation manuelle Data.json');
+            showToast('✅ Synchronisation GitHub activée pour Data_2.json !');
+            pushToGithub('Synchro Data_2.json');
         } else {
             showToast('ℹ️ Paramètres enregistrés.');
         }
@@ -296,15 +334,14 @@ function updateSyncStatusText() {
     const cfg = getGithubConfig();
     if (!status) return;
     if (cfg.owner && cfg.repo && cfg.token) {
-        status.textContent = `✅ Connecté à GitHub (${cfg.owner}/${cfg.repo}) : chaque ajout met à jour Data.json en direct pour tout le monde.`;
+        status.textContent = `✅ Connecté à GitHub (${cfg.owner}/${cfg.repo}) pour Data_2.json.`;
     } else if (dataFileHandle) {
-        status.textContent = `✅ Fichier local connecté (${dataFileName}) : enregistrement direct activé.`;
+        status.textContent = `✅ Fichier local connecté (${dataFileName}).`;
     } else {
-        status.textContent = `ℹ️ Mode lecture Data.json (${vocabulary.length} mots). Configure le Token GitHub ou lie le fichier local pour sauvegarder directement.`;
+        status.textContent = `ℹ️ Mode lecture Data_2.json (${vocabulary.length} mots).`;
     }
 }
 
-// Encodage UTF-8 vers Base64 propre (supporte parfaitement l'Arabe et l'Allemand)
 function utf8ToBase64(str) {
     const bytes = new TextEncoder().encode(str);
     let binary = '';
@@ -323,7 +360,6 @@ function base64ToUtf8(b64) {
     return new TextDecoder().decode(bytes);
 }
 
-// Enregistre directement dans le fichier Data.json sur le serveur GitHub via l'API GitHub
 async function pushToGithub(commitMsg) {
     const cfg = getGithubConfig();
     if (!cfg.owner || !cfg.repo || !cfg.token) return false;
@@ -331,16 +367,15 @@ async function pushToGithub(commitMsg) {
     const status = document.getElementById('dataFileStatus');
     const badge = document.getElementById('syncBadge');
     try {
-        if (status) status.textContent = '⏳ Enregistrement en cours sur GitHub Data.json...';
+        if (status) status.textContent = '⏳ Enregistrement sur GitHub (Data_2.json)...';
         if (badge) badge.textContent = '⏳ Mise à jour GitHub...';
 
-        const apiUrl = `https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/Data.json`;
+        const apiUrl = `https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/Data_2.json`;
         const headers = {
             'Authorization': `Bearer ${cfg.token}`,
             'Accept': 'application/vnd.github+json'
         };
 
-        // 1. Récupère le SHA actuel de Data.json sur GitHub
         let sha = null;
         const getRes = await fetch(`${apiUrl}?ref=${encodeURIComponent(cfg.branch)}&_=${Date.now()}`, { headers, cache: 'no-store' });
         if (getRes.ok) {
@@ -348,10 +383,9 @@ async function pushToGithub(commitMsg) {
             sha = fileMeta.sha;
         }
 
-        // 2. Envoie le nouveau contenu de Data.json sur GitHub
         const jsonString = JSON.stringify(vocabulary, null, 2);
         const body = {
-            message: commitMsg || 'Mise à jour de Data.json depuis Admin',
+            message: commitMsg || 'Mise à jour Data_2.json',
             content: utf8ToBase64(jsonString),
             branch: cfg.branch
         };
@@ -368,7 +402,7 @@ async function pushToGithub(commitMsg) {
             throw new Error(errData.message || `Erreur HTTP ${putRes.status}`);
         }
 
-        if (status) status.textContent = `✅ Data.json mis à jour sur GitHub (${vocabulary.length} mots) ! Visible sur tous les navigateurs.`;
+        if (status) status.textContent = `✅ Data_2.json mis à jour sur GitHub (${vocabulary.length} mots).`;
         if (badge) badge.textContent = '✅ Synchronisé sur GitHub';
         return true;
     } catch (e) {
@@ -379,17 +413,15 @@ async function pushToGithub(commitMsg) {
     }
 }
 
-// Charge toujours Data.json avec la dernière mise à jour (sans aucun message de brouillon)
 async function loadData() {
     initGithubConfig();
     const cfg = getGithubConfig();
     let loaded = null;
 
     try {
-        // Si les infos du dépôt GitHub sont connues, lecture ultra-fraîche via l'API ou Raw pour éviter le cache CDN
         if (cfg.owner && cfg.repo) {
             try {
-                const apiUrl = `https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/Data.json?ref=${encodeURIComponent(cfg.branch)}&_=${Date.now()}`;
+                const apiUrl = `https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/Data_2.json?ref=${encodeURIComponent(cfg.branch)}&_=${Date.now()}`;
                 const headers = { 'Accept': 'application/vnd.github+json' };
                 if (cfg.token) headers['Authorization'] = `Bearer ${cfg.token}`;
                 const apiRes = await fetch(apiUrl, { headers, cache: 'no-store' });
@@ -400,13 +432,12 @@ async function loadData() {
                     }
                 }
             } catch (apiErr) {
-                console.warn('Fallback vers lecture directe ./Data.json');
+                console.warn('Fallback vers lecture directe ./Data_2.json');
             }
         }
 
-        // Lecture directe de ./Data.json avec anti-cache pour toujours lire la dernière mise à jour
         if (!loaded) {
-            const dataUrl = new URL('./Data.json', window.location.href);
+            const dataUrl = new URL('./Data_2.json', window.location.href);
             const response = await fetch(dataUrl.href + (dataUrl.search ? '&' : '?') + 'v=' + Date.now(), {
                 cache: 'no-store',
                 headers: { 'Pragma': 'no-cache', 'Cache-Control': 'no-cache' }
@@ -416,7 +447,7 @@ async function loadData() {
         }
 
         if (!Array.isArray(loaded)) {
-            throw new Error('Le fichier Data.json ne contient pas un tableau JSON valide.');
+            throw new Error('Le fichier Data_2.json ne contient pas un tableau JSON valide.');
         }
 
         vocabulary = loaded.map(w => ({
@@ -430,20 +461,19 @@ async function loadData() {
         updateSyncStatusText();
     } catch (e) {
         vocabulary = [];
-        console.error('Chargement de Data.json impossible :', e);
+        console.error('Chargement de Data_2.json impossible :', e);
         const status = document.getElementById('dataFileStatus');
-        if (status) status.textContent = '❌ Data.json introuvable. Place index.html et Data.json dans le même dossier sur GitHub.';
-        showToast('⚠️ Impossible de charger Data.json.');
+        if (status) status.textContent = '❌ Data_2.json introuvable.';
+        showToast('⚠️ Impossible de charger Data_2.json.');
     }
 
     applySearchAndFilter();
 }
 
-// Sélectionne le Data.json sur PC pour écriture directe sur le disque
 async function connectDataFile() {
     if (!isAdmin) { showToast('Ouvre d’abord l’espace Admin.'); return; }
     if (!window.showOpenFilePicker) {
-        showToast('Utilise la synchronisation GitHub ci-dessous ou le bouton Télécharger Data.json.');
+        showToast('Utilise la synchronisation GitHub ou Télécharger Data_2.json.');
         return;
     }
     try {
@@ -486,26 +516,141 @@ async function saveDataJsonDirectly() {
         updateSyncStatusText();
         return true;
     } catch (e) {
-        console.error('Écriture directe impossible :', e);
         return false;
     }
 }
 
 async function persistVocabularyChange(actionMsg) {
-    // 1. Écriture directe dans le fichier local si connecté
     const savedLocalFile = await saveDataJsonDirectly();
-    // 2. Écriture directe sur GitHub si configuré (pour tous les utilisateurs et navigateurs)
     const savedGithub = await pushToGithub(actionMsg);
 
     if (savedGithub) {
-        showToast(`✅ ${actionMsg} et publié sur GitHub pour tout le monde !`);
+        showToast(`✅ ${actionMsg} et publié sur GitHub !`);
     } else if (savedLocalFile) {
         showToast(`✅ ${actionMsg} dans ${dataFileName} !`);
     } else {
-        showToast(`✅ ${actionMsg} ! Télécharge Data.json ou active GitHub Sync pour partager.`);
+        showToast(`✅ ${actionMsg} !`);
     }
 }
 
+/* ==================== GESTION DU MODE QUIZ ==================== */
+function toggleQuizMode() {
+    isQuizActive = !isQuizActive;
+    const learningSec = document.getElementById('learningModeSection');
+    const quizSec = document.getElementById('quizModeSection');
+    const quizBtn = document.getElementById('quizBtn');
+    const listWrapper = document.getElementById('listViewWrapper');
+
+    if (isQuizActive) {
+        if (vocabulary.length < 4) {
+            showToast('⚠️ Il faut au moins 4 mots dans Data_2.json pour lancer le quiz !');
+            isQuizActive = false;
+            return;
+        }
+        learningSec.style.display = 'none';
+        listWrapper.style.display = 'none';
+        quizSec.classList.add('active');
+        quizBtn.textContent = '📚 Mode Apprentissage';
+        quizBtn.style.background = '#16a34a';
+        startQuiz();
+    } else {
+        learningSec.style.display = 'block';
+        listWrapper.style.display = 'block';
+        quizSec.classList.remove('active');
+        quizBtn.textContent = '🎮 Mode Quiz';
+        quizBtn.style.background = '';
+    }
+}
+
+function startQuiz() {
+    quizPool = [...vocabulary].sort(() => Math.random() - 0.5);
+    quizCurrentIndex = 0;
+    quizScore = 0;
+    quizTotalAnswered = 0;
+    renderQuizQuestion();
+}
+
+function renderQuizQuestion() {
+    if (quizCurrentIndex >= quizPool.length) {
+        // Fin du quiz
+        const pct = Math.round((quizScore / quizPool.length) * 100);
+        document.getElementById('quizCard').innerHTML = `
+            <span class="badge" style="background:#16a34a; font-size:1.1rem; padding:8px 18px;">🏆 Quiz Terminé !</span>
+            <h2 style="color:#0f172a; margin: 15px 0;">Ton Score : ${quizScore} / ${quizPool.length} (${pct}%)</h2>
+            <p style="color:#475569; margin-bottom:20px;">Bravo ! Tu as testé tes connaissances sur l'ensemble de ton dictionnaire Data_2.json.</p>
+            <div style="display:flex; gap:10px; justify-content:center;">
+                <button type="button" class="btn btn-nav" style="background:#2563eb; padding:12px 20px;" onclick="startQuiz()">🔄 Recommencer le Quiz</button>
+                <button type="button" class="btn btn-rand" style="padding:12px 20px;" onclick="toggleQuizMode()">📖 Retour au Dictionnaire</button>
+            </div>
+        `;
+        return;
+    }
+
+    const currentWord = quizPool[quizCurrentIndex];
+    document.getElementById('quizScoreBadge').textContent = `Score : ${quizScore} / ${quizTotalAnswered}`;
+    document.getElementById('quizWordDe').textContent = currentWord.de;
+    document.getElementById('quizNextBox').style.display = 'none';
+
+    // Générer 3 mauvaises réponses aléatoires + la bonne réponse
+    const wrongPool = vocabulary.filter(w => w.ar !== currentWord.ar);
+    const shuffledWrong = [...wrongPool].sort(() => Math.random() - 0.5).slice(0, 3);
+    const options = [...shuffledWrong, currentWord].sort(() => Math.random() - 0.5);
+
+    const container = document.getElementById('quizOptionsContainer');
+    container.replaceChildren();
+
+    options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'quiz-option-btn';
+        btn.textContent = opt.ar;
+        btn.addEventListener('click', () => handleQuizAnswer(opt.ar === currentWord.ar, btn, currentWord.ar));
+        container.appendChild(btn);
+    });
+}
+
+function handleQuizAnswer(isCorrect, clickedBtn, correctAr) {
+    quizTotalAnswered++;
+    const allButtons = document.querySelectorAll('.quiz-option-btn');
+    allButtons.forEach(b => {
+        b.disabled = true;
+        if (b.textContent === correctAr) {
+            b.classList.add('correct');
+        }
+    });
+
+    if (isCorrect) {
+        quizScore++;
+        showToast('✅ Correct ! Excellent !');
+    } else {
+        clickedBtn.classList.add('wrong');
+        showToast('❌ Incorrect !');
+    }
+
+    document.getElementById('quizScoreBadge').textContent = `Score : ${quizScore} / ${quizTotalAnswered}`;
+    document.getElementById('quizNextBox').style.display = 'block';
+}
+
+function nextQuizQuestion() {
+    quizCurrentIndex++;
+    renderQuizQuestion();
+}
+
+function speakQuizWord() {
+    if (!quizPool.length) return;
+    const cleanWord = quizPool[quizCurrentIndex].de.split('/')[0].replace(/\(.*\)/, '').trim();
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(cleanWord);
+        u.lang = 'de-DE';
+        u.rate = 0.9;
+        window.speechSynthesis.speak(u);
+    } else {
+        showToast("Audio non supporté sur cet appareil");
+    }
+}
+
+/* ==================== NAVIGATION NORMALE ==================== */
 function goNext() {
     if (!activeList.length) return;
     index = (index + 1) % activeList.length;
@@ -574,7 +719,7 @@ function checkAdminPwd() {
     closePwdModal();
     document.getElementById('adminPanel').classList.add('open');
     document.getElementById('appRoot').classList.add('is-admin');
-    document.getElementById('adminBtn').textContent = '🔓 Admin (Ajouter Nouveau mots)';
+    document.getElementById('adminBtn').textContent = '🔓 Admin';
     document.getElementById('adminBtn').style.background = '#16a34a';
     buildList();
     showToast('✅ Mode Admin activé.');
@@ -584,7 +729,7 @@ function lockAdmin() {
     document.getElementById('adminPanel').classList.remove('open');
     isAdmin = false;
     document.getElementById('appRoot').classList.remove('is-admin');
-    document.getElementById('adminBtn').textContent = '🔒 Admin (Ajouter Nouveau mots)';
+    document.getElementById('adminBtn').textContent = '🔒 Admin';
     document.getElementById('adminBtn').style.background = '';
     resetAdminForm();
     buildList();
@@ -594,7 +739,7 @@ function resetAdminForm() {
     for (const id of ['inDe', 'inAr', 'inPl', 'inSyn', 'inAnt', 'editOriginalDe']) {
         document.getElementById(id).value = '';
     }
-    document.getElementById('saveWordBtn').textContent = '➕ Enregistrer dans Data.json';
+    document.getElementById('saveWordBtn').textContent = '➕ Enregistrer dans Data_2.json';
 }
 
 function smartLocalFormat(rawDe) {
@@ -674,7 +819,7 @@ async function deleteWordByIndex(idxInActive, event) {
     if (!isAdmin) return;
     const targetWord = activeList[idxInActive]?.de;
     if (!targetWord) return;
-    if (!confirm(`Supprimer définitivement « ${targetWord} » de Data.json ?`)) return;
+    if (!confirm(`Supprimer définitivement « ${targetWord} » de Data_2.json ?`)) return;
     vocabulary = vocabulary.filter(w => w.de !== targetWord);
     applySearchAndFilter();
     await persistVocabularyChange(`Mot « ${targetWord} » supprimé`);
@@ -780,9 +925,10 @@ function buildList() {
         const right = document.createElement('div');
         right.style.cssText = 'display:flex;align-items:center;gap:8px;min-width:0;';
 
-        const translation = document.createElement('span');
-        translation.style.color = '#64748b';
-        translation.textContent = item.ar;
+        const translation = document.getElementById('wordAr') ? document.createElement('span') : null; // simplified
+        const transSpan = document.createElement('span');
+        transSpan.style.color = '#64748b';
+        transSpan.textContent = item.ar;
 
         const del = document.createElement('button');
         del.type = 'button';
@@ -791,7 +937,7 @@ function buildList() {
         del.setAttribute('aria-label', `Supprimer ${item.de}`);
         del.addEventListener('click', (event) => deleteWordByIndex(idx, event));
 
-        right.append(translation, del);
+        right.append(transSpan, del);
         div.append(title, right);
         container.appendChild(div);
     });
@@ -802,12 +948,12 @@ function exportJSON() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = "Data.json";
+    a.download = "Data_2.json";
     document.body.appendChild(a);
     a.click();
     a.remove();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
-    showToast("⬇️ Data.json téléchargé !");
+    showToast("⬇️ Data_2.json téléchargé !");
 }
 
 async function importJSONFile(input) {
