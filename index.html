@@ -125,7 +125,7 @@
 
     <div class="status-bar">
         <span id="counterText">Chargement...</span>
-        <span class="sync-badge online" id="syncBadge">⚡ Base Data_2.json</span>
+        <span class="sync-badge online" id="syncBadge">⚡ Base Data.json</span>
     </div>
 
     <!-- Mode Apprentissage Normal -->
@@ -220,19 +220,19 @@
             <input type="text" id="inAnt" class="form-input" placeholder="Ex: der Stuhl">
         </div>
 
-        <button type="button" class="btn btn-nav" id="saveWordBtn" style="background:#10b981;margin-top:6px;" onclick="addOrUpdateWord()">➕ Enregistrer dans Data_2.json</button>
+        <button type="button" class="btn btn-nav" id="saveWordBtn" style="background:#10b981;margin-top:6px;" onclick="addOrUpdateWord()">➕ Enregistrer dans Data.json</button>
 
         <div class="admin-actions">
             <button type="button" class="btn btn-rand" style="flex:1;font-size:0.82rem;" onclick="editCurrentWord()">✏️ Modifier le mot affiché</button>
-            <button type="button" class="btn btn-rand" style="flex:1;font-size:0.82rem;" onclick="connectDataFile()">📂 Lier Data_2.json (PC)</button>
-            <button type="button" class="btn btn-rand" style="flex:1;font-size:0.82rem;" onclick="exportJSON()">⬇️ Télécharger Data_2.json</button>
+            <button type="button" class="btn btn-rand" style="flex:1;font-size:0.82rem;" onclick="connectDataFile()">📂 Lier Data.json (PC)</button>
+            <button type="button" class="btn btn-rand" style="flex:1;font-size:0.82rem;" onclick="exportJSON()">⬇️ Télécharger Data.json</button>
             <button type="button" class="btn btn-rand" style="flex:1;font-size:0.82rem;" onclick="document.getElementById('importJsonInput').click()">⬆️ Importer</button>
             <input id="importJsonInput" type="file" accept=".json,application/json" style="display:none" onchange="importJSONFile(this)">
         </div>
 
         <div class="gh-box">
             <h4>☁️ Synchronisation Directe GitHub</h4>
-            <p>Chaque nouveau mot ajouté sera automatiquement enregistré dans <b>Data_2.json sur GitHub</b>.</p>
+            <p>Chaque nouveau mot ajouté sera automatiquement enregistré dans <b>Data.json sur GitHub</b>.</p>
             <div class="gh-grid">
                 <input type="text" id="ghOwner" class="form-input" placeholder="Utilisateur GitHub" style="font-size:0.85rem;">
                 <input type="text" id="ghRepo" class="form-input" placeholder="Nom du Repo" style="font-size:0.85rem;">
@@ -256,7 +256,7 @@
 const ADMIN_PASSWORD = "TARRAF";
 let isAdmin = false;
 let dataFileHandle = null;
-let dataFileName = 'Data_2.json';
+let dataFileName = 'Data.json';
 let saveFileQueue = Promise.resolve();
 
 let vocabulary = [];
@@ -321,8 +321,8 @@ function saveGithubConfig() {
         localStorage.setItem('tarraf_gh_config_v2', JSON.stringify(cfg));
         updateSyncStatusText();
         if (cfg.owner && cfg.repo && cfg.token) {
-            showToast('✅ Synchronisation GitHub activée pour Data_2.json !');
-            pushToGithub('Synchro Data_2.json');
+            showToast('✅ Synchronisation GitHub activée pour Data.json !');
+            pushToGithub('Synchro Data.json');
         } else {
             showToast('ℹ️ Paramètres enregistrés.');
         }
@@ -334,11 +334,11 @@ function updateSyncStatusText() {
     const cfg = getGithubConfig();
     if (!status) return;
     if (cfg.owner && cfg.repo && cfg.token) {
-        status.textContent = `✅ Connecté à GitHub (${cfg.owner}/${cfg.repo}) pour Data_2.json.`;
+        status.textContent = `✅ Connecté à GitHub (${cfg.owner}/${cfg.repo}) pour Data.json.`;
     } else if (dataFileHandle) {
         status.textContent = `✅ Fichier local connecté (${dataFileName}).`;
     } else {
-        status.textContent = `ℹ️ Mode lecture Data_2.json (${vocabulary.length} mots).`;
+        status.textContent = `ℹ️ Mode lecture Data.json (${vocabulary.length} mots).`;
     }
 }
 
@@ -367,10 +367,10 @@ async function pushToGithub(commitMsg) {
     const status = document.getElementById('dataFileStatus');
     const badge = document.getElementById('syncBadge');
     try {
-        if (status) status.textContent = '⏳ Enregistrement sur GitHub (Data_2.json)...';
+        if (status) status.textContent = '⏳ Enregistrement sur GitHub (Data.json)...';
         if (badge) badge.textContent = '⏳ Mise à jour GitHub...';
 
-        const apiUrl = `https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/Data_2.json`;
+        const apiUrl = `https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/Data.json`;
         const headers = {
             'Authorization': `Bearer ${cfg.token}`,
             'Accept': 'application/vnd.github+json'
@@ -385,7 +385,7 @@ async function pushToGithub(commitMsg) {
 
         const jsonString = JSON.stringify(vocabulary, null, 2);
         const body = {
-            message: commitMsg || 'Mise à jour Data_2.json',
+            message: commitMsg || 'Mise à jour Data.json',
             content: utf8ToBase64(jsonString),
             branch: cfg.branch
         };
@@ -402,7 +402,7 @@ async function pushToGithub(commitMsg) {
             throw new Error(errData.message || `Erreur HTTP ${putRes.status}`);
         }
 
-        if (status) status.textContent = `✅ Data_2.json mis à jour sur GitHub (${vocabulary.length} mots).`;
+        if (status) status.textContent = `✅ Data.json mis à jour sur GitHub (${vocabulary.length} mots).`;
         if (badge) badge.textContent = '✅ Synchronisé sur GitHub';
         return true;
     } catch (e) {
@@ -421,7 +421,7 @@ async function loadData() {
     try {
         if (cfg.owner && cfg.repo) {
             try {
-                const apiUrl = `https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/Data_2.json?ref=${encodeURIComponent(cfg.branch)}&_=${Date.now()}`;
+                const apiUrl = `https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/Data.json?ref=${encodeURIComponent(cfg.branch)}&_=${Date.now()}`;
                 const headers = { 'Accept': 'application/vnd.github+json' };
                 if (cfg.token) headers['Authorization'] = `Bearer ${cfg.token}`;
                 const apiRes = await fetch(apiUrl, { headers, cache: 'no-store' });
@@ -432,12 +432,12 @@ async function loadData() {
                     }
                 }
             } catch (apiErr) {
-                console.warn('Fallback vers lecture directe ./Data_2.json');
+                console.warn('Fallback vers lecture directe ./Data.json');
             }
         }
 
         if (!loaded) {
-            const dataUrl = new URL('./Data_2.json', window.location.href);
+            const dataUrl = new URL('./Data.json', window.location.href);
             const response = await fetch(dataUrl.href + (dataUrl.search ? '&' : '?') + 'v=' + Date.now(), {
                 cache: 'no-store',
                 headers: { 'Pragma': 'no-cache', 'Cache-Control': 'no-cache' }
@@ -447,7 +447,7 @@ async function loadData() {
         }
 
         if (!Array.isArray(loaded)) {
-            throw new Error('Le fichier Data_2.json ne contient pas un tableau JSON valide.');
+            throw new Error('Le fichier Data.json ne contient pas un tableau JSON valide.');
         }
 
         vocabulary = loaded.map(w => ({
@@ -461,10 +461,10 @@ async function loadData() {
         updateSyncStatusText();
     } catch (e) {
         vocabulary = [];
-        console.error('Chargement de Data_2.json impossible :', e);
+        console.error('Chargement de Data.json impossible :', e);
         const status = document.getElementById('dataFileStatus');
-        if (status) status.textContent = '❌ Data_2.json introuvable.';
-        showToast('⚠️ Impossible de charger Data_2.json.');
+        if (status) status.textContent = '❌ Data.json introuvable.';
+        showToast('⚠️ Impossible de charger Data.json.');
     }
 
     applySearchAndFilter();
@@ -473,7 +473,7 @@ async function loadData() {
 async function connectDataFile() {
     if (!isAdmin) { showToast('Ouvre d’abord l’espace Admin.'); return; }
     if (!window.showOpenFilePicker) {
-        showToast('Utilise la synchronisation GitHub ou Télécharger Data_2.json.');
+        showToast('Utilise la synchronisation GitHub ou Télécharger Data.json.');
         return;
     }
     try {
@@ -543,7 +543,7 @@ function toggleQuizMode() {
 
     if (isQuizActive) {
         if (vocabulary.length < 4) {
-            showToast('⚠️ Il faut au moins 4 mots dans Data_2.json pour lancer le quiz !');
+            showToast('⚠️ Il faut au moins 4 mots dans Data.json pour lancer le quiz !');
             isQuizActive = false;
             return;
         }
@@ -577,7 +577,7 @@ function renderQuizQuestion() {
         document.getElementById('quizCard').innerHTML = `
             <span class="badge" style="background:#16a34a; font-size:1.1rem; padding:8px 18px;">🏆 Quiz Terminé !</span>
             <h2 style="color:#0f172a; margin: 15px 0;">Ton Score : ${quizScore} / ${quizPool.length} (${pct}%)</h2>
-            <p style="color:#475569; margin-bottom:20px;">Bravo ! Tu as testé tes connaissances sur l'ensemble de ton dictionnaire Data_2.json.</p>
+            <p style="color:#475569; margin-bottom:20px;">Bravo ! Tu as testé tes connaissances sur l'ensemble de ton dictionnaire Data.json.</p>
             <div style="display:flex; gap:10px; justify-content:center;">
                 <button type="button" class="btn btn-nav" style="background:#2563eb; padding:12px 20px;" onclick="startQuiz()">🔄 Recommencer le Quiz</button>
                 <button type="button" class="btn btn-rand" style="padding:12px 20px;" onclick="toggleQuizMode()">📖 Retour au Dictionnaire</button>
@@ -739,7 +739,7 @@ function resetAdminForm() {
     for (const id of ['inDe', 'inAr', 'inPl', 'inSyn', 'inAnt', 'editOriginalDe']) {
         document.getElementById(id).value = '';
     }
-    document.getElementById('saveWordBtn').textContent = '➕ Enregistrer dans Data_2.json';
+    document.getElementById('saveWordBtn').textContent = '➕ Enregistrer dans Data.json';
 }
 
 function smartLocalFormat(rawDe) {
@@ -819,7 +819,7 @@ async function deleteWordByIndex(idxInActive, event) {
     if (!isAdmin) return;
     const targetWord = activeList[idxInActive]?.de;
     if (!targetWord) return;
-    if (!confirm(`Supprimer définitivement « ${targetWord} » de Data_2.json ?`)) return;
+    if (!confirm(`Supprimer définitivement « ${targetWord} » de Data.json ?`)) return;
     vocabulary = vocabulary.filter(w => w.de !== targetWord);
     applySearchAndFilter();
     await persistVocabularyChange(`Mot « ${targetWord} » supprimé`);
@@ -948,12 +948,12 @@ function exportJSON() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = "Data_2.json";
+    a.download = "Data.json";
     document.body.appendChild(a);
     a.click();
     a.remove();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
-    showToast("⬇️ Data_2.json téléchargé !");
+    showToast("⬇️ Data.json téléchargé !");
 }
 
 async function importJSONFile(input) {
