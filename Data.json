@@ -1,5 +1,229 @@
 [
   {
+    "de": "einverstanden",
+    "ar": "موافق / OK",
+    "pl": "Adjectif (صفة)",
+    "syn": "okay",
+    "ant": "-"
+  },
+  {
+    "de": "die Heimatstadt",
+    "ar": "مسقط الرأس / مدينة المنشأ",
+    "pl": "die Heimatstädte",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "die Hausaufgabe",
+    "ar": "تمارين منزلية",
+    "pl": "die Hausaufgaben",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "die Wirtschaft",
+    "ar": "الاقتصاد",
+    "pl": "die Wirtschaften",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "ab und zu",
+    "ar": "من حين إلى آخر",
+    "pl": "Expression (تعبير)",
+    "syn": "manchmal",
+    "ant": "immer"
+  },
+  {
+    "de": "nächstes Jahr",
+    "ar": "السنة المقبلة",
+    "pl": "Expression (تعبير)",
+    "syn": "-",
+    "ant": "letztes Jahr"
+  },
+  {
+    "de": "das Jahr",
+    "ar": "السنة",
+    "pl": "die Jahre",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "das Abitur / das Abi",
+    "ar": "البكالوريا",
+    "pl": "die Abiture",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "jährlich",
+    "ar": "كل سنة / سنوياً",
+    "pl": "Adverbe (ظرف)",
+    "syn": "jedes Jahr",
+    "ant": "-"
+  },
+  {
+    "de": "täglich",
+    "ar": "يومياً",
+    "pl": "Adverbe (ظرف)",
+    "syn": "jeden Tag",
+    "ant": "-"
+  },
+  {
+    "de": "über",
+    "ar": "حول",
+    "pl": "Préposition (حرف جر)",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "regelmäßig",
+    "ar": "بتكرار / بانتظام",
+    "pl": "Adjectif (صفة)",
+    "syn": "-",
+    "ant": "unregelmäßig"
+  },
+  {
+    "de": "treiben",
+    "ar": "يمارس (مثل الرياضة)",
+    "pl": "Verbe (فعل)",
+    "syn": "machen",
+    "ant": "-"
+  },
+  {
+    "de": "bleiben",
+    "ar": "يبقى",
+    "pl": "Verbe (فعل)",
+    "syn": "-",
+    "ant": "gehen / werden"
+  },
+  {
+    "de": "ziemlich",
+    "ar": "نسبياً",
+    "pl": "Adverbe (ظرف)",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "sauber",
+    "ar": "نقي / نظيف",
+    "pl": "Adjectif (صفة)",
+    "syn": "rein",
+    "ant": "schmutzig"
+  },
+  {
+    "de": "schmutzig",
+    "ar": "غير نقي / متسخ",
+    "pl": "Adjectif (صفة)",
+    "syn": "-",
+    "ant": "sauber"
+  },
+  {
+    "de": "überall",
+    "ar": "في كل مكان / فوق كل شيء",
+    "pl": "Adverbe (ظرف)",
+    "syn": "-",
+    "ant": "nirgends"
+  },
+  {
+    "de": "denn",
+    "ar": "لأن",
+    "pl": "Conjonction (أداة ربط)",
+    "syn": "weil",
+    "ant": "-"
+  },
+  {
+    "de": "der Satz",
+    "ar": "الجملة",
+    "pl": "die Sätze",
+    "syn": "das Wort (Worte)",
+    "ant": "das Wort"
+  },
+  {
+    "de": "kaufen",
+    "ar": "يشتري",
+    "pl": "Verbe (فعل)",
+    "syn": "-",
+    "ant": "verkaufen"
+  },
+  {
+    "de": "verkaufen",
+    "ar": "يبيع",
+    "pl": "Verbe (فعل)",
+    "syn": "-",
+    "ant": "kaufen"
+  },
+  {
+    "de": "der Mantel",
+    "ar": "المعطف",
+    "pl": "die Mäntel",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "brauchen",
+    "ar": "يحتاج",
+    "pl": "Verbe (فعل)",
+    "syn": "benötigen",
+    "ant": "-"
+  },
+  {
+    "de": "rauchen",
+    "ar": "يدخن",
+    "pl": "Verbe (فعل)",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "gebrauchen",
+    "ar": "يستعمل",
+    "pl": "Verbe (فعل)",
+    "syn": "benutzen",
+    "ant": "-"
+  },
+  {
+    "de": "verbrauchen",
+    "ar": "يستهلك",
+    "pl": "Verbe (فعل)",
+    "syn": "konsumieren",
+    "ant": "-"
+  },
+  {
+    "de": "konsumieren",
+    "ar": "يستهلك",
+    "pl": "Verbe (فعل)",
+    "syn": "verbrauchen",
+    "ant": "-"
+  },
+  {
+    "de": "hässlich",
+    "ar": "قبيح",
+    "pl": "Adjectif (صفة)",
+    "syn": "-",
+    "ant": "schon / schön / schön"
+  },
+  {
+    "de": "nett",
+    "ar": "لطيف",
+    "pl": "Adjectif (صفة)",
+    "syn": "freundlich",
+    "ant": "-"
+  },
+  {
+    "de": "freundlich",
+    "ar": "لطيف / ودود",
+    "pl": "Adjectif (صفة)",
+    "syn": "nett",
+    "ant": "-"
+  },
+  {
+    "de": "das Fahrrad",
+    "ar": "الدراجة",
+    "pl": "die Fahrräder",
+    "syn": "das Rad",
+    "ant": "-"
+  },
+  {
     "de": "der Alkohol",
     "ar": "الخمر",
     "pl": "die Alkohole",
@@ -52,8 +276,8 @@
     "de": "echt",
     "ar": "حقاً / حقيقي",
     "pl": "Adjectif",
-    "syn": "wirklich",
-    "ant": "falsch"
+    "syn": "wahr / wirklich",
+    "ant": "falsch / unwahr"
   },
   {
     "de": "Gott sei Dank",
@@ -74,7 +298,7 @@
     "ar": "الدولة / البلد",
     "pl": "die Länder",
     "syn": "der Staat",
-    "ant": "-"
+    "ant": "die Stadt"
   },
   {
     "de": "von",
@@ -137,7 +361,7 @@
     "ar": "إلى (للدول والمدن) / بعد",
     "pl": "Préposition",
     "syn": "-",
-    "ant": "vor"
+    "ant": "von / vor"
   },
   {
     "de": "warten",
@@ -252,13 +476,6 @@
     "ant": "-"
   },
   {
-    "de": "hässlich",
-    "ar": "قبيح (ليس جميل)",
-    "pl": "-",
-    "syn": "-",
-    "ant": "schön"
-  },
-  {
     "de": "schön",
     "ar": "جميل",
     "pl": "-",
@@ -277,7 +494,7 @@
     "ar": "أجنبي",
     "pl": "die Ausländer",
     "syn": "-",
-    "ant": "der Inländer"
+    "ant": "der Deutsche / der Inländer"
   },
   {
     "de": "das Inland",
@@ -493,15 +710,15 @@
     "de": "wahr",
     "ar": "حقيقي / صحيح",
     "pl": "Adjectif (صفة)",
-    "syn": "richtig / echt",
-    "ant": "unwahr / falsch"
+    "syn": "echt / richtig",
+    "ant": "falsch / unwahr"
   },
   {
     "de": "unwahr",
     "ar": "غير حقيقي / كاذب",
     "pl": "Adjectif (صفة)",
     "syn": "falsch / gelogen",
-    "ant": "wahr / echt"
+    "ant": "echt / wahr"
   },
   {
     "de": "der Regenschirm",
@@ -633,21 +850,21 @@
     "de": "der Gast",
     "ar": "الضيف / الزبون",
     "pl": "die Gäste",
-    "syn": "der Kunde / der Besucher",
-    "ant": "der Gastgeber"
+    "syn": "der Besucher / der Kunde",
+    "ant": "der Gastgeber / der Kellner"
   },
   {
     "de": "der Kunde",
     "ar": "الزبون / العميل",
     "pl": "die Kunden",
     "syn": "der Gast / der Käufer",
-    "ant": "der Verkäufer"
+    "ant": "der Kellner / der Verkäufer"
   },
   {
     "de": "bedienen",
     "ar": "يخدم",
     "pl": "Verbe (فعل)",
-    "syn": "servieren / helfen",
+    "syn": "helfen / servieren",
     "ant": "-"
   },
   {
@@ -668,7 +885,7 @@
     "de": "untersuchen",
     "ar": "يفحص",
     "pl": "Verbe (فعل)",
-    "syn": "prüfen / kontrollieren",
+    "syn": "kontrollieren / prüfen",
     "ant": "-"
   },
   {
@@ -676,7 +893,7 @@
     "ar": "يبحث",
     "pl": "Verbe (فعل)",
     "syn": "fahnden",
-    "ant": "finden (يجد)"
+    "ant": "finden / finden (يجد)"
   },
   {
     "de": "besuchen",
@@ -703,7 +920,7 @@
     "de": "unterrichten",
     "ar": "يُدرّس / يُعلّم",
     "pl": "Verbe (فعل)",
-    "syn": "lehren / beibringen",
+    "syn": "beibringen / lehren",
     "ant": "lernen (يتعلم)"
   },
   {
@@ -724,7 +941,7 @@
     "de": "die Besprechung",
     "ar": "الاجتماع / النقاش",
     "pl": "die Besprechungen",
-    "syn": "die Sitzung / das Treffen",
+    "syn": "das Treffen / die Sitzung",
     "ant": "-"
   },
   {
@@ -767,7 +984,7 @@
     "ar": "لاحقاً / فيما بعد",
     "pl": "Adverbe (ظرف زمان)",
     "syn": "danach / hinterher",
-    "ant": "früher / jetzt"
+    "ant": "früher / im Moment / jetzt / nun"
   },
   {
     "de": "manchmal",
@@ -780,21 +997,14 @@
     "de": "warum",
     "ar": "لماذا",
     "pl": "Question (أداة استفهام)",
-    "syn": "wieso / weshalb",
+    "syn": "weshalb / wieso",
     "ant": "darum / deshalb"
-  },
-  {
-    "de": "denn",
-    "ar": "لأنّ",
-    "pl": "Conjonction (أداة ربط)",
-    "syn": "weil / da",
-    "ant": "trotzdem"
   },
   {
     "de": "das Spiel",
     "ar": "اللعبة / المباراة",
     "pl": "die Spiele",
-    "syn": "die Partie / das Match",
+    "syn": "das Match / die Partie",
     "ant": "der Ernst"
   },
   {
@@ -808,7 +1018,7 @@
     "de": "der Gegenstand",
     "ar": "الشيء المادي / الغرض",
     "pl": "die Gegenstände",
-    "syn": "die Sache / das Ding",
+    "syn": "das Ding / die Sache",
     "ant": "-"
   },
   {
@@ -822,7 +1032,7 @@
     "de": "etwas",
     "ar": "شيء ما / قليلاً",
     "pl": "Pronom (ضمير)",
-    "syn": "ein bisschen / ein wenig",
+    "syn": "die Sache / ein bisschen / ein wenig",
     "ant": "nichts (لا شيء)"
   },
   {
@@ -843,14 +1053,14 @@
     "de": "die Stunde",
     "ar": "ساعة زمنية (60 دقيقة) / حصة",
     "pl": "die Stunden",
-    "syn": "die Unterrichtsstunde",
+    "syn": "der Unterricht / die Unterrichtsstunde",
     "ant": "-"
   },
   {
     "de": "aber",
     "ar": "ولكن",
     "pl": "Conjonction (أداة ربط)",
-    "syn": "jedoch / doch",
+    "syn": "doch / jedoch",
     "ant": "-"
   },
   {
@@ -858,13 +1068,13 @@
     "ar": "متزوج / متزوجة",
     "pl": "Adjectif (صفة)",
     "syn": "vermählt",
-    "ant": "ledig / geschieden"
+    "ant": "geschieden / ledig / verwitwet"
   },
   {
     "de": "ledig",
     "ar": "أعزب / عزباء (غير متزوج)",
     "pl": "Adjectif (صفة)",
-    "syn": "unverheiratet / Single",
+    "syn": "Single / unverheiratet",
     "ant": "verheiratet"
   },
   {
@@ -879,7 +1089,7 @@
     "ar": "بالفعل (schon) / جميل (schön)",
     "pl": "Adverbe / Adjectif",
     "syn": "bereits / hübsch",
-    "ant": "noch nicht / hässlich"
+    "ant": "hässlich / noch nicht"
   },
   {
     "de": "die Eltern",
@@ -927,8 +1137,8 @@
     "de": "Auf Wiedersehen",
     "ar": "إلى اللقاء",
     "pl": "Salutation (تحية وداع)",
-    "syn": "Tschüss / Bis bald",
-    "ant": "Hallo / Guten Tag"
+    "syn": "Bis bald / Tschüss",
+    "ant": "Guten Tag / Hallo"
   },
   {
     "de": "der Morgen",
@@ -963,7 +1173,7 @@
     "ar": "وحيد / بمفرده",
     "pl": "Adjectif (صفة / ظرف)",
     "syn": "einsam / selbst",
-    "ant": "zusammen / gemeinsam"
+    "ant": "gemeinsam / zusammen"
   },
   {
     "de": "zusammen",
@@ -997,7 +1207,7 @@
     "de": "kochen",
     "ar": "يطبخ",
     "pl": "Verbe (فعل)",
-    "syn": "zubereiten / braten",
+    "syn": "braten / zubereiten",
     "ant": "-"
   },
   {
@@ -1039,14 +1249,14 @@
     "de": "im Moment",
     "ar": "في هذه اللحظة / حالياً",
     "pl": "Adverbe (ظرف زمان)",
-    "syn": "zurzeit / momentan / jetzt",
+    "syn": "jetzt / momentan / zurzeit",
     "ant": "später"
   },
   {
     "de": "zurzeit",
     "ar": "في الوقت الحالي / حالياً",
     "pl": "Adverbe (ظرف زمان)",
-    "syn": "im Moment / gegenwärtig",
+    "syn": "gegenwärtig / im Moment",
     "ant": "früher"
   },
   {
@@ -1054,14 +1264,14 @@
     "ar": "إغلاق النص / إغلاق الكتاب",
     "pl": "Expression (تعبير)",
     "syn": "geschlossen",
-    "ant": "Text auf / Buch auf"
+    "ant": "Buch auf / Text auf"
   },
   {
     "de": "Text auf / Buch auf",
     "ar": "فتح النص / فتح الكتاب",
     "pl": "Expression (تعبير)",
-    "syn": "offen / geöffnet",
-    "ant": "Text zu / Buch zu"
+    "syn": "geöffnet / offen",
+    "ant": "Buch zu / Text zu"
   },
   {
     "de": "das Gegenteil",
@@ -1102,29 +1312,29 @@
     "de": "ein bisschen",
     "ar": "قليلاً",
     "pl": "Quantité (تعبير كمية)",
-    "syn": "ein wenig / etwas",
-    "ant": "viel / sehr"
+    "syn": "ein wenig / etwas / wenig",
+    "ant": "sehr / viel"
   },
   {
     "de": "ein wenig",
     "ar": "قليلاً",
     "pl": "Quantité (تعبير كمية)",
-    "syn": "ein bisschen / kaum",
+    "syn": "ein bisschen / etwas / kaum",
     "ant": "viel"
   },
   {
     "de": "toll",
     "ar": "رائع / ممتاز",
     "pl": "Adjectif (صفة)",
-    "syn": "super / prima / wunderbar",
+    "syn": "prima / super / wunderbar",
     "ant": "schlecht / schrecklich"
   },
   {
     "de": "super",
     "ar": "رائع جداً / ممتاز",
     "pl": "Adjectif (صفة)",
-    "syn": "toll / klasse / großartig",
-    "ant": "schlecht / mies"
+    "syn": "großartig / klasse / toll",
+    "ant": "mies / schlecht"
   },
   {
     "de": "die Frage",
@@ -1137,7 +1347,7 @@
     "de": "die Antwort",
     "ar": "الجواب / الإجابة",
     "pl": "die Antworten",
-    "syn": "die Reaktion / die Erwiderung",
+    "syn": "die Erwiderung / die Reaktion",
     "ant": "die Frage"
   },
   {
@@ -1193,7 +1403,7 @@
     "de": "das Bild",
     "ar": "الصورة / اللوحة الفنية",
     "pl": "die Bilder",
-    "syn": "das Gemälde / das Foto",
+    "syn": "das Foto / das Gemälde",
     "ant": "-"
   },
   {
@@ -1221,7 +1431,7 @@
     "de": "bejahen",
     "ar": "يؤكد / يوافق",
     "pl": "Verbe (فعل)",
-    "syn": "zustimmen / bestätigen",
+    "syn": "bestätigen / zustimmen",
     "ant": "verneinen"
   },
   {
@@ -1249,22 +1459,22 @@
     "de": "beschäftigt",
     "ar": "مشغول",
     "pl": "Adjectif (صفة)",
-    "syn": "ausgelastet / im Stress",
+    "syn": "ausgelastet / berufstätig / im Stress",
     "ant": "frei (متفرغ)"
   },
   {
     "de": "immer",
     "ar": "دائماً",
     "pl": "Adverbe (ظرف)",
-    "syn": "ständig / stets",
-    "ant": "nie / niemals"
+    "syn": "stets / ständig",
+    "ant": "ab und zu / manchmal / nie / niemals"
   },
   {
     "de": "nie",
     "ar": "أبداً",
     "pl": "Adverbe (ظرف)",
-    "syn": "niemals / keinesfalls",
-    "ant": "immer"
+    "syn": "keinesfalls / niemals",
+    "ant": "immer / manchmal / oft"
   },
   {
     "de": "der Zug",
@@ -1298,7 +1508,7 @@
     "de": "unterstreichen",
     "ar": "يضع خطاً تحت الكلمة",
     "pl": "Verbe (فعل)",
-    "syn": "markieren / betonen",
+    "syn": "betonen / markieren",
     "ant": "durchstreichen"
   },
   {
@@ -1312,7 +1522,7 @@
     "de": "der Unterricht",
     "ar": "الحصة الدراسية / التدريس",
     "pl": "Sans pluriel",
-    "syn": "die Stunde / die Schulstunde",
+    "syn": "der Kurs / die Schulstunde / die Stunde",
     "ant": "die Pause"
   },
   {
@@ -1326,7 +1536,7 @@
     "de": "die Glühbirne",
     "ar": "المصباح الكهربائي",
     "pl": "die Glühbirnen",
-    "syn": "die Lampe / das Licht",
+    "syn": "das Licht / die Birne / die Lampe",
     "ant": "-"
   },
   {
@@ -1340,28 +1550,28 @@
     "de": "der Stuhl",
     "ar": "الكرسي",
     "pl": "die Stühle",
-    "syn": "der Sitz / der Sessel",
+    "syn": "der Sessel / der Sitz",
     "ant": "der Tisch"
   },
   {
     "de": "berufstätig",
     "ar": "نشيط في عمل / موظف",
     "pl": "Adjectif (صفة)",
-    "syn": "arbeitend / beschäftigt",
+    "syn": "arbeitend / arbeitstätig / beschäftigt",
     "ant": "arbeitslos"
   },
   {
     "de": "arbeitslos",
     "ar": "عاطل عن العمل",
     "pl": "Adjectif (صفة)",
-    "syn": "ohne Arbeit / erwerbslos",
-    "ant": "berufstätig"
+    "syn": "erwerbslos / ohne Arbeit",
+    "ant": "arbeitstätig / berufstätig"
   },
   {
     "de": "erziehen",
     "ar": "يربي",
     "pl": "Verbe (فعل)",
-    "syn": "großziehen / bilden",
+    "syn": "bilden / großziehen",
     "ant": "vernachlässigen"
   },
   {
@@ -1382,8 +1592,8 @@
     "de": "schwer",
     "ar": "صعب / ثقيل الوزن",
     "pl": "Adjectif (صفة)",
-    "syn": "schwierig / kompliziert",
-    "ant": "leicht / einfach"
+    "syn": "kompliziert / schwierig",
+    "ant": "einfach / leicht"
   },
   {
     "de": "das Klavier",
@@ -1403,14 +1613,14 @@
     "de": "klein",
     "ar": "صغير / قصير القامة",
     "pl": "Adjectif (صفة)",
-    "syn": "winzig / kurz",
+    "syn": "kurz / winzig",
     "ant": "groß"
   },
   {
     "de": "groß",
     "ar": "كبير / طويل القامة",
     "pl": "Adjectif (صفة)",
-    "syn": "riesig / hoch / lang",
+    "syn": "hoch / lang / riesig",
     "ant": "klein"
   },
   {
@@ -1432,21 +1642,14 @@
     "ar": "منفصل / منفصلة",
     "pl": "Adjectif (صفة)",
     "syn": "geschieden / separat",
-    "ant": "zusammen / vereint"
+    "ant": "vereint / zusammen"
   },
   {
     "de": "sehen",
     "ar": "يرى / يشاهد",
     "pl": "Verbe (فعل)",
-    "syn": "blicken / schauen / gucken",
+    "syn": "blicken / gucken / schauen",
     "ant": "übersehen"
-  },
-  {
-    "de": "kaufen",
-    "ar": "يشتري",
-    "pl": "Verbe (فعل)",
-    "syn": "erwerben / einkaufen",
-    "ant": "verkaufen"
   },
   {
     "de": "der Käufer",
@@ -1456,17 +1659,10 @@
     "ant": "der Verkäufer"
   },
   {
-    "de": "verkaufen",
-    "ar": "يبيع",
-    "pl": "Verbe (فعل)",
-    "syn": "handeln / abgeben",
-    "ant": "kaufen"
-  },
-  {
     "de": "das Reisen",
     "ar": "السفر / الترحال",
     "pl": "die Reisen (die Reise)",
-    "syn": "die Fahrt / der Urlaub",
+    "syn": "der Urlaub / die Fahrt",
     "ant": "das Bleiben"
   },
   {
@@ -1480,7 +1676,7 @@
     "de": "der Bauernhof",
     "ar": "المزرعة / ضيعة الفلاح",
     "pl": "die Bauernhöfe",
-    "syn": "der Hof / das Landgut",
+    "syn": "das Landgut / der Hof",
     "ant": "-"
   },
   {
@@ -1488,7 +1684,7 @@
     "ar": "غالباً / كثيراً ما",
     "pl": "Adverbe (ظرف)",
     "syn": "häufig / mehrmals",
-    "ant": "selten / nie"
+    "ant": "nie / selten"
   },
   {
     "de": "der Landwirt",
@@ -1508,7 +1704,7 @@
     "de": "der Junge",
     "ar": "الفتى / الشاب / الولد",
     "pl": "die Jungen / die Jungs",
-    "syn": "der Knabe",
+    "syn": "das Kind / der Knabe",
     "ant": "das Mädchen"
   },
   {
@@ -1536,7 +1732,7 @@
     "de": "der Stift",
     "ar": "قلم",
     "pl": "die Stifte",
-    "syn": "der Bleistift / der Kuli",
+    "syn": "der Bleistift / der Kugelschreiber / der Kuli",
     "ant": "-"
   },
   {
@@ -1564,8 +1760,8 @@
     "de": "der Freund",
     "ar": "صديق",
     "pl": "die Freunde",
-    "syn": "der Kumpel / der Kamerad",
-    "ant": "die Freundin / der Feind"
+    "syn": "der Kamerad / der Kumpel",
+    "ant": "der Feind / die Freundin"
   },
   {
     "de": "die Tante",
@@ -1634,7 +1830,7 @@
     "de": "kommen",
     "ar": "يأتي",
     "pl": "Verbe (فعل)",
-    "syn": "erscheinen / eintreffen",
+    "syn": "eintreffen / erscheinen",
     "ant": "gehen (يذهب)"
   },
   {
@@ -1677,20 +1873,20 @@
     "ar": "يكتب",
     "pl": "Verbe (فعل)",
     "syn": "notieren / verfassen",
-    "ant": "lesen (يقرأ)"
+    "ant": "lesen / lesen (يقرأ)"
   },
   {
     "de": "leben",
     "ar": "يعيش",
     "pl": "Verbe (فعل)",
-    "syn": "wohnen / existieren",
+    "syn": "existieren / wohnen",
     "ant": "sterben (يموت)"
   },
   {
     "de": "lieben",
     "ar": "يحب",
     "pl": "Verbe (فعل)",
-    "syn": "mögen / gern haben",
+    "syn": "gern haben / mögen",
     "ant": "hassen (يكره)"
   },
   {
@@ -1711,14 +1907,14 @@
     "de": "jetzt",
     "ar": "الآن",
     "pl": "Adverbe (ظرف زمان)",
-    "syn": "nun / im Moment",
-    "ant": "später / früher"
+    "syn": "im Moment / nun",
+    "ant": "früher / später"
   },
   {
     "de": "machen",
     "ar": "يفعل / يصنع",
     "pl": "Verbe (فعل)",
-    "syn": "tun / erledigen",
+    "syn": "erledigen / treiben / tun",
     "ant": "unterlassen"
   },
   {
@@ -1767,7 +1963,7 @@
     "de": "krank",
     "ar": "مريض",
     "pl": "Adjectif (صفة)",
-    "syn": "unwohl / leidend",
+    "syn": "leidend / unwohl",
     "ant": "gesund"
   },
   {
@@ -1782,7 +1978,7 @@
     "ar": "مهم",
     "pl": "Adjectif (صفة)",
     "syn": "bedeutend / wesentlich",
-    "ant": "unwichtig / egal"
+    "ant": "egal / unwichtig"
   },
   {
     "de": "die Hauptstadt",
@@ -1824,13 +2020,13 @@
     "ar": "كثير",
     "pl": "Adjectif / Adverbe",
     "syn": "reichlich / zahlreich",
-    "ant": "wenig"
+    "ant": "ein bisschen / ein wenig / wenig"
   },
   {
     "de": "wenig",
     "ar": "قليل",
     "pl": "Adjectif / Adverbe",
-    "syn": "gering / kaum / ein bisschen",
+    "syn": "ein bisschen / gering / kaum",
     "ant": "viel"
   },
   {
@@ -1865,7 +2061,7 @@
     "de": "das Auto",
     "ar": "السيارة",
     "pl": "die Autos",
-    "syn": "der Wagen / der Pkw",
+    "syn": "der Pkw / der Wagen",
     "ant": "-"
   },
   {
@@ -1886,7 +2082,7 @@
     "de": "der Lehrer",
     "ar": "الأستاذ",
     "pl": "die Lehrer",
-    "syn": "der Pädagoge / der Dozent",
+    "syn": "der Dozent / der Pädagoge",
     "ant": "der Schüler"
   },
   {
@@ -1900,22 +2096,22 @@
     "de": "die Arbeit",
     "ar": "العمل",
     "pl": "die Arbeiten",
-    "syn": "der Job / der Beruf",
-    "ant": "die Freizeit / die Pause"
+    "syn": "der Beruf / der Job",
+    "ant": "das Hobby / die Freizeit / die Pause"
   },
   {
     "de": "Sie / sie",
     "ar": "حضرتك (Sie) / هي أو هم (sie)",
     "pl": "Pronom (ضمير)",
     "syn": "-",
-    "ant": "du / ihr / er"
+    "ant": "du / er / ihr"
   },
   {
     "de": "er",
     "ar": "هو",
     "pl": "Pronom (ضمير)",
     "syn": "-",
-    "ant": "sie (هي)"
+    "ant": "Sie / sie / sie (هي)"
   },
   {
     "de": "die Hausfrau",
@@ -1963,14 +2159,14 @@
     "de": "sportlich",
     "ar": "رياضي",
     "pl": "Adjectif (صفة)",
-    "syn": "fit / athletisch",
+    "syn": "athletisch / fit",
     "ant": "unsportlich"
   },
   {
     "de": "alt",
     "ar": "مسن / قديم",
     "pl": "Adjectif (صفة)",
-    "syn": "betagt / antik",
+    "syn": "antik / betagt",
     "ant": "jung / neu"
   }
 ]
