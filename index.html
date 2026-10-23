@@ -60,7 +60,7 @@
         .btn-nav { background: #2563eb; }
         .btn-rand { background: #64748b; }
 
-        /* Styles du mode Quiz */
+        /* Styles du Test de connaissances */
         .quiz-container { display: none; margin-top: 10px; }
         .quiz-container.active { display: block; }
         .quiz-options { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 18px; direction: rtl; }
@@ -118,7 +118,7 @@
     <div class="header">
         <h1>🇩🇪 Deutsch Vocabulaire</h1>
         <div class="header-actions">
-            <button type="button" class="quiz-toggle-btn" id="quizBtn" onclick="toggleQuizMode()">🎮 Mode Quiz</button>
+            <button type="button" class="quiz-toggle-btn" id="quizBtn" onclick="toggleQuizMode()">🎮 Test de connaissances</button>
             <button type="button" class="admin-toggle-btn" id="adminBtn" onclick="openAdminModal()">🔒 Admin</button>
         </div>
     </div>
@@ -128,7 +128,7 @@
         <span class="sync-badge online" id="syncBadge">⚡ Base Data.json</span>
     </div>
 
-    <!-- Mode Apprentissage Normal -->
+    <!-- retourner Normal -->
     <div id="learningModeSection">
         <input type="text" id="searchInput" class="search-input" placeholder="🔍 Rechercher un mot en Allemand ou en Arabe..." oninput="applySearchAndFilter()">
 
@@ -175,7 +175,7 @@
         </div>
     </div>
 
-    <!-- Mode Quiz Interactif -->
+    <!-- Test de connaissances Interactif -->
     <div class="quiz-container" id="quizModeSection">
         <div class="card" id="quizCard">
             <span class="badge" id="quizScoreBadge" style="background:#0284c7;">Score : 0 / 0</span>
@@ -264,7 +264,7 @@ let activeList = [];
 let index = 0;
 let currentFilter = 'all';
 
-// Variables pour le mode Quiz
+// Variables pour le Test de connaissances
 let isQuizActive = false;
 let quizPool = [];
 let quizCurrentIndex = 0;
@@ -533,7 +533,7 @@ async function persistVocabularyChange(actionMsg) {
     }
 }
 
-/* ==================== GESTION DU MODE QUIZ ==================== */
+/* ==================== GESTION DU Test de connaissances ==================== */
 function toggleQuizMode() {
     isQuizActive = !isQuizActive;
     const learningSec = document.getElementById('learningModeSection');
@@ -550,14 +550,14 @@ function toggleQuizMode() {
         learningSec.style.display = 'none';
         listWrapper.style.display = 'none';
         quizSec.classList.add('active');
-        quizBtn.textContent = '📚 Mode Apprentissage';
+        quizBtn.textContent = '📚 retourner';
         quizBtn.style.background = '#16a34a';
         startQuiz();
     } else {
         learningSec.style.display = 'block';
         listWrapper.style.display = 'block';
         quizSec.classList.remove('active');
-        quizBtn.textContent = '🎮 Mode Quiz';
+        quizBtn.textContent = '🎮 Test de connaissances';
         quizBtn.style.background = '';
     }
 }
