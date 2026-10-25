@@ -127,30 +127,30 @@
   },
   {
     "de": "denn",
-    "ar": "لأن",
+    "ar": "لأنّ",
     "pl": "Conjonction (أداة ربط)",
-    "syn": "weil",
+    "syn": "weil / da",
     "ant": "-"
   },
   {
     "de": "der Satz",
     "ar": "الجملة",
     "pl": "die Sätze",
-    "syn": "das Wort (Worte)",
+    "syn": "die Aussage",
     "ant": "das Wort"
   },
   {
     "de": "kaufen",
     "ar": "يشتري",
     "pl": "Verbe (فعل)",
-    "syn": "-",
+    "syn": "erwerben / einkaufen",
     "ant": "verkaufen"
   },
   {
     "de": "verkaufen",
     "ar": "يبيع",
     "pl": "Verbe (فعل)",
-    "syn": "-",
+    "syn": "handeln / abgeben",
     "ant": "kaufen"
   },
   {
@@ -199,8 +199,8 @@
     "de": "hässlich",
     "ar": "قبيح",
     "pl": "Adjectif (صفة)",
-    "syn": "-",
-    "ant": "schon / schön / schön"
+    "syn": "unschön",
+    "ant": "schön / hübsch"
   },
   {
     "de": "nett",
@@ -225,23 +225,23 @@
   },
   {
     "de": "der Alkohol",
-    "ar": "الخمر",
-    "pl": "die Alkohole",
+    "ar": "الكحول / الخمر",
+    "pl": "Sans pluriel (لا جمع له)",
     "syn": "-",
     "ant": "-"
   },
   {
-    "de": "Verzeihung",
+    "de": "die Verzeihung",
     "ar": "عفواً / المعذرة",
-    "pl": "-",
-    "syn": "Entschuldigung",
+    "pl": "Sans pluriel (لا جمع له)",
+    "syn": "die Entschuldigung",
     "ant": "-"
   },
   {
-    "de": "Entschuldigung",
-    "ar": "عفواً / عذراً",
+    "de": "die Entschuldigung",
+    "ar": "عفواً / عذراً / الاعتذار",
     "pl": "die Entschuldigungen",
-    "syn": "Verzeihung",
+    "syn": "die Verzeihung",
     "ant": "-"
   },
   {
@@ -254,8 +254,8 @@
   {
     "de": "Viel Erfolg",
     "ar": "تمني النجاح / بالتوفيق",
-    "pl": "-",
-    "syn": "-",
+    "pl": "Expression (تعبير)",
+    "syn": "Alles Gute / Viel Glück",
     "ant": "-"
   },
   {
@@ -268,21 +268,21 @@
   {
     "de": "wirklich",
     "ar": "حقاً / فعلاً",
-    "pl": "Adverbe",
+    "pl": "Adverbe (ظرف)",
     "syn": "echt",
     "ant": "-"
   },
   {
     "de": "echt",
     "ar": "حقاً / حقيقي",
-    "pl": "Adjectif",
+    "pl": "Adjectif (صفة)",
     "syn": "wahr / wirklich",
     "ant": "falsch / unwahr"
   },
   {
     "de": "Gott sei Dank",
     "ar": "الحمد لله",
-    "pl": "-",
+    "pl": "Expression (تعبير)",
     "syn": "-",
     "ant": "-"
   },
@@ -310,7 +310,7 @@
   {
     "de": "hier",
     "ar": "هنا",
-    "pl": "Adverbe",
+    "pl": "Adverbe (ظرف مكان)",
     "syn": "-",
     "ant": "dort"
   },
@@ -338,20 +338,20 @@
   {
     "de": "besetzt",
     "ar": "مشغول / محجوز",
-    "pl": "Adjectif",
+    "pl": "Adjectif (صفة)",
     "syn": "vergeben",
     "ant": "frei"
   },
   {
     "de": "das Feuerzeug",
-    "ar": "ولااعة",
+    "ar": "ولاعة / قداحة",
     "pl": "die Feuerzeuge",
     "syn": "-",
     "ant": "-"
   },
   {
     "de": "möchten",
-    "ar": "يريد / أرادة",
+    "ar": "يرغب / يودّ",
     "pl": "Verbe (فعل)",
     "syn": "wollen",
     "ant": "-"
@@ -359,7 +359,7 @@
   {
     "de": "nach",
     "ar": "إلى (للدول والمدن) / بعد",
-    "pl": "Préposition",
+    "pl": "Préposition (حرف جر)",
     "syn": "-",
     "ant": "von / vor"
   },
@@ -373,42 +373,42 @@
   {
     "de": "lange",
     "ar": "طويلاً / لفترة طويلة",
-    "pl": "Adverbe",
+    "pl": "Adverbe (ظرف)",
     "syn": "-",
     "ant": "kurz"
   },
   {
     "de": "lange Zeit",
     "ar": "وقت طويل",
-    "pl": "-",
+    "pl": "Expression (تعبير)",
     "syn": "-",
     "ant": "kurze Zeit"
   },
   {
     "de": "es geht",
     "ar": "الحال ماشي / ليس سيئاً جداً",
-    "pl": "Expression",
+    "pl": "Expression (تعبير)",
     "syn": "so lala",
     "ant": "-"
   },
   {
     "de": "kein Problem",
     "ar": "لا مشكلة",
-    "pl": "-",
+    "pl": "Expression (تعبير)",
     "syn": "macht nichts",
     "ant": "-"
   },
   {
     "de": "wohin",
     "ar": "إلى أين",
-    "pl": "Adverbe",
+    "pl": "Question / Adverbe (أداة استفهام / ظرف مكان)",
     "syn": "-",
     "ant": "woher"
   },
   {
     "de": "woher",
     "ar": "من أين",
-    "pl": "Adverbe",
+    "pl": "Question / Adverbe (أداة استفهام / ظرف مكان)",
     "syn": "-",
     "ant": "wohin"
   },
@@ -436,21 +436,21 @@
   {
     "de": "die Lieblingsmusik",
     "ar": "الموسيقى المفضلة",
-    "pl": "die Lieblingsmusiken",
+    "pl": "Sans pluriel (لا جمع له)",
     "syn": "-",
     "ant": "-"
   },
   {
     "de": "die Papiere",
     "ar": "الأوراق / جواز السفر (الباسبور)",
-    "pl": "die Papiere",
+    "pl": "die Papiere (Pluriel)",
     "syn": "die Dokumente",
     "ant": "-"
   },
   {
     "de": "das Gepäck",
     "ar": "الأمتعة",
-    "pl": "Sans pluriel",
+    "pl": "Sans pluriel (لا جمع له)",
     "syn": "-",
     "ant": "-"
   },
@@ -464,7 +464,7 @@
   {
     "de": "die Geschwister",
     "ar": "الإخوة",
-    "pl": "die Geschwister",
+    "pl": "die Geschwister (Pluriel)",
     "syn": "-",
     "ant": "-"
   },
@@ -478,14 +478,14 @@
   {
     "de": "schön",
     "ar": "جميل",
-    "pl": "-",
+    "pl": "Adjectif (صفة)",
     "syn": "hübsch",
     "ant": "hässlich"
   },
   {
     "de": "willkommen",
     "ar": "مرحباً",
-    "pl": "-",
+    "pl": "Adjectif (صفة)",
     "syn": "-",
     "ant": "-"
   },
@@ -499,14 +499,14 @@
   {
     "de": "das Inland",
     "ar": "بلد داخلي",
-    "pl": "-",
+    "pl": "Sans pluriel (لا جمع له)",
     "syn": "-",
     "ant": "das Ausland"
   },
   {
     "de": "das Ausland",
     "ar": "بلد خارجي",
-    "pl": "-",
+    "pl": "Sans pluriel (لا جمع له)",
     "syn": "-",
     "ant": "das Inland"
   },
@@ -541,16 +541,16 @@
   {
     "de": "sehr gut",
     "ar": "جيد جداً",
-    "pl": "-",
+    "pl": "Expression (تعبير)",
     "syn": "ausgezeichnet",
     "ant": "schlecht"
   },
   {
-    "de": "die Aue / die Beendigung (Abreise)",
-    "ar": "بطلاقة / إنهاء",
-    "pl": "-",
-    "syn": "-",
-    "ant": "-"
+    "de": "die Abreise",
+    "ar": "المغادرة / الرحيل",
+    "pl": "die Abreisen",
+    "syn": "die Abfahrt",
+    "ant": "die Ankunft"
   },
   {
     "de": "perfekt",
@@ -597,14 +597,14 @@
   {
     "de": "die Gesundheit",
     "ar": "الصحة",
-    "pl": "-",
+    "pl": "Sans pluriel (لا جمع له)",
     "syn": "-",
-    "ant": "-"
+    "ant": "die Krankheit"
   },
   {
-    "de": "gute Besserung",
+    "de": "Gute Besserung",
     "ar": "سلامات (للشفاء)",
-    "pl": "-",
+    "pl": "Expression (تعبير)",
     "syn": "-",
     "ant": "-"
   },
@@ -682,7 +682,7 @@
     "de": "das Wort (Worte)",
     "ar": "العبارة / الجملة المترابطة",
     "pl": "die Worte",
-    "syn": "der Satz",
+    "syn": "der Ausspruch",
     "ant": "-"
   },
   {
@@ -697,14 +697,14 @@
     "ar": "يقول",
     "pl": "Verbe (فعل)",
     "syn": "sprechen / äußern",
-    "ant": "schweigen (يصمت)"
+    "ant": "schweigen"
   },
   {
     "de": "die Wahrheit",
     "ar": "الحقيقة",
     "pl": "die Wahrheiten",
     "syn": "die Realität",
-    "ant": "die Lüge (الكذبة)"
+    "ant": "die Lüge"
   },
   {
     "de": "wahr",
@@ -730,7 +730,7 @@
   {
     "de": "der Regen",
     "ar": "المطر",
-    "pl": "Sans pluriel",
+    "pl": "Sans pluriel (لا جمع له)",
     "syn": "der Niederschlag",
     "ant": "die Trockenheit"
   },
@@ -746,7 +746,7 @@
     "ar": "الشمس",
     "pl": "die Sonnen",
     "syn": "-",
-    "ant": "der Mond (القمر)"
+    "ant": "der Mond"
   },
   {
     "de": "der Bildschirm",
@@ -767,7 +767,7 @@
     "ar": "منذ",
     "pl": "Préposition (حرف جر)",
     "syn": "ab",
-    "ant": "bis (حتى)"
+    "ant": "bis"
   },
   {
     "de": "das Glas",
@@ -844,7 +844,7 @@
     "ar": "القاتل",
     "pl": "die Killer",
     "syn": "der Mörder",
-    "ant": "das Opfer (الضحية)"
+    "ant": "das Opfer"
   },
   {
     "de": "der Gast",
@@ -893,7 +893,7 @@
     "ar": "يبحث",
     "pl": "Verbe (فعل)",
     "syn": "fahnden",
-    "ant": "finden / finden (يجد)"
+    "ant": "finden"
   },
   {
     "de": "besuchen",
@@ -921,7 +921,7 @@
     "ar": "يُدرّس / يُعلّم",
     "pl": "Verbe (فعل)",
     "syn": "beibringen / lehren",
-    "ant": "lernen (يتعلم)"
+    "ant": "lernen"
   },
   {
     "de": "das Projekt",
@@ -966,9 +966,9 @@
     "ant": "der Professor"
   },
   {
-    "de": "die Jura",
-    "ar": "مادة القانون / الحقوق",
-    "pl": "Sans pluriel",
+    "de": "Jura (das Jurastudium)",
+    "ar": "دراسة القانون / الحقوق",
+    "pl": "Sans pluriel (لا جمع له)",
     "syn": "die Rechtswissenschaft",
     "ant": "-"
   },
@@ -1033,7 +1033,7 @@
     "ar": "شيء ما / قليلاً",
     "pl": "Pronom (ضمير)",
     "syn": "die Sache / ein bisschen / ein wenig",
-    "ant": "nichts (لا شيء)"
+    "ant": "nichts"
   },
   {
     "de": "als",
@@ -1085,15 +1085,15 @@
     "ant": "nicht mehr / schon"
   },
   {
-    "de": "schon / schön",
-    "ar": "بالفعل (schon) / جميل (schön)",
-    "pl": "Adverbe / Adjectif",
-    "syn": "bereits / hübsch",
-    "ant": "hässlich / noch nicht"
+    "de": "schon",
+    "ar": "بالفعل / مسبقاً",
+    "pl": "Adverbe (ظرف زمان)",
+    "syn": "bereits",
+    "ant": "noch nicht / noch"
   },
   {
     "de": "die Eltern",
-    "ar": "الوالدين",
+    "ar": "الوالدان / الوالدين",
     "pl": "die Eltern (Pluriel)",
     "syn": "Vater und Mutter",
     "ant": "die Kinder"
@@ -1110,14 +1110,14 @@
     "ar": "مع / بـ",
     "pl": "Préposition (حرف جر)",
     "syn": "zusammen mit",
-    "ant": "ohne (بدون)"
+    "ant": "ohne"
   },
   {
     "de": "ohne",
     "ar": "بدون",
     "pl": "Préposition (حرف جر)",
     "syn": "exklusive",
-    "ant": "mit (مع)"
+    "ant": "mit"
   },
   {
     "de": "der Deutsche",
@@ -1145,7 +1145,7 @@
     "ar": "الصباح",
     "pl": "die Morgen",
     "syn": "der Vormittag",
-    "ant": "der Abend (المساء)"
+    "ant": "der Abend"
   },
   {
     "de": "morgen",
@@ -1166,7 +1166,7 @@
     "ar": "أو",
     "pl": "Conjonction (أداة ربط)",
     "syn": "beziehungsweise",
-    "ant": "und (وَ)"
+    "ant": "und"
   },
   {
     "de": "allein",
@@ -1264,14 +1264,14 @@
     "ar": "إغلاق النص / إغلاق الكتاب",
     "pl": "Expression (تعبير)",
     "syn": "geschlossen",
-    "ant": "Buch auf / Text auf"
+    "ant": "Text auf / Buch auf"
   },
   {
     "de": "Text auf / Buch auf",
     "ar": "فتح النص / فتح الكتاب",
     "pl": "Expression (تعبير)",
     "syn": "geöffnet / offen",
-    "ant": "Buch zu / Text zu"
+    "ant": "Text zu / Buch zu"
   },
   {
     "de": "das Gegenteil",
@@ -1439,7 +1439,7 @@
     "ar": "بعد غد",
     "pl": "Adverbe (ظرف زمان)",
     "syn": "in zwei Tagen",
-    "ant": "vorgestern (أول أمس)"
+    "ant": "vorgestern"
   },
   {
     "de": "mitnehmen",
@@ -1460,7 +1460,7 @@
     "ar": "مشغول",
     "pl": "Adjectif (صفة)",
     "syn": "ausgelastet / berufstätig / im Stress",
-    "ant": "frei (متفرغ)"
+    "ant": "frei"
   },
   {
     "de": "immer",
@@ -1521,7 +1521,7 @@
   {
     "de": "der Unterricht",
     "ar": "الحصة الدراسية / التدريس",
-    "pl": "Sans pluriel",
+    "pl": "Sans pluriel (لا جمع له)",
     "syn": "der Kurs / die Schulstunde / die Stunde",
     "ant": "die Pause"
   },
@@ -1577,7 +1577,7 @@
   {
     "de": "die Erziehung",
     "ar": "التربية",
-    "pl": "Sans pluriel",
+    "pl": "Sans pluriel (لا جمع له)",
     "syn": "die Bildung / die Pädagogik",
     "ant": "-"
   },
@@ -1659,10 +1659,10 @@
     "ant": "der Verkäufer"
   },
   {
-    "de": "das Reisen",
-    "ar": "السفر / الترحال",
-    "pl": "die Reisen (die Reise)",
-    "syn": "der Urlaub / die Fahrt",
+    "de": "die Reise / das Reisen",
+    "ar": "السفر / الرحلة",
+    "pl": "die Reisen",
+    "syn": "die Fahrt / der Urlaub",
     "ant": "das Bleiben"
   },
   {
@@ -1831,7 +1831,7 @@
     "ar": "يأتي",
     "pl": "Verbe (فعل)",
     "syn": "eintreffen / erscheinen",
-    "ant": "gehen (يذهب)"
+    "ant": "gehen"
   },
   {
     "de": "wohnen",
@@ -1845,7 +1845,7 @@
     "ar": "يدرس / يتعلم",
     "pl": "Verbe (فعل)",
     "syn": "studieren / üben",
-    "ant": "lehren / vergessen"
+    "ant": "lehren / vergessen / unterrichten"
   },
   {
     "de": "spielen",
@@ -1873,21 +1873,21 @@
     "ar": "يكتب",
     "pl": "Verbe (فعل)",
     "syn": "notieren / verfassen",
-    "ant": "lesen / lesen (يقرأ)"
+    "ant": "lesen"
   },
   {
     "de": "leben",
     "ar": "يعيش",
     "pl": "Verbe (فعل)",
     "syn": "existieren / wohnen",
-    "ant": "sterben (يموت)"
+    "ant": "sterben"
   },
   {
     "de": "lieben",
     "ar": "يحب",
     "pl": "Verbe (فعل)",
     "syn": "gern haben / mögen",
-    "ant": "hassen (يكره)"
+    "ant": "hassen"
   },
   {
     "de": "lesen",
@@ -1948,7 +1948,7 @@
   {
     "de": "das Schach",
     "ar": "الشطرنج",
-    "pl": "Sans pluriel",
+    "pl": "Sans pluriel (لا جمع له)",
     "syn": "-",
     "ant": "-"
   },
@@ -2018,14 +2018,14 @@
   {
     "de": "viel",
     "ar": "كثير",
-    "pl": "Adjectif / Adverbe",
+    "pl": "Adjectif / Adverbe (صفة / ظرف)",
     "syn": "reichlich / zahlreich",
     "ant": "ein bisschen / ein wenig / wenig"
   },
   {
     "de": "wenig",
     "ar": "قليل",
-    "pl": "Adjectif / Adverbe",
+    "pl": "Adjectif / Adverbe (صفة / ظرف)",
     "syn": "ein bisschen / gering / kaum",
     "ant": "viel"
   },
@@ -2111,7 +2111,7 @@
     "ar": "هو",
     "pl": "Pronom (ضمير)",
     "syn": "-",
-    "ant": "Sie / sie / sie (هي)"
+    "ant": "sie"
   },
   {
     "de": "die Hausfrau",
@@ -2144,7 +2144,7 @@
   {
     "de": "das Alter",
     "ar": "العمر / السن",
-    "pl": "Sans pluriel",
+    "pl": "Sans pluriel (لا جمع له)",
     "syn": "das Lebensjahr",
     "ant": "die Jugend"
   },
