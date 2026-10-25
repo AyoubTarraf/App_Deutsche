@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deutsch Lernen - Vocabulaire & Quiz</title>
     <style>
-        :root {F
+        :root {
             --der: #2563eb;
             --die: #dc2626;
             --das: #16a34a;
@@ -41,7 +41,8 @@
         .card { border-radius: 16px; padding: 25px 20px; text-align: center; background: #ffffff; border: 2px solid #e2e8f0; border-top: 10px solid var(--der); box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; position: relative; }
         .badge { display: inline-block; padding: 5px 14px; border-radius: 20px; color: white; font-weight: bold; font-size: 0.85rem; margin-bottom: 10px; }
         .word-main { font-size: 2.1rem; font-weight: 800; color: #0f172a; margin: 10px 0; display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
-        .audio-btn { background: #eff6ff; border: 2px solid #bfdbfe; border-radius: 50%; width: 44px; height: 44px; font-size: 1.2rem; display: inline-flex; align-items: center; justify-content: center; transition: transform 0.1s; }
+        .audio-btn { background: #eff6ff; border: 2px solid #bfdbfe; border-radius: 50%; width: 44px; height: 44px; font-size: 1.2rem; display: inline-flex; align-items: center; justify-content: center; transition: transform 0.1s, background 0.15s; }
+        .audio-btn:hover { background: #dbeafe; }
         .audio-btn:active { transform: scale(0.92); }
         
         .toggle-details-btn { background: #f8fafc; color: #334155; border: 2px dashed #cbd5e1; width: 100%; padding: 14px; border-radius: 12px; font-weight: bold; font-size: 1rem; margin-top: 10px; display: block; transition: background 0.15s; }
@@ -128,7 +129,7 @@
         <span class="sync-badge online" id="syncBadge">⚡ Base Data.json</span>
     </div>
 
-    <!-- Retourner Normal -->
+    <!-- Mode Apprentissage Normal -->
     <div id="learningModeSection">
         <input type="text" id="searchInput" class="search-input" placeholder="🔍 Rechercher un mot en Allemand ou en Arabe..." oninput="applySearchAndFilter()">
 
@@ -144,7 +145,7 @@
             <span class="badge" id="badgeType">...</span>
             <div class="word-main">
                 <span id="wordDe">Chargement...</span>
-                <button type="button" class="audio-btn" onclick="speakWord()" title="Écouter">🔊</button>
+                <button type="button" class="audio-btn" onclick="speakWord()" title="Écouter la prononciation">🔊</button>
             </div>
             <button type="button" class="toggle-details-btn" onclick="toggleDetailsBox()">👁️ Afficher / Masquer l'explication (إظهار الشرح)</button>
 
@@ -154,7 +155,7 @@
                     <span class="detail-val" id="wordAr">-</span>
                 </div>
                 <div class="detail-item">
-                    <span class="detail-label">الجمع (Pluriel) :</span>
+                    <span class="detail-label">الجمع / النوع (Pluriel / Type) :</span>
                     <span class="detail-val de-text" id="wordPl">-</span>
                 </div>
                 <div class="detail-item">
@@ -178,22 +179,33 @@
     <!-- Test de Connaissances Interactif -->
     <div class="quiz-container" id="quizModeSection">
         <div class="card" id="quizCard">
-            <span class="badge" id="quizScoreBadge" style="background:#0284c7;">Score : 0 / 0</span>
-            <div style="font-size: 0.9rem; color: #64748b; margin-bottom: 5px;">Choisis la bonne traduction en arabe :</div>
-            <div class="word-main" style="margin: 15px 0;">
-                <span id="quizWordDe">...</span>
-                <button type="button" class="audio-btn" onclick="speakQuizWord()" title="Écouter">🔊</button>
+            <div id="quizQuestionView">
+                <span class="badge" id="quizScoreBadge" style="background:#0284c7;">Score : 0 / 0</span>
+                <div style="font-size: 0.9rem; color: #64748b; margin-bottom: 5px;">Choisis la bonne traduction en arabe :</div>
+                <div class="word-main" style="margin: 15px 0;">
+                    <span id="quizWordDe">...</span>
+                    <button type="button" class="audio-btn" onclick="speakQuizWord()" title="Écouter la prononciation">🔊</button>
+                </div>
+                <div class="quiz-options" id="quizOptionsContainer"></div>
+                <div id="quizNextBox" style="margin-top: 18px; display: none;">
+                    <button type="button" class="btn btn-nav" style="background: #16a34a; padding: 12px;" onclick="nextQuizQuestion()">Question Suivante ➡️</button>
+                </div>
             </div>
-            <div class="quiz-options" id="quizOptionsContainer"></div>
-            <div id="quizNextBox" style="margin-top: 18px; display: none;">
-                <button type="button" class="btn btn-nav" style="background: #16a34a; padding: 12px;" onclick="nextQuizQuestion()">Question Suivante ➡️</button>
+            <div id="quizResultView" style="display: none;">
+                <span class="badge" style="background:#16a34a; font-size:1.1rem; padding:8px 18px;">🏆 Test Terminé !</span>
+                <h2 id="quizFinalTitle" style="color:#0f172a; margin: 15px 0;">Ton Score : 0 / 0</h2>
+                <p style="color:#475569; margin-bottom:20px;">Bravo ! Tu as testé tes connaissances sur l'ensemble de ton dictionnaire Data.json.</p>
+                <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+                    <button type="button" class="btn btn-nav" style="background:#2563eb; padding:12px 20px; flex:1;" onclick="startQuiz()">🔄 Recommencer le Test</button>
+                    <button type="button" class="btn btn-rand" style="padding:12px 20px; flex:1;" onclick="toggleQuizMode()">📖 Retour au Dictionnaire</button>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="admin-panel" id="adminPanel">
         <h3>
-            <span>🛠️ Admin (Ajouter Nouveaux mots)</span>
+            <span>🛠️ Admin (Gérer & Corriger Data.json)</span>
             <button type="button" onclick="lockAdmin()" style="background:#ef4444;color:white;border:none;padding:6px 12px;border-radius:6px;font-weight:bold;">Fermer</button>
         </h3>
 
@@ -208,8 +220,8 @@
             <input type="text" id="inAr" class="form-input" dir="rtl" placeholder="Ex: الطاولة">
         </div>
         <div class="form-group">
-            <label>Pluriel avec Article (الجمع) :</label>
-            <input type="text" id="inPl" class="form-input" placeholder="Ex: die Tische">
+            <label>Pluriel avec Article ou Type grammatical (الجمع / النوع) :</label>
+            <input type="text" id="inPl" class="form-input" placeholder="Ex: die Tische ou Adjectif (صفة)">
         </div>
         <div class="form-group">
             <label>Synonyme / Mot proche (المرادف) :</label>
@@ -224,6 +236,9 @@
 
         <div class="admin-actions">
             <button type="button" class="btn btn-rand" style="flex:1;font-size:0.82rem;" onclick="editCurrentWord()">✏️ Modifier le mot affiché</button>
+            <button type="button" class="btn btn-rand" style="flex:1;font-size:0.82rem;background:#7c3aed;" onclick="deduplicateAndVerifyVocabulary()">🧹 Nettoyer Doublons & Corriger</button>
+        </div>
+        <div class="admin-actions">
             <button type="button" class="btn btn-rand" style="flex:1;font-size:0.82rem;" onclick="connectDataFile()">📂 Lier Data.json (PC)</button>
             <button type="button" class="btn btn-rand" style="flex:1;font-size:0.82rem;" onclick="exportJSON()">⬇️ Télécharger Data.json</button>
             <button type="button" class="btn btn-rand" style="flex:1;font-size:0.82rem;" onclick="document.getElementById('importJsonInput').click()">⬆️ Importer</button>
@@ -232,7 +247,7 @@
 
         <div class="gh-box">
             <h4>☁️ Synchronisation Directe GitHub</h4>
-            <p>Chaque nouveau mot ajouté sera automatiquement enregistré dans <b>Data.json sur GitHub</b>.</p>
+            <p>Chaque nouveau mot ajouté ou nettoyé sera automatiquement enregistré dans <b>Data.json sur GitHub</b>.</p>
             <div class="gh-grid">
                 <input type="text" id="ghOwner" class="form-input" placeholder="Utilisateur GitHub" style="font-size:0.85rem;">
                 <input type="text" id="ghRepo" class="form-input" placeholder="Nom du Repo" style="font-size:0.85rem;">
@@ -271,6 +286,29 @@ let quizCurrentIndex = 0;
 let quizScore = 0;
 let quizTotalAnswered = 0;
 
+// Variables pour le moteur Audio Allemand (préchargé pour fonctionner dès le 1er clic)
+let cachedGermanVoice = null;
+window._currentUtterance = null;
+
+function initSpeechVoices() {
+    if (!('speechSynthesis' in window)) return;
+    const voices = window.speechSynthesis.getVoices();
+    if (voices && voices.length > 0) {
+        cachedGermanVoice =
+            voices.find(v => v.lang === 'de-DE' && v.localService) ||
+            voices.find(v => v.lang === 'de-DE' || v.lang === 'de_DE') ||
+            voices.find(v => v.lang && v.lang.toLowerCase().startsWith('de')) ||
+            null;
+    }
+}
+
+if ('speechSynthesis' in window) {
+    initSpeechVoices();
+    if (typeof window.speechSynthesis.onvoiceschanged !== 'undefined') {
+        window.speechSynthesis.onvoiceschanged = initSpeechVoices;
+    }
+}
+
 try {
     localStorage.removeItem('tarraf_vocab_draft_v1');
     localStorage.removeItem('tarraf_learned_v3');
@@ -282,6 +320,160 @@ function showToast(msg) {
     t.style.display = 'block';
     clearTimeout(window._toastTimer);
     window._toastTimer = setTimeout(() => { t.style.display = 'none'; }, 3000);
+}
+
+/* ==================== SYNTHÈSE VOCALE DÈS LE 1ER CLIC ==================== */
+function playGermanAudio(rawWord) {
+    if (!('speechSynthesis' in window)) {
+        showToast("⚠️ Audio non supporté sur cet appareil.");
+        return;
+    }
+
+    const cleanWord = String(rawWord || '')
+        .split('/')[0]
+        .replace(/\(.*?\)/g, '')
+        .trim();
+
+    if (!cleanWord) return;
+
+    initSpeechVoices();
+
+    const startSpeaking = () => {
+        const utterance = new SpeechSynthesisUtterance(cleanWord);
+        utterance.lang = 'de-DE';
+        utterance.rate = 0.9;
+        utterance.pitch = 1.0;
+        if (cachedGermanVoice) {
+            utterance.voice = cachedGermanVoice;
+        }
+        // Conserve une référence globale pour empêcher le Garbage Collector de couper le son
+        window._currentUtterance = utterance;
+        utterance.onend = () => { window._currentUtterance = null; };
+        utterance.onerror = () => { window._currentUtterance = null; };
+
+        if (window.speechSynthesis.paused) {
+            window.speechSynthesis.resume();
+        }
+        window.speechSynthesis.speak(utterance);
+    };
+
+    // Évite le bug Chrome/Android où cancel() appelé à froid bloque les 2 premiers clics
+    if (window.speechSynthesis.speaking || window.speechSynthesis.pending) {
+        window.speechSynthesis.cancel();
+        setTimeout(startSpeaking, 45);
+    } else {
+        startSpeaking();
+    }
+}
+
+function speakWord() {
+    if (!activeList.length) return;
+    playGermanAudio(activeList[index].de);
+}
+
+function speakQuizWord() {
+    if (!quizPool.length || quizCurrentIndex >= quizPool.length) return;
+    playGermanAudio(quizPool[quizCurrentIndex].de);
+}
+
+/* ==================== NETTOYAGE & VÉRIFICATION AUTOMATIQUE ==================== */
+function cleanGermanListString(val) {
+    if (!val || val.trim() === '-') return [];
+    const trimmed = val.trim();
+    if (trimmed === 'Text auf / Buch auf' || trimmed === 'Text zu / Buch zu') {
+        return [trimmed];
+    }
+    const parts = trimmed.split('/').map(p => p.replace(/\s*\([^)]*[؀-ۿ]+[^)]*\)/g, '').replace(/\s+/g, ' ').trim());
+    const unique = [];
+    const seen = new Set();
+    for (const p of parts) {
+        if (p && p !== '-' && !seen.has(p.toLowerCase())) {
+            seen.add(p.toLowerCase());
+            unique.push(p);
+        }
+    }
+    return unique;
+}
+
+async function deduplicateAndVerifyVocabulary() {
+    if (!isAdmin) {
+        showToast('Ouvre d’abord l’espace Admin.');
+        return;
+    }
+    const beforeCount = vocabulary.length;
+    const map = new Map();
+
+    for (const item of vocabulary) {
+        const deFormatted = smartLocalFormat(String(item.de || '').replace(/\s+/g, ' ').trim());
+        const arFormatted = String(item.ar || '').replace(/\s+/g, ' ').trim();
+        let plFormatted = String(item.pl || '-').replace(/\s+/g, ' ').trim();
+        if (!plFormatted || plFormatted === '-') plFormatted = 'Expression / Autre';
+        if (plFormatted === 'Sans pluriel') plFormatted = 'Sans pluriel (لا جمع له)';
+
+        if (!deFormatted || !arFormatted) continue;
+
+        const key = deFormatted.toLowerCase();
+        const syns = cleanGermanListString(item.syn);
+        const ants = cleanGermanListString(item.ant);
+
+        if (!map.has(key)) {
+            map.set(key, {
+                de: deFormatted,
+                ar: arFormatted,
+                pl: plFormatted,
+                syn: syns.length ? syns.join(' / ') : '-',
+                ant: ants.length ? ants.join(' / ') : '-'
+            });
+        } else {
+            const existing = map.get(key);
+            const mergedSyns = cleanGermanListString(existing.syn + ' / ' + syns.join(' / '));
+            const mergedAnts = cleanGermanListString(existing.ant + ' / ' + ants.join(' / '));
+            existing.syn = mergedSyns.length ? mergedSyns.join(' / ') : '-';
+            existing.ant = mergedAnts.length ? mergedAnts.join(' / ') : '-';
+            if (existing.pl === 'Expression / Autre' && plFormatted !== 'Expression / Autre') {
+                existing.pl = plFormatted;
+            }
+        }
+    }
+
+    // Croisement bidirectionnel sécurisé des synonymes et antonymes
+    const byExactDe = new Map();
+    for (const entry of map.values()) {
+        byExactDe.set(entry.de, entry);
+    }
+
+    for (const [deWord, entry] of byExactDe.entries()) {
+        if (deWord.includes('/')) continue;
+        const syns = cleanGermanListString(entry.syn);
+        const ants = cleanGermanListString(entry.ant);
+
+        for (const s of syns) {
+            if (byExactDe.has(s) && !s.includes('/')) {
+                const target = byExactDe.get(s);
+                const tSyns = cleanGermanListString(target.syn);
+                if (!tSyns.some(x => x.toLowerCase() === deWord.toLowerCase())) {
+                    tSyns.push(deWord);
+                    target.syn = tSyns.join(' / ');
+                }
+            }
+        }
+        for (const a of ants) {
+            if (byExactDe.has(a) && !a.includes('/')) {
+                const target = byExactDe.get(a);
+                const tAnts = cleanGermanListString(target.ant);
+                if (!tAnts.some(x => x.toLowerCase() === deWord.toLowerCase())) {
+                    tAnts.push(deWord);
+                    target.ant = tAnts.join(' / ');
+                }
+            }
+        }
+    }
+
+    vocabulary = Array.from(byExactDe.values());
+    const removed = beforeCount - vocabulary.length;
+    index = 0;
+    applySearchAndFilter();
+    await persistVocabularyChange(`Nettoyage terminé (${vocabulary.length} mots vérifiés, ${removed} doublon(s) supprimé(s))`);
 }
 
 function initGithubConfig() {
@@ -533,7 +725,7 @@ async function persistVocabularyChange(actionMsg) {
     }
 }
 
-/* ==================== GESTION DU Test de Connaissances ==================== */
+/* ==================== GESTION DU TEST DE CONNAISSANCES ==================== */
 function toggleQuizMode() {
     isQuizActive = !isQuizActive;
     const learningSec = document.getElementById('learningModeSection');
@@ -567,31 +759,31 @@ function startQuiz() {
     quizCurrentIndex = 0;
     quizScore = 0;
     quizTotalAnswered = 0;
+    document.getElementById('quizResultView').style.display = 'none';
+    document.getElementById('quizQuestionView').style.display = 'block';
     renderQuizQuestion();
 }
 
 function renderQuizQuestion() {
+    const questionView = document.getElementById('quizQuestionView');
+    const resultView = document.getElementById('quizResultView');
+
     if (quizCurrentIndex >= quizPool.length) {
-        // Fin du quiz
+        questionView.style.display = 'none';
+        resultView.style.display = 'block';
         const pct = Math.round((quizScore / quizPool.length) * 100);
-        document.getElementById('quizCard').innerHTML = `
-            <span class="badge" style="background:#16a34a; font-size:1.1rem; padding:8px 18px;">🏆 Quiz Terminé !</span>
-            <h2 style="color:#0f172a; margin: 15px 0;">Ton Score : ${quizScore} / ${quizPool.length} (${pct}%)</h2>
-            <p style="color:#475569; margin-bottom:20px;">Bravo ! Tu as testé tes connaissances sur l'ensemble de ton dictionnaire Data.json.</p>
-            <div style="display:flex; gap:10px; justify-content:center;">
-                <button type="button" class="btn btn-nav" style="background:#2563eb; padding:12px 20px;" onclick="startQuiz()">🔄 Recommencer le Quiz</button>
-                <button type="button" class="btn btn-rand" style="padding:12px 20px;" onclick="toggleQuizMode()">📖 Retour au Dictionnaire</button>
-            </div>
-        `;
+        document.getElementById('quizFinalTitle').textContent = `Ton Score : ${quizScore} / ${quizPool.length} (${pct}%)`;
         return;
     }
 
+    questionView.style.display = 'block';
+    resultView.style.display = 'none';
+
     const currentWord = quizPool[quizCurrentIndex];
-    document.getElementById('quizScoreBadge').textContent = `Score : ${quizScore} / ${quizTotalAnswered}`;
+    document.getElementById('quizScoreBadge').textContent = `Score : ${quizScore} / ${quizTotalAnswered} (Mot ${quizCurrentIndex + 1}/${quizPool.length})`;
     document.getElementById('quizWordDe').textContent = currentWord.de;
     document.getElementById('quizNextBox').style.display = 'none';
 
-    // Générer 3 mauvaises réponses aléatoires + la bonne réponse
     const wrongPool = vocabulary.filter(w => w.ar !== currentWord.ar);
     const shuffledWrong = [...wrongPool].sort(() => Math.random() - 0.5).slice(0, 3);
     const options = [...shuffledWrong, currentWord].sort(() => Math.random() - 0.5);
@@ -627,27 +819,13 @@ function handleQuizAnswer(isCorrect, clickedBtn, correctAr) {
         showToast('❌ Incorrect !');
     }
 
-    document.getElementById('quizScoreBadge').textContent = `Score : ${quizScore} / ${quizTotalAnswered}`;
+    document.getElementById('quizScoreBadge').textContent = `Score : ${quizScore} / ${quizTotalAnswered} (Mot ${quizCurrentIndex + 1}/${quizPool.length})`;
     document.getElementById('quizNextBox').style.display = 'block';
 }
 
 function nextQuizQuestion() {
     quizCurrentIndex++;
     renderQuizQuestion();
-}
-
-function speakQuizWord() {
-    if (!quizPool.length) return;
-    const cleanWord = quizPool[quizCurrentIndex].de.split('/')[0].replace(/\(.*\)/, '').trim();
-    if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-        const u = new SpeechSynthesisUtterance(cleanWord);
-        u.lang = 'de-DE';
-        u.rate = 0.9;
-        window.speechSynthesis.speak(u);
-    } else {
-        showToast("Audio non supporté sur cet appareil");
-    }
 }
 
 /* ==================== NAVIGATION NORMALE ==================== */
@@ -679,20 +857,6 @@ function toggleDetailsBox() {
 
 function toggleWordList() {
     document.getElementById('wordListContainer').classList.toggle('open');
-}
-
-function speakWord() {
-    if (!activeList.length) return;
-    const cleanWord = activeList[index].de.split('/')[0].replace(/\(.*\)/, '').trim();
-    if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-        const u = new SpeechSynthesisUtterance(cleanWord);
-        u.lang = 'de-DE';
-        u.rate = 0.9;
-        window.speechSynthesis.speak(u);
-    } else {
-        showToast("Audio non supporté sur cet appareil");
-    }
 }
 
 function openAdminModal() {
@@ -925,7 +1089,6 @@ function buildList() {
         const right = document.createElement('div');
         right.style.cssText = 'display:flex;align-items:center;gap:8px;min-width:0;';
 
-        const translation = document.getElementById('wordAr') ? document.createElement('span') : null; // simplified
         const transSpan = document.createElement('span');
         transSpan.style.color = '#64748b';
         transSpan.textContent = item.ar;
