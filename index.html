@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
     <title>Deutsch Lernen - Vocabulaire & Quiz</title>
     <style>
         :root {
@@ -286,20 +287,65 @@ let quizCurrentIndex = 0;
 let quizScore = 0;
 let quizTotalAnswered = 0;
 
-// Variables pour le moteur Audio Allemand (préchargé pour fonctionner dès le 1er clic)
+// Moteur Audio Hybride (Voix Allemande Native + Fallback Cloud Allemand automatique sur PC)
 let cachedGermanVoice = null;
 window._currentUtterance = null;
+window._germanAudioPlayer = new Audio();
+window._germanAudioPlayer.preload = 'auto';
+
+// Vérifie strictement qu'une voix système est bien allemande (exclut toute voix française par défaut sur PC)
+function isStrictGermanVoice(v) {
+    if (!v) return false;
+    const lang = String(v.lang || '').toLowerCase().replace('_', '-');
+    const name = String(v.name || '').toLowerCase();
+
+    // Exclusion stricte des voix françaises (ex: Hortense, Paul, Julie, Denise sur Windows)
+    if (
+        lang.startsWith('fr') ||
+        name.includes('french') ||
+        name.includes('français') ||
+        name.includes('francais') ||
+        name.includes('hortense') ||
+        name.includes('julie') ||
+        name.includes('paul') ||
+        name.includes('denise') ||
+        name.includes('henri')
+    ) {
+        return false;
+    }
+
+    return (
+        lang === 'de-de' ||
+        lang === 'de-at' ||
+        lang === 'de-ch' ||
+        lang === 'de' ||
+        lang.startsWith('de-') ||
+        name.includes('deutsch') ||
+        name.includes('german') ||
+        name.includes('katja') ||
+        name.includes('conrad') ||
+        name.includes('hedda') ||
+        name.includes('stefan')
+    );
+}
+
+function findBestGermanVoice() {
+    if (!('speechSynthesis' in window)) return null;
+    const voices = window.speechSynthesis.getVoices() || [];
+    const deVoices = voices.filter(isStrictGermanVoice);
+    if (deVoices.length === 0) return null;
+
+    // 1. Priorité aux voix Cloud Naturelles (Google Deutsch sur Chrome PC / Microsoft Natural sur Edge PC)
+    return (
+        deVoices.find(v => /google\s*deutsch/i.test(v.name)) ||
+        deVoices.find(v => /online.*natural/i.test(v.name) && /de/i.test(v.lang)) ||
+        deVoices.find(v => v.lang && v.lang.toLowerCase().replace('_', '-') === 'de-de') ||
+        deVoices[0]
+    );
+}
 
 function initSpeechVoices() {
-    if (!('speechSynthesis' in window)) return;
-    const voices = window.speechSynthesis.getVoices();
-    if (voices && voices.length > 0) {
-        cachedGermanVoice =
-            voices.find(v => v.lang === 'de-DE' && v.localService) ||
-            voices.find(v => v.lang === 'de-DE' || v.lang === 'de_DE') ||
-            voices.find(v => v.lang && v.lang.toLowerCase().startsWith('de')) ||
-            null;
-    }
+    cachedGermanVoice = findBestGermanVoice();
 }
 
 if ('speechSynthesis' in window) {
@@ -322,13 +368,43 @@ function showToast(msg) {
     window._toastTimer = setTimeout(() => { t.style.display = 'none'; }, 3000);
 }
 
-/* ==================== SYNTHÈSE VOCALE DÈS LE 1ER CLIC ==================== */
-function playGermanAudio(rawWord) {
-    if (!('speechSynthesis' in window)) {
-        showToast("⚠️ Audio non supporté sur cet appareil.");
-        return;
-    }
+/* ==================== LECTURE AUDIO ALLEMANDE GARANTIE (PC & MOBILE) ==================== */
+function playCloudGermanAudio(cleanWord) {
+    const encoded = encodeURIComponent(cleanWord);
+    // Liste de flux audio TTS Allemand natif (sans clé API, fonctionne sur tout PC même sans pack Windows allemand)
+    const urls = [
+        `https://translate.googleapis.com/translate_tts?ie=UTF-8&tl=de&client=tw-ob&q=${encoded}`,
+        `https://translate.googleapis.com/translate_tts?ie=UTF-8&tl=de&client=gtx&q=${encoded}`,
+        `https://dict.youdao.com/dictvoice?le=de&audio=${encoded}`
+    ];
 
+    let urlIndex = 0;
+    const player = window._germanAudioPlayer;
+
+    const tryNextUrl = () => {
+        if (urlIndex >= urls.length) {
+            showToast("⚠️ Impossible de lire l'audio allemand (vérifie ta connexion Internet).");
+            return;
+        }
+        const currentUrl = urls[urlIndex++];
+        player.pause();
+        player.src = currentUrl;
+        player.rate = 0.95;
+        player.onerror = () => {
+            tryNextUrl();
+        };
+        const playPromise = player.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(() => {
+                tryNextUrl();
+            });
+        }
+    };
+
+    tryNextUrl();
+}
+
+function playGermanAudio(rawWord) {
     const cleanWord = String(rawWord || '')
         .split('/')[0]
         .replace(/\(.*?\)/g, '')
@@ -336,33 +412,46 @@ function playGermanAudio(rawWord) {
 
     if (!cleanWord) return;
 
-    initSpeechVoices();
+    // 1. Recherche une vraie voix allemande installée dans le navigateur ou l'OS
+    const deVoice = findBestGermanVoice() || cachedGermanVoice;
 
-    const startSpeaking = () => {
-        const utterance = new SpeechSynthesisUtterance(cleanWord);
-        utterance.lang = 'de-DE';
-        utterance.rate = 0.9;
-        utterance.pitch = 1.0;
-        if (cachedGermanVoice) {
-            utterance.voice = cachedGermanVoice;
-        }
-        // Conserve une référence globale pour empêcher le Garbage Collector de couper le son
-        window._currentUtterance = utterance;
-        utterance.onend = () => { window._currentUtterance = null; };
-        utterance.onerror = () => { window._currentUtterance = null; };
+    // 2. Si le PC n'a AUCUNE voix allemande (seulement la voix française par défaut),
+    // on N'UTILISE PAS speechSynthesis (sinon Windows lit en français !) -> on lance le flux Cloud Allemand MP3
+    if (!deVoice) {
+        playCloudGermanAudio(cleanWord);
+        return;
+    }
 
-        if (window.speechSynthesis.paused) {
-            window.speechSynthesis.resume();
+    // 3. Si une vraie voix allemande existe, on l'utilise dès le 1er clic avec secours Cloud en cas d'erreur
+    const startSpeakingWithGermanVoice = () => {
+        try {
+            const utterance = new SpeechSynthesisUtterance(cleanWord);
+            utterance.voice = deVoice;
+            utterance.lang = deVoice.lang || 'de-DE';
+            utterance.rate = 0.9;
+            utterance.pitch = 1.0;
+
+            window._currentUtterance = utterance;
+            utterance.onend = () => { window._currentUtterance = null; };
+            utterance.onerror = () => {
+                window._currentUtterance = null;
+                playCloudGermanAudio(cleanWord);
+            };
+
+            if (window.speechSynthesis.paused) {
+                window.speechSynthesis.resume();
+            }
+            window.speechSynthesis.speak(utterance);
+        } catch (err) {
+            playCloudGermanAudio(cleanWord);
         }
-        window.speechSynthesis.speak(utterance);
     };
 
-    // Évite le bug Chrome/Android où cancel() appelé à froid bloque les 2 premiers clics
     if (window.speechSynthesis.speaking || window.speechSynthesis.pending) {
         window.speechSynthesis.cancel();
-        setTimeout(startSpeaking, 45);
+        setTimeout(startSpeakingWithGermanVoice, 45);
     } else {
-        startSpeaking();
+        startSpeakingWithGermanVoice();
     }
 }
 
@@ -383,7 +472,7 @@ function cleanGermanListString(val) {
     if (trimmed === 'Text auf / Buch auf' || trimmed === 'Text zu / Buch zu') {
         return [trimmed];
     }
-    const parts = trimmed.split('/').map(p => p.replace(/\s*\([^)]*[؀-ۿ]+[^)]*\)/g, '').replace(/\s+/g, ' ').trim());
+    const parts = trimmed.split('/').map(p => p.replace(/\s*\([^)]*[\u0600-\u06FF]+[^)]*\)/g, '').replace(/\s+/g, ' ').trim());
     const unique = [];
     const seen = new Set();
     for (const p of parts) {
@@ -436,7 +525,6 @@ async function deduplicateAndVerifyVocabulary() {
         }
     }
 
-    // Croisement bidirectionnel sécurisé des synonymes et antonymes
     const byExactDe = new Map();
     for (const entry of map.values()) {
         byExactDe.set(entry.de, entry);
