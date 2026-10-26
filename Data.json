@@ -1,5 +1,341 @@
 [
   {
+    "de": "das Einzelzimmer",
+    "ar": "غرفة فردية",
+    "pl": "die Einzelzimmer",
+    "syn": "-",
+    "ant": "das Doppelzimmer"
+  },
+  {
+    "de": "das Doppelzimmer",
+    "ar": "غرفة مزدوجة",
+    "pl": "die Doppelzimmer",
+    "syn": "-",
+    "ant": "das Einzelzimmer"
+  },
+  {
+    "de": "übernachten",
+    "ar": "يقضي الليلة / يبيت",
+    "pl": "Verbe (فعل)",
+    "syn": "schlafen / logieren",
+    "ant": "abreisen"
+  },
+  {
+    "de": "malen",
+    "ar": "يرسم / يلون",
+    "pl": "Verbe (فعل)",
+    "syn": "zeichnen",
+    "ant": "-"
+  },
+  {
+    "de": "das Gemälde",
+    "ar": "اللوحة الفنية",
+    "pl": "die Gemälde",
+    "syn": "das Bild",
+    "ant": "-"
+  },
+  {
+    "de": "bestellen",
+    "ar": "يطلب (في مطعم أو عبر الإنترنت)",
+    "pl": "Verbe (فعل)",
+    "syn": "ordern / reservieren",
+    "ant": "stornieren (يلغي الطلب)"
+  },
+  {
+    "de": "zögern",
+    "ar": "يتردد",
+    "pl": "Verbe (فعل)",
+    "syn": "zweifeln / abwarten",
+    "ant": "handeln / sich entscheiden"
+  },
+  {
+    "de": "frei",
+    "ar": "حر / شاغر / متاح",
+    "pl": "Adjectif (صفة)",
+    "syn": "unbesetzt / verfügbar",
+    "ant": "besetzt / beschäftigt"
+  },
+  {
+    "de": "also",
+    "ar": "إذن / بالتالي",
+    "pl": "Adverbe / Conjonction",
+    "syn": "folglich / darum",
+    "ant": "-"
+  },
+  {
+    "de": "doch",
+    "ar": "بلى (للرد على سؤال منفي) / لكن",
+    "pl": "Particule / Conjonction",
+    "syn": "jedoch / trotzdem",
+    "ant": "nein"
+  },
+  {
+    "de": "Stimmt so!",
+    "ar": "احتفظ بالباقي (تُقال للنادل عند الدفع)",
+    "pl": "Expression (تعبير)",
+    "syn": "Behalten Sie das Wechselgeld",
+    "ant": "-"
+  },
+  {
+    "de": "vielleicht",
+    "ar": "ربما / يمكن",
+    "pl": "Adverbe (ظرف)",
+    "syn": "möglicherweise / eventuell",
+    "ant": "bestimmt / sicher"
+  },
+  {
+    "de": "die Lehrerin",
+    "ar": "الأستاذة / المعلمة",
+    "pl": "die Lehrerinnen",
+    "syn": "die Pädagogin",
+    "ant": "der Lehrer / die Schülerin"
+  },
+  {
+    "de": "die Katze",
+    "ar": "القطة",
+    "pl": "die Katzen",
+    "syn": "der Kater (القط الذكر)",
+    "ant": "der Hund"
+  },
+  {
+    "de": "die Maus",
+    "ar": "الفأر / فأرة الحاسوب",
+    "pl": "die Mäuse",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "essen",
+    "ar": "يأكل",
+    "pl": "Verbe (فعل)",
+    "syn": "speisen / verzehren",
+    "ant": "fasten / hungern"
+  },
+  {
+    "de": "der Apfel",
+    "ar": "التفاحة",
+    "pl": "die Äpfel",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "die Erdbeere",
+    "ar": "الفراولة",
+    "pl": "die Erdbeeren",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "bezahlen",
+    "ar": "يدفع (المال / الفاتورة)",
+    "pl": "Verbe (فعل)",
+    "syn": "zahlen / begleichen",
+    "ant": "bekommen"
+  },
+  {
+    "de": "zahlen",
+    "ar": "يدفع (الحساب)",
+    "pl": "Verbe (فعل)",
+    "syn": "bezahlen",
+    "ant": "-"
+  },
+  {
+    "de": "zählen",
+    "ar": "يَعُدّ / يحسب الأرقام",
+    "pl": "Verbe (فعل)",
+    "syn": "rechnen",
+    "ant": "-"
+  },
+  {
+    "de": "die Zahl",
+    "ar": "الرقم / العدد",
+    "pl": "die Zahlen",
+    "syn": "die Nummer / die Ziffer",
+    "ant": "-"
+  },
+  {
+    "de": "reden",
+    "ar": "يتحدث / يدردش",
+    "pl": "Verbe (فعل)",
+    "syn": "sprechen / plaudern",
+    "ant": "schweigen"
+  },
+  {
+    "de": "gemeinsam",
+    "ar": "معاً / مشترك",
+    "pl": "Adjectif / Adverbe",
+    "syn": "zusammen / miteinander",
+    "ant": "allein / getrennt"
+  },
+  {
+    "de": "das Museum",
+    "ar": "المتحف",
+    "pl": "die Museen",
+    "syn": "die Ausstellung",
+    "ant": "-"
+  },
+  {
+    "de": "einige",
+    "ar": "بعض / بضعة",
+    "pl": "Pronom (ضمير)",
+    "syn": "manche / ein paar",
+    "ant": "alle / keine"
+  },
+  {
+    "de": "die Aufwärmung",
+    "ar": "التسخينات / الإحماء",
+    "pl": "die Aufwärmungen",
+    "syn": "das Aufwärmen",
+    "ant": "-"
+  },
+  {
+    "de": "die Kommunikation",
+    "ar": "التواصل",
+    "pl": "Sans pluriel",
+    "syn": "die Verständigung",
+    "ant": "-"
+  },
+  {
+    "de": "kommunikativ",
+    "ar": "تواصلي / اجتماعي",
+    "pl": "Adjectif (صفة)",
+    "syn": "gesprächig / kontaktfreudig",
+    "ant": "verschlossen"
+  },
+  {
+    "de": "das Treffen / treffen",
+    "ar": "اللقاء / يلتقي (تعارف)",
+    "pl": "die Treffen / Verbe",
+    "syn": "die Begegnung / begegnen",
+    "ant": "verpassen"
+  },
+  {
+    "de": "nur",
+    "ar": "فقط",
+    "pl": "Adverbe (ظرف)",
+    "syn": "bloß / lediglich",
+    "ant": "-"
+  },
+  {
+    "de": "einfach",
+    "ar": "سهل / بسيط",
+    "pl": "Adjectif (صفة)",
+    "syn": "leicht / simpel",
+    "ant": "schwer / schwierig"
+  },
+  {
+    "de": "ich glaube",
+    "ar": "أعتقد / أظن",
+    "pl": "Expression (تعبير)",
+    "syn": "ich denke / ich meine",
+    "ant": "ich weiß (أنا أعرف)"
+  },
+  {
+    "de": "niemand",
+    "ar": "لا أحد",
+    "pl": "Pronom (ضمير)",
+    "syn": "keiner",
+    "ant": "jemand / alle"
+  },
+  {
+    "de": "jemand",
+    "ar": "شخص ما / أحدهم",
+    "pl": "Pronom (ضمير)",
+    "syn": "irgendwer / einer",
+    "ant": "niemand"
+  },
+  {
+    "de": "zufällig",
+    "ar": "بالصدفة / عشوائي",
+    "pl": "Adjectif / Adverbe",
+    "syn": "ungeplant / spontan",
+    "ant": "absichtlich / geplant"
+  },
+  {
+    "de": "der Zufall",
+    "ar": "الصدفة",
+    "pl": "die Zufälle",
+    "syn": "das Schicksal",
+    "ant": "die Absicht (القصد)"
+  },
+  {
+    "de": "So ein Zufall!",
+    "ar": "يا لها من صدفة!",
+    "pl": "Expression (تعبير)",
+    "syn": "Was für eine Überraschung!",
+    "ant": "-"
+  },
+  {
+    "de": "sitzen",
+    "ar": "يجلس",
+    "pl": "Verbe (فعل)",
+    "syn": "Platz nehmen",
+    "ant": "stehen (يقف)"
+  },
+  {
+    "de": "stehen",
+    "ar": "يقف",
+    "pl": "Verbe (فعل)",
+    "syn": "aufstehen",
+    "ant": "sitzen / liegen"
+  },
+  {
+    "de": "die Leute",
+    "ar": "الناس",
+    "pl": "die Leute (Pluriel)",
+    "syn": "die Menschen / die Personen",
+    "ant": "-"
+  },
+  {
+    "de": "der Mensch",
+    "ar": "الإنسان / الشخص",
+    "pl": "die Menschen",
+    "syn": "die Person / die Leute",
+    "ant": "das Tier"
+  },
+  {
+    "de": "das Stück",
+    "ar": "القطعة",
+    "pl": "die Stücke",
+    "syn": "der Teil / die Portion",
+    "ant": "das Ganze (الكل)"
+  },
+  {
+    "de": "der Kuchen",
+    "ar": "الكعكة (طورطة / كيك)",
+    "pl": "die Kuchen",
+    "syn": "die Torte / das Gebäck",
+    "ant": "-"
+  },
+  {
+    "de": "der Käsekuchen",
+    "ar": "كعكة الجبن (تشيز كيك)",
+    "pl": "die Käsekuchen",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "der Obstkuchen",
+    "ar": "كعكة الفواكه",
+    "pl": "die Obstkuchen",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "der Käse",
+    "ar": "الجبن",
+    "pl": "die Käse",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "das Obst",
+    "ar": "الفاكهة / الفواكه",
+    "pl": "Sans pluriel",
+    "syn": "die Früchte",
+    "ant": "das Gemüse (الخضر)"
+  },
+  {
     "de": "einverstanden",
     "ar": "موافق / OK",
     "pl": "Adjectif (صفة)",
