@@ -346,7 +346,7 @@
     "de": "die Heimatstadt",
     "ar": "مسقط الرأس / مدينة المنشأ",
     "pl": "die Heimatstädte",
-    "syn": "-",
+    "syn": "die Stadt",
     "ant": "-"
   },
   {
@@ -1620,7 +1620,7 @@
     "de": "das Kind",
     "ar": "الطفل",
     "pl": "die Kinder",
-    "syn": "der Junge / das Mädchen",
+    "syn": "das Mädchen / der Junge",
     "ant": "die Eltern"
   },
   {
