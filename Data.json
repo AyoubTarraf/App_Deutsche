@@ -1,5 +1,229 @@
 [
   {
+    "de": "die Überraschung",
+    "ar": "المفاجأة",
+    "pl": "die Überraschungen",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "das Zentrum",
+    "ar": "المركز / الوسط",
+    "pl": "die Zentren",
+    "syn": "das Stadtzentrum / die Mitte / die Stadtmitte",
+    "ant": "-"
+  },
+  {
+    "de": "das Stadtzentrum",
+    "ar": "مركز المدينة / وسط المدينة",
+    "pl": "die Stadtzentren",
+    "syn": "das Zentrum / die Mitte / die Stadtmitte",
+    "ant": "-"
+  },
+  {
+    "de": "die Stadtmitte",
+    "ar": "وسط المدينة",
+    "pl": "die Stadtmitten",
+    "syn": "das Stadtzentrum / das Zentrum / die Mitte",
+    "ant": "-"
+  },
+  {
+    "de": "die Mitte",
+    "ar": "الوسط / المنتصف",
+    "pl": "die Mitten",
+    "syn": "das Stadtzentrum / das Zentrum / die Stadtmitte",
+    "ant": "-"
+  },
+  {
+    "de": "der Mittwoch",
+    "ar": "يوم الأربعاء",
+    "pl": "die Mittwoche",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "die Datenanalystin",
+    "ar": "محللة البيانات",
+    "pl": "die Datenanalystinnen",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "es gibt",
+    "ar": "يوجد / هناك",
+    "pl": "Expression (تعبير)",
+    "syn": "wir haben",
+    "ant": "-"
+  },
+  {
+    "de": "wir haben",
+    "ar": "لدينا / عندنا",
+    "pl": "Expression (تعبير)",
+    "syn": "es gibt",
+    "ant": "-"
+  },
+  {
+    "de": "berühmt",
+    "ar": "مشهور",
+    "pl": "Adjectif (صفة)",
+    "syn": "bekannt",
+    "ant": "-"
+  },
+  {
+    "de": "bekannt",
+    "ar": "معروف / مشهور",
+    "pl": "Adjectif (صفة)",
+    "syn": "berühmt",
+    "ant": "-"
+  },
+  {
+    "de": "hängen",
+    "ar": "يُعلّق / معلّق",
+    "pl": "Verbe (فعل)",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "waschen",
+    "ar": "يغسل",
+    "pl": "Verbe (فعل)",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "die Malerei",
+    "ar": "فن الرسم / الصباغة",
+    "pl": "die Malereien",
+    "syn": "das Gemälde",
+    "ant": "-"
+  },
+  {
+    "de": "früher",
+    "ar": "سابقاً / في الماضي",
+    "pl": "Adverbe (ظرف زمان)",
+    "syn": "damals",
+    "ant": "heute / im Moment / jetzt / nun / später / zurzeit"
+  },
+  {
+    "de": "damals",
+    "ar": "آنذاك / في ذلك الوقت",
+    "pl": "Adverbe (ظرف زمان)",
+    "syn": "früher",
+    "ant": "heute / im Moment / jetzt / nun / später / zurzeit"
+  },
+  {
+    "de": "Das stimmt!",
+    "ar": "هذا صحيح! / كلامك صح",
+    "pl": "Expression (تعبير)",
+    "syn": "einverstanden",
+    "ant": "-"
+  },
+  {
+    "de": "Prima Idee!",
+    "ar": "فكرة رائعة! / فكرة ممتازة",
+    "pl": "Expression (تعبير)",
+    "syn": "perfekt / sehr gut / super / toll",
+    "ant": "-"
+  },
+  {
+    "de": "der Kaffee",
+    "ar": "القهوة",
+    "pl": "die Kaffees",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "das Café",
+    "ar": "المقهى",
+    "pl": "die Cafés",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "mitfahren",
+    "ar": "يسافر مع / يركب مع",
+    "pl": "Verbe (فعل)",
+    "syn": "fahren",
+    "ant": "-"
+  },
+  {
+    "de": "das Wochenende",
+    "ar": "عطلة نهاية الأسبوع",
+    "pl": "die Wochenenden",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "deshalb",
+    "ar": "لهذا السبب / لذلك",
+    "pl": "Adverbe (ظرف)",
+    "syn": "also",
+    "ant": "warum"
+  },
+  {
+    "de": "das Kino",
+    "ar": "السينما",
+    "pl": "die Kinos",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "die Currywurst",
+    "ar": "نقانق الكاري (أكلة ألمانية)",
+    "pl": "die Currywürste",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "die Sau",
+    "ar": "أنثى الخنزير",
+    "pl": "die Säue / die Sauen",
+    "syn": "das Schwein",
+    "ant": "-"
+  },
+  {
+    "de": "das Fleisch",
+    "ar": "اللحم",
+    "pl": "Sans pluriel (لا جمع له)",
+    "syn": "das Schweinefleisch",
+    "ant": "-"
+  },
+  {
+    "de": "das Schwein",
+    "ar": "الخنزير",
+    "pl": "die Schweine",
+    "syn": "die Sau",
+    "ant": "-"
+  },
+  {
+    "de": "das Schweinefleisch",
+    "ar": "لحم الخنزير",
+    "pl": "Sans pluriel (لا جمع له)",
+    "syn": "das Fleisch",
+    "ant": "-"
+  },
+  {
+    "de": "lecker",
+    "ar": "لذيذ / شهي",
+    "pl": "Adjectif (صفة)",
+    "syn": "köstlich",
+    "ant": "-"
+  },
+  {
+    "de": "köstlich",
+    "ar": "لذيذ جداً / شهي",
+    "pl": "Adjectif (صفة)",
+    "syn": "lecker",
+    "ant": "-"
+  },
+  {
+    "de": "der Treffpunkt",
+    "ar": "نقطة الالتقاء / مكان الموعد",
+    "pl": "die Treffpunkte",
+    "syn": "der Platz",
+    "ant": "-"
+  },
+  {
     "de": "das Einzelzimmer",
     "ar": "غرفة فردية",
     "pl": "die Einzelzimmer",
