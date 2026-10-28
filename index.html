@@ -40,7 +40,7 @@
         .filter-btn.active { background: #0f172a; color: white; }
 
         .card { border-radius: 16px; padding: 25px 20px; text-align: center; background: #ffffff; border: 2px solid #e2e8f0; border-top: 10px solid var(--der); box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; position: relative; }
-        .badge { display: inline-block; padding: 5px 14px; border-radius: 20px; color: white; font-weight: bold; font-size: 0.85rem; margin-bottom: 10px; }
+        .badge { display: inline-block; padding: 6px 16px; border-radius: 20px; color: white; font-weight: bold; font-size: 0.9rem; margin-bottom: 10px; direction: ltr; }
         .word-main { font-size: 2.1rem; font-weight: 800; color: #0f172a; margin: 10px 0; display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
         .audio-btn { background: #eff6ff; border: 2px solid #bfdbfe; border-radius: 50%; width: 44px; height: 44px; font-size: 1.2rem; display: inline-flex; align-items: center; justify-content: center; transition: transform 0.1s, background 0.15s; }
         .audio-btn:hover { background: #dbeafe; }
@@ -65,6 +65,8 @@
         /* Styles du Test de Connaissances */
         .quiz-container { display: none; margin-top: 10px; }
         .quiz-container.active { display: block; }
+        .quiz-badges-row { display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+        .quiz-badges-row .badge { margin-bottom: 0; }
         .quiz-options { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 18px; direction: rtl; }
         .quiz-option-btn { background: #f8fafc; border: 2px solid #cbd5e1; color: #0f172a; padding: 14px 16px; border-radius: 12px; font-size: 1.05rem; font-weight: bold; text-align: right; transition: all 0.2s; }
         .quiz-option-btn:hover:not(:disabled) { background: #eff6ff; border-color: #2563eb; }
@@ -92,8 +94,9 @@
 
         .list-container { max-height: 300px; overflow-y: auto; margin-top: 10px; border: 1px solid #e2e8f0; border-radius: 10px; padding: 5px; display: none; }
         .list-container.open { display: block; }
-        .list-item { padding: 12px; border-bottom: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-size: 0.95rem; }
+        .list-item { padding: 12px; border-bottom: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-size: 0.95rem; gap: 8px; }
         .list-item:hover { background: #eff6ff; }
+        .list-type-pill { font-size: 0.75rem; padding: 2px 8px; border-radius: 12px; color: white; font-weight: bold; white-space: nowrap; }
         .del-btn { background: #fee2e2; color: #dc2626; border: none; border-radius: 6px; padding: 6px 10px; font-weight: bold; display: none; }
         .is-admin .del-btn { display: inline-block; }
         
@@ -143,6 +146,7 @@
         </div>
 
         <div class="card" id="mainCard">
+            <!-- Type du mot en haut du mot (ex: Verbe (فعل), Adjectif (صفة), Nom (اسم)...) -->
             <span class="badge" id="badgeType">...</span>
             <div class="word-main">
                 <span id="wordDe">Chargement...</span>
@@ -156,7 +160,11 @@
                     <span class="detail-val" id="wordAr">-</span>
                 </div>
                 <div class="detail-item">
-                    <span class="detail-label">الجمع / النوع (Pluriel / Type) :</span>
+                    <span class="detail-label">النوع (Type de mot) :</span>
+                    <span class="detail-val de-text" id="wordTypeDetail">-</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">الجمع / الصيغة (Pluriel) :</span>
                     <span class="detail-val de-text" id="wordPl">-</span>
                 </div>
                 <div class="detail-item">
@@ -181,7 +189,10 @@
     <div class="quiz-container" id="quizModeSection">
         <div class="card" id="quizCard">
             <div id="quizQuestionView">
-                <span class="badge" id="quizScoreBadge" style="background:#0284c7;">Score : 0 / 0</span>
+                <div class="quiz-badges-row">
+                    <span class="badge" id="quizScoreBadge" style="background:#0284c7;">Score : 0 / 0</span>
+                    <span class="badge" id="quizWordTypeBadge" style="background:#7c3aed;">...</span>
+                </div>
                 <div style="font-size: 0.9rem; color: #64748b; margin-bottom: 5px;">Choisis la bonne traduction en arabe :</div>
                 <div class="word-main" style="margin: 15px 0;">
                     <span id="quizWordDe">...</span>
@@ -293,13 +304,117 @@ window._currentUtterance = null;
 window._germanAudioPlayer = new Audio();
 window._germanAudioPlayer.preload = 'auto';
 
+/* ==================== DÉTECTION DU TYPE DE MOT (FRANÇAIS + ARABE) ==================== */
+function getWordTypeMeta(item) {
+    const de = String(item?.de || '').trim();
+    const pl = String(item?.pl || '').trim();
+    const plLower = pl.toLowerCase();
+
+    // Cas particulier nom + verbe combinés (ex: "das Treffen / treffen")
+    if (de.startsWith('das ') && plLower.includes('verbe')) {
+        return {
+            badge: '🟢 Nom (اسم) / Verbe (فعل)',
+            shortLabel: 'Nom / Verbe (اسم / فعل)',
+            color: '#16a34a'
+        };
+    }
+
+    // 1. Noms masculins (der)
+    if (de.startsWith('der ')) {
+        return {
+            badge: '🔵 Nom Masculin - der (اسم مذكر)',
+            shortLabel: 'Nom - der (اسم مذكر)',
+            color: '#2563eb'
+        };
+    }
+
+    // 2. Noms féminins ou pluriels (die)
+    if (de.startsWith('die ')) {
+        if (plLower.includes('pluriel')) {
+            return {
+                badge: '🔴 Nom Pluriel - die (اسم جمع)',
+                shortLabel: 'Nom Pluriel - die (اسم جمع)',
+                color: '#dc2626'
+            };
+        }
+        return {
+            badge: '🔴 Nom Féminin - die (اسم مؤنث)',
+            shortLabel: 'Nom - die (اسم مؤنث)',
+            color: '#dc2626'
+        };
+    }
+
+    // 3. Noms neutres (das)
+    if (de.startsWith('das ')) {
+        return {
+            badge: '🟢 Nom Neutre - das (اسم محايد)',
+            shortLabel: 'Nom - das (اسم محايد)',
+            color: '#16a34a'
+        };
+    }
+
+    // 4. Autres catégories grammaticales (Verbe, Adjectif, Adverbe, Expression, etc.) avec traduction arabe garantie
+    let label = pl;
+    if (!label || label === '-') {
+        label = 'Expression / Autre (تعبير / أخرى)';
+    } else if (!/[\u0600-\u06FF]/.test(label)) {
+        // Ajoute automatiquement le type en arabe s'il manque dans Data.json
+        if (plLower.includes('adjectif') && plLower.includes('adverbe')) {
+            label = `${pl} (صفة / ظرف)`;
+        } else if (plLower.includes('adjectif')) {
+            label = `${pl} (صفة)`;
+        } else if (plLower.includes('adverbe') && plLower.includes('conjonction')) {
+            label = `${pl} (ظرف / أداة ربط)`;
+        } else if (plLower.includes('particule') && plLower.includes('conjonction')) {
+            label = `${pl} (حرف / أداة ربط)`;
+        } else if (plLower.includes('adverbe')) {
+            label = `${pl} (ظرف)`;
+        } else if (plLower.includes('verbe')) {
+            label = `${pl} (فعل)`;
+        } else if (plLower.includes('préposition') || plLower.includes('preposition')) {
+            label = `${pl} (حرف جر)`;
+        } else if (plLower.includes('conjonction')) {
+            label = `${pl} (أداة ربط)`;
+        } else if (plLower.includes('pronom')) {
+            label = `${pl} (ضمير)`;
+        } else if (plLower.includes('expression')) {
+            label = `${pl} (تعبير)`;
+        } else if (plLower.includes('sans pluriel')) {
+            label = 'Nom sans pluriel (اسم لا جمع له)';
+        } else if (plLower.includes('question')) {
+            label = `${pl} (أداة استفهام)`;
+        }
+    } else if (plLower.startsWith('sans pluriel')) {
+        label = `Nom - ${pl}`;
+    }
+
+    // Couleur distincte selon la nature grammaticale
+    let color = '#7c3aed'; // Violet par défaut
+    if (plLower.includes('verbe')) {
+        color = '#7c3aed'; // Violet pour Verbe (فعل)
+    } else if (plLower.includes('adjectif')) {
+        color = '#d97706'; // Ambre pour Adjectif (صفة)
+    } else if (plLower.includes('adverbe')) {
+        color = '#0d9488'; // Turquoise pour Adverbe (ظرف)
+    } else if (plLower.includes('expression') || plLower.includes('salutation')) {
+        color = '#db2777'; // Rose pour Expression (تعبير)
+    } else if (plLower.includes('préposition') || plLower.includes('conjonction') || plLower.includes('pronom') || plLower.includes('question')) {
+        color = '#4f46e5'; // Indigo pour Grammaire / Outils
+    }
+
+    return {
+        badge: label,
+        shortLabel: label,
+        color: color
+    };
+}
+
 // Vérifie strictement qu'une voix système est bien allemande (exclut toute voix française par défaut sur PC)
 function isStrictGermanVoice(v) {
     if (!v) return false;
     const lang = String(v.lang || '').toLowerCase().replace('_', '-');
     const name = String(v.name || '').toLowerCase();
 
-    // Exclusion stricte des voix françaises (ex: Hortense, Paul, Julie, Denise sur Windows)
     if (
         lang.startsWith('fr') ||
         name.includes('french') ||
@@ -335,7 +450,6 @@ function findBestGermanVoice() {
     const deVoices = voices.filter(isStrictGermanVoice);
     if (deVoices.length === 0) return null;
 
-    // 1. Priorité aux voix Cloud Naturelles (Google Deutsch sur Chrome PC / Microsoft Natural sur Edge PC)
     return (
         deVoices.find(v => /google\s*deutsch/i.test(v.name)) ||
         deVoices.find(v => /online.*natural/i.test(v.name) && /de/i.test(v.lang)) ||
@@ -371,7 +485,6 @@ function showToast(msg) {
 /* ==================== LECTURE AUDIO ALLEMANDE GARANTIE (PC & MOBILE) ==================== */
 function playCloudGermanAudio(cleanWord) {
     const encoded = encodeURIComponent(cleanWord);
-    // Liste de flux audio TTS Allemand natif (sans clé API, fonctionne sur tout PC même sans pack Windows allemand)
     const urls = [
         `https://translate.googleapis.com/translate_tts?ie=UTF-8&tl=de&client=tw-ob&q=${encoded}`,
         `https://translate.googleapis.com/translate_tts?ie=UTF-8&tl=de&client=gtx&q=${encoded}`,
@@ -412,17 +525,13 @@ function playGermanAudio(rawWord) {
 
     if (!cleanWord) return;
 
-    // 1. Recherche une vraie voix allemande installée dans le navigateur ou l'OS
     const deVoice = findBestGermanVoice() || cachedGermanVoice;
 
-    // 2. Si le PC n'a AUCUNE voix allemande (seulement la voix française par défaut),
-    // on N'UTILISE PAS speechSynthesis (sinon Windows lit en français !) -> on lance le flux Cloud Allemand MP3
     if (!deVoice) {
         playCloudGermanAudio(cleanWord);
         return;
     }
 
-    // 3. Si une vraie voix allemande existe, on l'utilise dès le 1er clic avec secours Cloud en cas d'erreur
     const startSpeakingWithGermanVoice = () => {
         try {
             const utterance = new SpeechSynthesisUtterance(cleanWord);
@@ -496,7 +605,7 @@ async function deduplicateAndVerifyVocabulary() {
         const deFormatted = smartLocalFormat(String(item.de || '').replace(/\s+/g, ' ').trim());
         const arFormatted = String(item.ar || '').replace(/\s+/g, ' ').trim();
         let plFormatted = String(item.pl || '-').replace(/\s+/g, ' ').trim();
-        if (!plFormatted || plFormatted === '-') plFormatted = 'Expression / Autre';
+        if (!plFormatted || plFormatted === '-') plFormatted = 'Expression (تعبير)';
         if (plFormatted === 'Sans pluriel') plFormatted = 'Sans pluriel (لا جمع له)';
 
         if (!deFormatted || !arFormatted) continue;
@@ -519,7 +628,7 @@ async function deduplicateAndVerifyVocabulary() {
             const mergedAnts = cleanGermanListString(existing.ant + ' / ' + ants.join(' / '));
             existing.syn = mergedSyns.length ? mergedSyns.join(' / ') : '-';
             existing.ant = mergedAnts.length ? mergedAnts.join(' / ') : '-';
-            if (existing.pl === 'Expression / Autre' && plFormatted !== 'Expression / Autre') {
+            if (existing.pl === 'Expression (تعبير)' && plFormatted !== 'Expression (تعبير)') {
                 existing.pl = plFormatted;
             }
         }
@@ -868,7 +977,14 @@ function renderQuizQuestion() {
     resultView.style.display = 'none';
 
     const currentWord = quizPool[quizCurrentIndex];
+    const typeMeta = getWordTypeMeta(currentWord);
+
     document.getElementById('quizScoreBadge').textContent = `Score : ${quizScore} / ${quizTotalAnswered} (Mot ${quizCurrentIndex + 1}/${quizPool.length})`;
+    const typeBadge = document.getElementById('quizWordTypeBadge');
+    typeBadge.textContent = typeMeta.badge;
+    typeBadge.style.backgroundColor = typeMeta.color;
+    document.getElementById('quizCard').style.borderTopColor = typeMeta.color;
+
     document.getElementById('quizWordDe').textContent = currentWord.de;
     document.getElementById('quizNextBox').style.display = 'none';
 
@@ -1080,6 +1196,7 @@ async function deleteWordByIndex(idxInActive, event) {
 function renderCard() {
     const wordDe = document.getElementById('wordDe');
     const wordAr = document.getElementById('wordAr');
+    const wordTypeDetail = document.getElementById('wordTypeDetail');
     const wordPl = document.getElementById('wordPl');
     const wordSyn = document.getElementById('wordSyn');
     const wordAnt = document.getElementById('wordAnt');
@@ -1090,6 +1207,7 @@ function renderCard() {
     if (activeList.length === 0) {
         wordDe.textContent = "Aucun mot trouvé";
         wordAr.textContent = "-";
+        wordTypeDetail.textContent = "-";
         wordPl.textContent = "-";
         wordSyn.textContent = "-";
         wordAnt.textContent = "-";
@@ -1102,29 +1220,18 @@ function renderCard() {
     if (index < 0) index = activeList.length - 1;
 
     const item = activeList[index];
+    const typeMeta = getWordTypeMeta(item);
+
     wordDe.textContent = item.de;
     wordAr.textContent = item.ar;
+    wordTypeDetail.textContent = typeMeta.shortLabel;
     wordPl.textContent = item.pl;
     wordSyn.textContent = item.syn;
     wordAnt.textContent = item.ant;
 
-    if (item.de.startsWith('der ')) {
-        badge.style.backgroundColor = '#2563eb';
-        card.style.borderTopColor = '#2563eb';
-        badge.textContent = 'Masculin (der)';
-    } else if (item.de.startsWith('die ')) {
-        badge.style.backgroundColor = '#dc2626';
-        card.style.borderTopColor = '#dc2626';
-        badge.textContent = 'Féminin / Pluriel (die)';
-    } else if (item.de.startsWith('das ')) {
-        badge.style.backgroundColor = '#16a34a';
-        card.style.borderTopColor = '#16a34a';
-        badge.textContent = 'Neutre (das)';
-    } else {
-        badge.style.backgroundColor = '#7c3aed';
-        card.style.borderTopColor = '#7c3aed';
-        badge.textContent = item.pl;
-    }
+    badge.style.backgroundColor = typeMeta.color;
+    card.style.borderTopColor = typeMeta.color;
+    badge.textContent = typeMeta.badge;
 
     counter.textContent = `Mot : ${index + 1} / ${activeList.length} (Total : ${vocabulary.length})`;
 }
@@ -1170,9 +1277,20 @@ function buildList() {
         div.className = 'list-item';
         div.addEventListener('click', () => selectWordFromList(idx));
 
+        const left = document.createElement('div');
+        left.style.cssText = 'display:flex;align-items:center;gap:8px;flex-wrap:wrap;';
+
         const title = document.createElement('span');
         title.style.fontWeight = 'bold';
         title.textContent = `${idx + 1}. ${item.de}`;
+
+        const typeMeta = getWordTypeMeta(item);
+        const typePill = document.createElement('span');
+        typePill.className = 'list-type-pill';
+        typePill.style.backgroundColor = typeMeta.color;
+        typePill.textContent = typeMeta.shortLabel;
+
+        left.append(title, typePill);
 
         const right = document.createElement('div');
         right.style.cssText = 'display:flex;align-items:center;gap:8px;min-width:0;';
@@ -1189,7 +1307,7 @@ function buildList() {
         del.addEventListener('click', (event) => deleteWordByIndex(idx, event));
 
         right.append(transSpan, del);
-        div.append(title, right);
+        div.append(left, right);
         container.appendChild(div);
     });
 }
