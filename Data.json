@@ -1,5 +1,376 @@
 [
   {
+    "de": "das Kinderzimmer",
+    "ar": "غرفة الأطفال",
+    "pl": "die Kinderzimmer",
+    "syn": "das Zimmer",
+    "ant": "-"
+  },
+  {
+    "de": "das Gästezimmer",
+    "ar": "غرفة الضيوف",
+    "pl": "die Gästezimmer",
+    "syn": "das Zimmer",
+    "ant": "-"
+  },
+  {
+    "de": "das Arbeitszimmer",
+    "ar": "غرفة العمل / المكتب",
+    "pl": "die Arbeitszimmer",
+    "syn": "das Büro / das Zimmer",
+    "ant": "-"
+  },
+  {
+    "de": "das Schlafzimmer",
+    "ar": "غرفة النوم",
+    "pl": "die Schlafzimmer",
+    "syn": "das Zimmer",
+    "ant": "-"
+  },
+  {
+    "de": "parken",
+    "ar": "يركن السيارة / يوقف السيارة",
+    "pl": "Verbe (فعل)",
+    "syn": "-",
+    "ant": "fahren"
+  },
+  {
+    "de": "der Parkplatz",
+    "ar": "موقف السيارات",
+    "pl": "die Parkplätze",
+    "syn": "der Platz",
+    "ant": "-"
+  },
+  {
+    "de": "die Apotheke",
+    "ar": "الصيدلية",
+    "pl": "die Apotheken",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "die Bank (Banken)",
+    "ar": "البنك / المصرف",
+    "pl": "die Banken",
+    "syn": "das Geldhaus",
+    "ant": "-"
+  },
+  {
+    "de": "das Geldhaus",
+    "ar": "المؤسسة المالية / البنك",
+    "pl": "die Geldhäuser",
+    "syn": "die Bank (Banken)",
+    "ant": "-"
+  },
+  {
+    "de": "die Bank (Bänke)",
+    "ar": "المقعد (طويل للجلوس)",
+    "pl": "die Bänke",
+    "syn": "der Stuhl",
+    "ant": "-"
+  },
+  {
+    "de": "die Bibliothek",
+    "ar": "المكتبة (للقراءة أو الاستعارة)",
+    "pl": "die Bibliotheken",
+    "syn": "die Bücherei",
+    "ant": "-"
+  },
+  {
+    "de": "die Bücherei",
+    "ar": "المكتبة العامة / خزانة الكتب",
+    "pl": "die Büchereien",
+    "syn": "die Bibliothek",
+    "ant": "-"
+  },
+  {
+    "de": "Geld abheben",
+    "ar": "يسحب النقود (من الصراف الآلي أو البنك)",
+    "pl": "Expression / Verbe",
+    "syn": "-",
+    "ant": "bezahlen / zahlen"
+  },
+  {
+    "de": "die Fahrkarte",
+    "ar": "تذكرة السفر / بطاقة الركوب",
+    "pl": "die Fahrkarten",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "reservieren",
+    "ar": "يحجز (طاولة أو مقعد أو غرفة) / يخصص",
+    "pl": "Verbe (فعل)",
+    "syn": "bestellen / buchen",
+    "ant": "-"
+  },
+  {
+    "de": "buchen",
+    "ar": "يحجز (رحلة أو فندق) / يقيد في الحسابات",
+    "pl": "Verbe (فعل)",
+    "syn": "reservieren",
+    "ant": "-"
+  },
+  {
+    "de": "kosten",
+    "ar": "يكلف (يبلغ ثمنه) / يتذوق (الطعام)",
+    "pl": "Verbe (فعل)",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "die Kosten",
+    "ar": "المصاريف / التكاليف",
+    "pl": "die Kosten (Pluriel)",
+    "syn": "der Preis",
+    "ant": "-"
+  },
+  {
+    "de": "das Frühstück",
+    "ar": "الفطور / وجبة الإفطار",
+    "pl": "die Frühstücke",
+    "syn": "-",
+    "ant": "das Abendessen"
+  },
+  {
+    "de": "das Mittagessen",
+    "ar": "الغداء / وجبة الغداء",
+    "pl": "die Mittagessen",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "die Kaffeepause",
+    "ar": "استراحة القهوة",
+    "pl": "die Kaffeepausen",
+    "syn": "-",
+    "ant": "der Unterricht / die Arbeit"
+  },
+  {
+    "de": "das Abendessen",
+    "ar": "العشاء / وجبة العشاء",
+    "pl": "die Abendessen",
+    "syn": "-",
+    "ant": "das Frühstück"
+  },
+  {
+    "de": "der Preis",
+    "ar": "الثمن / السعر / الجائزة",
+    "pl": "die Preise",
+    "syn": "die Kosten",
+    "ant": "-"
+  },
+  {
+    "de": "die Angaben",
+    "ar": "المعلومات / البيانات / التصريحات",
+    "pl": "die Angaben (Pluriel)",
+    "syn": "das Formular",
+    "ant": "-"
+  },
+  {
+    "de": "das Formular",
+    "ar": "الاستمارة / النموذج المطبوع",
+    "pl": "die Formulare",
+    "syn": "die Angaben / die Papiere",
+    "ant": "-"
+  },
+  {
+    "de": "der Geburtsort",
+    "ar": "مكان الازدياد / مكان الولادة",
+    "pl": "die Geburtsorte",
+    "syn": "der Ort / die Heimatstadt",
+    "ant": "-"
+  },
+  {
+    "de": "der Ort",
+    "ar": "المكان / الموقع / البلدة أو القرية",
+    "pl": "die Orte",
+    "syn": "der Geburtsort / der Platz / der Wohnort / die Stadt",
+    "ant": "-"
+  },
+  {
+    "de": "die Geburt",
+    "ar": "الولادة / الازدياد",
+    "pl": "die Geburten",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "die Postleitzahl",
+    "ar": "الرمز البريدي",
+    "pl": "die Postleitzahlen",
+    "syn": "die Zahl",
+    "ant": "-"
+  },
+  {
+    "de": "die Unterschrift",
+    "ar": "التوقيع / الإمضاء",
+    "pl": "die Unterschriften",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "die Anschrift",
+    "ar": "العنوان البريدي",
+    "pl": "die Anschriften",
+    "syn": "der Wohnort / die Adresse",
+    "ant": "-"
+  },
+  {
+    "de": "die Adresse",
+    "ar": "العنوان",
+    "pl": "die Adressen",
+    "syn": "der Wohnort / die Anschrift",
+    "ant": "-"
+  },
+  {
+    "de": "das Präteritum",
+    "ar": "الماضي البسيط / الماضي البعيد",
+    "pl": "Sans pluriel (لا جمع له)",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "die Kindheit",
+    "ar": "الطفولة",
+    "pl": "Sans pluriel (لا جمع له)",
+    "syn": "-",
+    "ant": "das Alter"
+  },
+  {
+    "de": "momentan",
+    "ar": "حالياً / في الوقت الراهن",
+    "pl": "Adverbe (ظرف زمان)",
+    "syn": "im Moment / jetzt / nun / zurzeit",
+    "ant": "damals / früher / später"
+  },
+  {
+    "de": "vor",
+    "ar": "قبل (للزمان) / أمام (للمكان) / بسبب (مثل: vor Freude)",
+    "pl": "Préposition (حرف جر)",
+    "syn": "-",
+    "ant": "nach"
+  },
+  {
+    "de": "fast",
+    "ar": "تقريباً / يكاد",
+    "pl": "Adverbe (ظرف)",
+    "syn": "ziemlich",
+    "ant": "-"
+  },
+  {
+    "de": "klug",
+    "ar": "ذكي / حكيم / فطن",
+    "pl": "Adjectif (صفة)",
+    "syn": "-",
+    "ant": "dumm"
+  },
+  {
+    "de": "dumm",
+    "ar": "غبي / أحمق / ساذج",
+    "pl": "Adjectif (صفة)",
+    "syn": "-",
+    "ant": "klug"
+  },
+  {
+    "de": "das Rad",
+    "ar": "العجلة / الدراجة الهوائية",
+    "pl": "die Räder",
+    "syn": "das Fahrrad",
+    "ant": "-"
+  },
+  {
+    "de": "die Sorge",
+    "ar": "القلق / الهمّ / الرعاية والاهتمام",
+    "pl": "die Sorgen",
+    "syn": "das Problem",
+    "ant": "-"
+  },
+  {
+    "de": "das Problem",
+    "ar": "المشكلة",
+    "pl": "die Probleme",
+    "syn": "die Sorge",
+    "ant": "kein Problem"
+  },
+  {
+    "de": "das Glück",
+    "ar": "الحظ / السعادة / التوفيق",
+    "pl": "Sans pluriel (لا جمع له)",
+    "syn": "der Erfolg",
+    "ant": "das Pech"
+  },
+  {
+    "de": "das Pech",
+    "ar": "سوء الحظ (النحس) / القطران",
+    "pl": "Sans pluriel (لا جمع له)",
+    "syn": "-",
+    "ant": "das Glück"
+  },
+  {
+    "de": "der Bahnhof",
+    "ar": "محطة القطار",
+    "pl": "die Bahnhöfe",
+    "syn": "der Hauptbahnhof",
+    "ant": "-"
+  },
+  {
+    "de": "der Flughafen",
+    "ar": "المطار",
+    "pl": "die Flughäfen",
+    "syn": "der Hafen",
+    "ant": "-"
+  },
+  {
+    "de": "der Hafen",
+    "ar": "الميناء",
+    "pl": "die Häfen",
+    "syn": "der Flughafen",
+    "ant": "-"
+  },
+  {
+    "de": "der Hauptbahnhof",
+    "ar": "محطة القطار الرئيسية",
+    "pl": "die Hauptbahnhöfe",
+    "syn": "der Bahnhof",
+    "ant": "-"
+  },
+  {
+    "de": "das Flugzeug",
+    "ar": "الطائرة",
+    "pl": "die Flugzeuge",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "das Schiff",
+    "ar": "السفينة / الباخرة",
+    "pl": "die Schiffe",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "der Aufenthalt",
+    "ar": "الإقامة / المكوث / التوقف (في محطة)",
+    "pl": "die Aufenthalte",
+    "syn": "-",
+    "ant": "die Abreise / die Reise / das Reisen"
+  },
+  {
+    "de": "Warten Sie bitte!",
+    "ar": "انتظر من فضلك!",
+    "pl": "Expression (تعبير)",
+    "syn": "warten",
+    "ant": "-"
+  },
+  {
+    "de": "die Staatsangehörigkeit",
+    "ar": "الجنسية",
+    "pl": "die Staatsangehörigkeiten",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
     "de": "die Überraschung",
     "ar": "المفاجأة",
     "pl": "die Überraschungen",
@@ -78,7 +449,7 @@
   },
   {
     "de": "hängen",
-    "ar": "يُعلّق / معلّق",
+    "ar": "يُعلّق / يكون معلّقاً",
     "pl": "Verbe (فعل)",
     "syn": "-",
     "ant": "-"
@@ -102,14 +473,14 @@
     "ar": "سابقاً / في الماضي",
     "pl": "Adverbe (ظرف زمان)",
     "syn": "damals",
-    "ant": "heute / im Moment / jetzt / nun / später / zurzeit"
+    "ant": "heute / im Moment / jetzt / momentan / nun / später / zurzeit"
   },
   {
     "de": "damals",
     "ar": "آنذاك / في ذلك الوقت",
     "pl": "Adverbe (ظرف زمان)",
     "syn": "früher",
-    "ant": "heute / im Moment / jetzt / nun / später / zurzeit"
+    "ant": "heute / im Moment / jetzt / momentan / nun / zurzeit"
   },
   {
     "de": "Das stimmt!",
@@ -255,14 +626,14 @@
     "de": "das Gemälde",
     "ar": "اللوحة الفنية",
     "pl": "die Gemälde",
-    "syn": "das Bild",
+    "syn": "das Bild / die Malerei",
     "ant": "-"
   },
   {
     "de": "bestellen",
     "ar": "يطلب (في مطعم أو عبر الإنترنت)",
     "pl": "Verbe (فعل)",
-    "syn": "-",
+    "syn": "reservieren",
     "ant": "-"
   },
   {
@@ -283,7 +654,7 @@
     "de": "also",
     "ar": "إذن / بالتالي",
     "pl": "Adverbe / Conjonction",
-    "syn": "-",
+    "syn": "deshalb",
     "ant": "-"
   },
   {
@@ -354,14 +725,14 @@
     "ar": "يدفع (المال / الفاتورة)",
     "pl": "Verbe (فعل)",
     "syn": "zahlen",
-    "ant": "-"
+    "ant": "Geld abheben"
   },
   {
     "de": "zahlen",
     "ar": "يدفع (الحساب)",
     "pl": "Verbe (فعل)",
     "syn": "bezahlen",
-    "ant": "-"
+    "ant": "Geld abheben"
   },
   {
     "de": "zählen",
@@ -374,7 +745,7 @@
     "de": "die Zahl",
     "ar": "الرقم / العدد",
     "pl": "die Zahlen",
-    "syn": "-",
+    "syn": "die Postleitzahl",
     "ant": "-"
   },
   {
@@ -563,14 +934,14 @@
     "de": "einverstanden",
     "ar": "موافق / OK",
     "pl": "Adjectif (صفة)",
-    "syn": "-",
+    "syn": "Das stimmt!",
     "ant": "-"
   },
   {
     "de": "die Heimatstadt",
     "ar": "مسقط الرأس / مدينة المنشأ",
     "pl": "die Heimatstädte",
-    "syn": "die Stadt",
+    "syn": "der Geburtsort / die Stadt",
     "ant": "-"
   },
   {
@@ -631,7 +1002,7 @@
   },
   {
     "de": "über",
-    "ar": "حول",
+    "ar": "حول (عن) / فوق / عبر / أكثر من",
     "pl": "Préposition (حرف جر)",
     "syn": "-",
     "ant": "-"
@@ -661,7 +1032,7 @@
     "de": "ziemlich",
     "ar": "نسبياً",
     "pl": "Adverbe (ظرف)",
-    "syn": "-",
+    "syn": "fast",
     "ant": "-"
   },
   {
@@ -780,7 +1151,7 @@
     "de": "das Fahrrad",
     "ar": "الدراجة",
     "pl": "die Fahrräder",
-    "syn": "-",
+    "syn": "das Rad",
     "ant": "-"
   },
   {
@@ -808,7 +1179,7 @@
     "de": "der Erfolg",
     "ar": "النجاح",
     "pl": "die Erfolge",
-    "syn": "-",
+    "syn": "das Glück",
     "ant": "-"
   },
   {
@@ -855,7 +1226,7 @@
   },
   {
     "de": "das Land",
-    "ar": "الدولة / البلد",
+    "ar": "الدولة (البلد) / الريف (البادية) / الأرض",
     "pl": "die Länder",
     "syn": "-",
     "ant": "die Stadt"
@@ -878,8 +1249,8 @@
     "de": "fahren",
     "ar": "يسافر / يقود",
     "pl": "Verbe (فعل)",
-    "syn": "-",
-    "ant": "-"
+    "syn": "mitfahren",
+    "ant": "parken"
   },
   {
     "de": "das Autokennzeichen",
@@ -890,9 +1261,9 @@
   },
   {
     "de": "der Platz",
-    "ar": "المكان / المقعد",
+    "ar": "المكان / المقعد / الساحة (في مدينة) / الملعب",
     "pl": "die Plätze",
-    "syn": "-",
+    "syn": "der Ort / der Parkplatz / der Treffpunkt",
     "ant": "-"
   },
   {
@@ -921,13 +1292,13 @@
     "ar": "إلى (للدول والمدن) / بعد",
     "pl": "Préposition (حرف جر)",
     "syn": "-",
-    "ant": "von"
+    "ant": "von / vor"
   },
   {
     "de": "warten",
     "ar": "ينتظر",
     "pl": "Verbe (فعل)",
-    "syn": "-",
+    "syn": "Warten Sie bitte!",
     "ant": "-"
   },
   {
@@ -956,7 +1327,7 @@
     "ar": "لا مشكلة",
     "pl": "Expression (تعبير)",
     "syn": "-",
-    "ant": "-"
+    "ant": "das Problem"
   },
   {
     "de": "wohin",
@@ -1004,7 +1375,7 @@
     "de": "die Papiere",
     "ar": "الأوراق / جواز السفر (الباسبور)",
     "pl": "die Papiere (Pluriel)",
-    "syn": "-",
+    "syn": "das Formular",
     "ant": "-"
   },
   {
@@ -1102,7 +1473,7 @@
     "de": "sehr gut",
     "ar": "جيد جداً",
     "pl": "Expression (تعبير)",
-    "syn": "perfekt / super / toll",
+    "syn": "Prima Idee! / perfekt / super / toll",
     "ant": "-"
   },
   {
@@ -1110,21 +1481,21 @@
     "ar": "المغادرة / الرحيل",
     "pl": "die Abreisen",
     "syn": "-",
-    "ant": "-"
+    "ant": "der Aufenthalt"
   },
   {
     "de": "perfekt",
     "ar": "ممتاز / مثالي",
     "pl": "Adjectif (صفة)",
-    "syn": "sehr gut / super / toll",
+    "syn": "Prima Idee! / sehr gut / super / toll",
     "ant": "-"
   },
   {
     "de": "nun",
     "ar": "الآن",
     "pl": "Adverbe (ظرف)",
-    "syn": "im Moment / jetzt / zurzeit",
-    "ant": "später"
+    "syn": "im Moment / jetzt / momentan / zurzeit",
+    "ant": "damals / früher / später"
   },
   {
     "de": "lächeln",
@@ -1221,7 +1592,7 @@
     "de": "das Zimmer",
     "ar": "الغرفة",
     "pl": "die Zimmer",
-    "syn": "-",
+    "syn": "das Arbeitszimmer / das Gästezimmer / das Kinderzimmer / das Schlafzimmer",
     "ant": "-"
   },
   {
@@ -1544,7 +1915,7 @@
     "ar": "لاحقاً / فيما بعد",
     "pl": "Adverbe (ظرف زمان)",
     "syn": "-",
-    "ant": "im Moment / jetzt / nun / zurzeit"
+    "ant": "früher / im Moment / jetzt / momentan / nun / zurzeit"
   },
   {
     "de": "manchmal",
@@ -1558,7 +1929,7 @@
     "ar": "لماذا",
     "pl": "Question (أداة استفهام)",
     "syn": "-",
-    "ant": "-"
+    "ant": "deshalb"
   },
   {
     "de": "das Spiel",
@@ -1719,7 +2090,7 @@
     "ar": "اليوم",
     "pl": "Adverbe (ظرف زمان)",
     "syn": "-",
-    "ant": "morgen"
+    "ant": "damals / früher / morgen"
   },
   {
     "de": "oder",
@@ -1809,15 +2180,15 @@
     "de": "im Moment",
     "ar": "في هذه اللحظة / حالياً",
     "pl": "Adverbe (ظرف زمان)",
-    "syn": "jetzt / nun / zurzeit",
-    "ant": "später"
+    "syn": "jetzt / momentan / nun / zurzeit",
+    "ant": "damals / früher / später"
   },
   {
     "de": "zurzeit",
     "ar": "في الوقت الحالي / حالياً",
     "pl": "Adverbe (ظرف زمان)",
-    "syn": "im Moment / jetzt / nun",
-    "ant": "später"
+    "syn": "im Moment / jetzt / momentan / nun",
+    "ant": "damals / früher / später"
   },
   {
     "de": "Text zu / Buch zu",
@@ -1851,7 +2222,7 @@
     "de": "der Wohnort",
     "ar": "مكان السكن / محل الإقامة",
     "pl": "die Wohnorte",
-    "syn": "-",
+    "syn": "der Ort / die Adresse / die Anschrift",
     "ant": "-"
   },
   {
@@ -1886,14 +2257,14 @@
     "de": "toll",
     "ar": "رائع / ممتاز",
     "pl": "Adjectif (صفة)",
-    "syn": "perfekt / sehr gut / super",
+    "syn": "Prima Idee! / perfekt / sehr gut / super",
     "ant": "-"
   },
   {
     "de": "super",
     "ar": "رائع جداً / ممتاز",
     "pl": "Adjectif (صفة)",
-    "syn": "perfekt / sehr gut / toll",
+    "syn": "Prima Idee! / perfekt / sehr gut / toll",
     "ant": "-"
   },
   {
@@ -1949,7 +2320,7 @@
     "de": "das Büro",
     "ar": "المكتب",
     "pl": "die Büros",
-    "syn": "-",
+    "syn": "das Arbeitszimmer",
     "ant": "-"
   },
   {
@@ -2038,7 +2409,7 @@
   },
   {
     "de": "der Zug",
-    "ar": "القطار",
+    "ar": "القطار / السحب / النقلة (في الشطرنج)",
     "pl": "die Züge",
     "syn": "-",
     "ant": "-"
@@ -2083,7 +2454,7 @@
     "ar": "الحصة الدراسية / التدريس",
     "pl": "Sans pluriel (لا جمع له)",
     "syn": "der Kurs / die Stunde",
-    "ant": "-"
+    "ant": "die Kaffeepause"
   },
   {
     "de": "der Sprachkurs",
@@ -2110,7 +2481,7 @@
     "de": "der Stuhl",
     "ar": "الكرسي",
     "pl": "die Stühle",
-    "syn": "-",
+    "syn": "die Bank (Bänke)",
     "ant": "der Tisch"
   },
   {
@@ -2223,7 +2594,7 @@
     "ar": "السفر / الرحلة",
     "pl": "die Reisen",
     "syn": "-",
-    "ant": "-"
+    "ant": "der Aufenthalt"
   },
   {
     "de": "die Firma",
@@ -2467,8 +2838,8 @@
     "de": "jetzt",
     "ar": "الآن",
     "pl": "Adverbe (ظرف زمان)",
-    "syn": "im Moment / nun / zurzeit",
-    "ant": "später"
+    "syn": "im Moment / momentan / nun / zurzeit",
+    "ant": "damals / früher / später"
   },
   {
     "de": "machen",
@@ -2495,7 +2866,7 @@
     "de": "die Stadt",
     "ar": "المدينة",
     "pl": "die Städte",
-    "syn": "die Hauptstadt / die Heimatstadt",
+    "syn": "der Ort / die Hauptstadt / die Heimatstadt",
     "ant": "das Land"
   },
   {
@@ -2657,7 +3028,7 @@
     "ar": "العمل",
     "pl": "die Arbeiten",
     "syn": "der Beruf",
-    "ant": "das Hobby"
+    "ant": "das Hobby / die Kaffeepause"
   },
   {
     "de": "Sie / sie",
@@ -2706,7 +3077,7 @@
     "ar": "العمر / السن",
     "pl": "Sans pluriel (لا جمع له)",
     "syn": "-",
-    "ant": "-"
+    "ant": "die Kindheit"
   },
   {
     "de": "jung",
