@@ -101,7 +101,15 @@
         .is-admin .del-btn { display: inline-block; }
         
         .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #0f172a; color: white; padding: 12px 20px; border-radius: 10px; font-weight: bold; font-size: 0.9rem; display: none; z-index: 10000; box-shadow: 0 5px 15px rgba(0,0,0,0.2); text-align: center; max-width: 90%; }
-    </style>
+
+        .listen-all-panel { margin: 0 0 18px; padding: 16px; border: 2px solid #bfdbfe; border-radius: 14px; background: #eff6ff; }
+        .listen-all-panel h3 { margin: 0 0 6px; color: #1e3a8a; }
+        .listen-all-panel p { margin: 0 0 12px; font-size: .9rem; line-height: 1.5; color: #334155; }
+        .listen-all-actions { display: grid; grid-template-columns: 2fr 1fr; gap: 8px; }
+        #listenAllStatus { margin-top: 10px; font-size: .85rem; font-weight: 700; color: #1e40af; }
+        .listen-all-actions button:disabled { opacity: .5; cursor: not-allowed; }
+        @media (max-width: 430px) { .listen-all-actions { grid-template-columns: 1fr; } }
+\n    </style>
 </head>
 <body>
 
@@ -133,7 +141,17 @@
         <span class="sync-badge online" id="syncBadge">⚡ Base Data.json</span>
     </div>
 
-    <!-- Mode Apprentissage Normal -->
+
+    <section class="listen-all-panel" aria-label="Lecture audio continue">
+      <h3>🎧 Écouter tout le dictionnaire</h3>
+      <p>Lecture continue de tous les mots de <b>Data.json</b> avec traduction, type, pluriel, synonymes et contraires. La liste recommence automatiquement à la fin.</p>
+      <div class="listen-all-actions">
+        <button type="button" class="btn btn-nav" id="listenAllBtn" onclick="startContinuousReading()">▶️ Lire tous les mots en boucle</button>
+        <button type="button" class="btn btn-rand" id="stopListenAllBtn" onclick="stopContinuousReading()" disabled>⏹️ Arrêter</button>
+      </div>
+      <div id="listenAllStatus" role="status" aria-live="polite">Prêt à lire le dictionnaire.</div>
+    </section>
+\n    <!-- Mode Apprentissage Normal -->
     <div id="learningModeSection">
         <input type="text" id="searchInput" class="search-input" placeholder="🔍 Rechercher un mot en Allemand ou en Arabe..." oninput="applySearchAndFilter()">
 
@@ -574,7 +592,107 @@ function speakQuizWord() {
     playGermanAudio(quizPool[quizCurrentIndex].de);
 }
 
-/* ==================== NETTOYAGE & VÉRIFICATION AUTOMATIQUE ==================== */
+
+/* Lecture continue de tous les champs du fichier Data.json */
+let continuousReading = false;
+let continuousWordIndex = 0;
+let continuousFieldIndex = 0;
+let continuousRunId = 0;
+
+function getContinuousFields(item) {
+    const fields = [
+        { text: item.de, lang: 'de-DE' },
+        { text: item.ar, lang: 'ar' },
+        { text: 'Type : ' + (item.pl || 'non précisé'), lang: /[\u0600-\u06FF]/.test(item.pl || '') ? 'ar' : 'de-DE' },
+        { text: 'Synonyme : ' + (item.syn || 'aucun'), lang: 'de-DE' },
+        { text: 'Contraire : ' + (item.ant || 'aucun'), lang: 'de-DE' }
+    ];
+    return fields.filter(x => x.text && !/:\s*(-|aucun)$/i.test(x.text) && x.text.trim());
+}
+
+function startContinuousReading() {
+    if (!Array.isArray(vocabulary) || vocabulary.length === 0) {
+        updateContinuousStatus('Aucun mot chargé. Vérifie que Data.json est bien lié ou accessible.');
+        return;
+    }
+    stopContinuousReading(false);
+    continuousReading = true;
+    continuousWordIndex = 0;
+    continuousFieldIndex = 0;
+    continuousRunId++;
+    const runId = continuousRunId;
+    document.getElementById('listenAllBtn').disabled = true;
+    document.getElementById('stopListenAllBtn').disabled = false;
+    updateContinuousStatus('Lecture en cours : ' + vocabulary.length + ' mots. La lecture recommencera à la fin.');
+    speakContinuousNext(runId);
+}
+
+function stopContinuousReading(updateStatus = true) {
+    continuousReading = false;
+    continuousRunId++;
+    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+    const start = document.getElementById('listenAllBtn');
+    const stop = document.getElementById('stopListenAllBtn');
+    if (start) start.disabled = false;
+    if (stop) stop.disabled = true;
+    if (updateStatus) updateContinuousStatus('Lecture arrêtée.');
+}
+
+function updateContinuousStatus(message) {
+    const el = document.getElementById('listenAllStatus');
+    if (el) el.textContent = message;
+}
+
+function speakContinuousNext(runId) {
+    if (!continuousReading || runId !== continuousRunId) return;
+    if (!('speechSynthesis' in window)) {
+        stopContinuousReading(false);
+        updateContinuousStatus('Ce navigateur ne prend pas en charge la lecture vocale.');
+        return;
+    }
+    if (!vocabulary.length) {
+        stopContinuousReading(false);
+        updateContinuousStatus('Le fichier ne contient aucun mot.');
+        return;
+    }
+
+    if (continuousWordIndex >= vocabulary.length) continuousWordIndex = 0;
+    const item = vocabulary[continuousWordIndex];
+    const fields = getContinuousFields(item);
+
+    if (continuousFieldIndex >= fields.length) {
+        continuousFieldIndex = 0;
+        continuousWordIndex++;
+        updateContinuousStatus('Mot ' + (continuousWordIndex >= vocabulary.length ? vocabulary.length : continuousWordIndex + 1) +
+            ' / ' + vocabulary.length + ' — ' + (item.de || ''));
+        window.setTimeout(() => speakContinuousNext(runId), 650);
+        return;
+    }
+
+    const field = fields[continuousFieldIndex++];
+    const utterance = new SpeechSynthesisUtterance(String(field.text));
+    utterance.lang = field.lang;
+    utterance.rate = 0.82;
+    utterance.pitch = 1;
+    const voices = window.speechSynthesis.getVoices();
+    const prefix = field.lang.startsWith('de') ? 'de' : 'ar';
+    const voice = voices.find(v => v.lang.toLowerCase().startsWith(prefix));
+    if (voice) utterance.voice = voice;
+
+    utterance.onend = () => {
+        if (continuousReading && runId === continuousRunId) {
+            window.setTimeout(() => speakContinuousNext(runId), 180);
+        }
+    };
+    utterance.onerror = (event) => {
+        if (event.error === 'canceled' || event.error === 'interrupted') return;
+        if (continuousReading && runId === continuousRunId) {
+            window.setTimeout(() => speakContinuousNext(runId), 250);
+        }
+    };
+    window.speechSynthesis.speak(utterance);
+}
+\n/* ==================== NETTOYAGE & VÉRIFICATION AUTOMATIQUE ==================== */
 function cleanGermanListString(val) {
     if (!val || val.trim() === '-') return [];
     const trimmed = val.trim();
