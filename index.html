@@ -151,7 +151,8 @@
       </div>
       <div id="listenAllStatus" role="status" aria-live="polite">Prêt à lire le dictionnaire.</div>
     </section>
-\n    <!-- Mode Apprentissage Normal -->
+
+    <!-- Mode Apprentissage Normal -->
     <div id="learningModeSection">
         <input type="text" id="searchInput" class="search-input" placeholder="🔍 Rechercher un mot en Allemand ou en Arabe..." oninput="applySearchAndFilter()">
 
@@ -692,7 +693,8 @@ function speakContinuousNext(runId) {
     };
     window.speechSynthesis.speak(utterance);
 }
-\n/* ==================== NETTOYAGE & VÉRIFICATION AUTOMATIQUE ==================== */
+
+/* ==================== NETTOYAGE & VÉRIFICATION AUTOMATIQUE ==================== */
 function cleanGermanListString(val) {
     if (!val || val.trim() === '-') return [];
     const trimmed = val.trim();
