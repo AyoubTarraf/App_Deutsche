@@ -71,49 +71,49 @@
   },
   {
     "de": "die Bibliothek",
-    "ar": "المكتبة (للقراءة أو الاستعارة)",
+    "ar": "المكتبة",
     "pl": "die Bibliotheken",
     "syn": "die Bücherei",
     "ant": "-"
   },
   {
     "de": "die Bücherei",
-    "ar": "المكتبة العامة / خزانة الكتب",
+    "ar": "المكتبة العامة",
     "pl": "die Büchereien",
     "syn": "die Bibliothek",
     "ant": "-"
   },
   {
     "de": "Geld abheben",
-    "ar": "يسحب النقود (من الصراف الآلي أو البنك)",
+    "ar": "يسحب النقود (من الصراف/البنك)",
     "pl": "Expression / Verbe",
     "syn": "-",
     "ant": "bezahlen / zahlen"
   },
   {
     "de": "die Fahrkarte",
-    "ar": "تذكرة السفر / بطاقة الركوب",
+    "ar": "تذكرة السفر",
     "pl": "die Fahrkarten",
     "syn": "-",
     "ant": "-"
   },
   {
     "de": "reservieren",
-    "ar": "يحجز (طاولة أو مقعد أو غرفة) / يخصص",
+    "ar": "يحجز",
     "pl": "Verbe (فعل)",
     "syn": "bestellen / buchen",
     "ant": "-"
   },
   {
     "de": "buchen",
-    "ar": "يحجز (رحلة أو فندق) / يقيد في الحسابات",
+    "ar": "يحجز (رحلة / فندق)",
     "pl": "Verbe (فعل)",
     "syn": "reservieren",
     "ant": "-"
   },
   {
     "de": "kosten",
-    "ar": "يكلف (يبلغ ثمنه) / يتذوق (الطعام)",
+    "ar": "يكلف / يبلغ ثمنه",
     "pl": "Verbe (فعل)",
     "syn": "-",
     "ant": "-"
@@ -155,21 +155,21 @@
   },
   {
     "de": "der Preis",
-    "ar": "الثمن / السعر / الجائزة",
+    "ar": "الثمن / السعر",
     "pl": "die Preise",
     "syn": "die Kosten",
     "ant": "-"
   },
   {
     "de": "die Angaben",
-    "ar": "المعلومات / البيانات / التصريحات",
+    "ar": "المعلومات / البيانات",
     "pl": "die Angaben (Pluriel)",
     "syn": "das Formular",
     "ant": "-"
   },
   {
     "de": "das Formular",
-    "ar": "الاستمارة / النموذج المطبوع",
+    "ar": "الاستمارة / النموذج",
     "pl": "die Formulare",
     "syn": "die Angaben / die Papiere",
     "ant": "-"
@@ -183,7 +183,7 @@
   },
   {
     "de": "der Ort",
-    "ar": "المكان / الموقع / البلدة أو القرية",
+    "ar": "المكان / البلدة",
     "pl": "die Orte",
     "syn": "der Geburtsort / der Platz / der Wohnort / die Stadt",
     "ant": "-"
@@ -246,42 +246,42 @@
   },
   {
     "de": "vor",
-    "ar": "قبل (للزمان) / أمام (للمكان) / بسبب (مثل: vor Freude)",
+    "ar": "قبل / أمام",
     "pl": "Préposition (حرف جر)",
     "syn": "-",
     "ant": "nach"
   },
   {
     "de": "fast",
-    "ar": "تقريباً / يكاد",
+    "ar": "تقريباً",
     "pl": "Adverbe (ظرف)",
-    "syn": "ziemlich",
+    "syn": "circa / etwa / ungefähr / ziemlich",
     "ant": "-"
   },
   {
     "de": "klug",
-    "ar": "ذكي / حكيم / فطن",
+    "ar": "ذكي",
     "pl": "Adjectif (صفة)",
     "syn": "-",
     "ant": "dumm"
   },
   {
     "de": "dumm",
-    "ar": "غبي / أحمق / ساذج",
+    "ar": "غبي",
     "pl": "Adjectif (صفة)",
     "syn": "-",
     "ant": "klug"
   },
   {
     "de": "das Rad",
-    "ar": "العجلة / الدراجة الهوائية",
+    "ar": "العجلة / الدراجة",
     "pl": "die Räder",
     "syn": "das Fahrrad",
     "ant": "-"
   },
   {
     "de": "die Sorge",
-    "ar": "القلق / الهمّ / الرعاية والاهتمام",
+    "ar": "القلق / الهمّ",
     "pl": "die Sorgen",
     "syn": "das Problem",
     "ant": "-"
@@ -295,14 +295,14 @@
   },
   {
     "de": "das Glück",
-    "ar": "الحظ / السعادة / التوفيق",
+    "ar": "الحظ / السعادة",
     "pl": "Sans pluriel (لا جمع له)",
     "syn": "der Erfolg",
     "ant": "das Pech"
   },
   {
     "de": "das Pech",
-    "ar": "سوء الحظ (النحس) / القطران",
+    "ar": "سوء الحظ / النحس",
     "pl": "Sans pluriel (لا جمع له)",
     "syn": "-",
     "ant": "das Glück"
@@ -351,7 +351,7 @@
   },
   {
     "de": "der Aufenthalt",
-    "ar": "الإقامة / المكوث / التوقف (في محطة)",
+    "ar": "الإقامة / المكوث",
     "pl": "die Aufenthalte",
     "syn": "-",
     "ant": "die Abreise / die Reise / das Reisen"
@@ -381,7 +381,7 @@
     "de": "das Zentrum",
     "ar": "المركز / الوسط",
     "pl": "die Zentren",
-    "syn": "das Stadtzentrum / die Mitte / die Stadtmitte",
+    "syn": "das Finanzzentrum / das Stadtzentrum / die Mitte / die Stadtmitte",
     "ant": "-"
   },
   {
@@ -449,7 +449,7 @@
   },
   {
     "de": "hängen",
-    "ar": "يُعلّق / يكون معلّقاً",
+    "ar": "يُعلّق / معلّق",
     "pl": "Verbe (فعل)",
     "syn": "-",
     "ant": "-"
@@ -675,7 +675,7 @@
     "de": "vielleicht",
     "ar": "ربما / يمكن",
     "pl": "Adverbe (ظرف)",
-    "syn": "-",
+    "syn": "vermutlich",
     "ant": "-"
   },
   {
@@ -1002,10 +1002,10 @@
   },
   {
     "de": "über",
-    "ar": "حول (عن) / فوق / عبر / أكثر من",
+    "ar": "حول",
     "pl": "Préposition (حرف جر)",
     "syn": "-",
-    "ant": "-"
+    "ant": "unter"
   },
   {
     "de": "regelmäßig",
@@ -1226,9 +1226,9 @@
   },
   {
     "de": "das Land",
-    "ar": "الدولة (البلد) / الريف (البادية) / الأرض",
+    "ar": "الدولة / البلد",
     "pl": "die Länder",
-    "syn": "-",
+    "syn": "das Bundesland",
     "ant": "die Stadt"
   },
   {
@@ -1261,9 +1261,9 @@
   },
   {
     "de": "der Platz",
-    "ar": "المكان / المقعد / الساحة (في مدينة) / الملعب",
+    "ar": "المكان / المقعد",
     "pl": "die Plätze",
-    "syn": "der Ort / der Parkplatz / der Treffpunkt",
+    "syn": "der Ort / der Parkplatz / der Strand / der Treffpunkt",
     "ant": "-"
   },
   {
@@ -1627,7 +1627,7 @@
     "de": "sagen",
     "ar": "يقول",
     "pl": "Verbe (فعل)",
-    "syn": "reden / sprechen",
+    "syn": "erzählen / reden / sprechen",
     "ant": "-"
   },
   {
@@ -2195,14 +2195,14 @@
     "ar": "إغلاق النص / إغلاق الكتاب",
     "pl": "Expression (تعبير)",
     "syn": "-",
-    "ant": "Text auf / Buch auf"
+    "ant": "-"
   },
   {
     "de": "Text auf / Buch auf",
     "ar": "فتح النص / فتح الكتاب",
     "pl": "Expression (تعبير)",
     "syn": "-",
-    "ant": "Text zu / Buch zu"
+    "ant": "-"
   },
   {
     "de": "das Gegenteil",
@@ -2409,7 +2409,7 @@
   },
   {
     "de": "der Zug",
-    "ar": "القطار / السحب / النقلة (في الشطرنج)",
+    "ar": "القطار",
     "pl": "die Züge",
     "syn": "-",
     "ant": "-"
@@ -2789,7 +2789,7 @@
     "de": "sprechen",
     "ar": "يتكلم",
     "pl": "Verbe (فعل)",
-    "syn": "reden / sagen",
+    "syn": "erzählen / reden / sagen",
     "ant": "-"
   },
   {
@@ -3099,5 +3099,264 @@
     "pl": "Adjectif (صفة)",
     "syn": "-",
     "ant": "jung"
+  },
+  {
+    "de": "der Absender",
+    "ar": "المرسل",
+    "pl": "die Absender",
+    "syn": "-",
+    "ant": "der Empfänger"
+  },
+  {
+    "de": "schicken",
+    "ar": "يرسل / يبعث",
+    "pl": "Verbe (فعل)",
+    "syn": "bringen",
+    "ant": "-"
+  },
+  {
+    "de": "der Empfänger",
+    "ar": "المستقبل / المُتلقي",
+    "pl": "die Empfänger",
+    "syn": "-",
+    "ant": "der Absender"
+  },
+  {
+    "de": "die Briefmarke",
+    "ar": "طابع بريدي",
+    "pl": "die Briefmarken",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "der Briefträger",
+    "ar": "ساعي البريد",
+    "pl": "die Briefträger",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "bringen",
+    "ar": "يحمل / يجلب / يوصل",
+    "pl": "Verbe (فعل)",
+    "syn": "schicken",
+    "ant": "-"
+  },
+  {
+    "de": "das Paket",
+    "ar": "الطرد البريدي / الطرد",
+    "pl": "die Pakete",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "bekommen",
+    "ar": "يحصل على / ينال / يتلقى",
+    "pl": "Verbe (فعل)",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "die Post",
+    "ar": "البريد / مكتب البريد / رسائل ورقية",
+    "pl": "Sans pluriel",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "unmodisch",
+    "ar": "غير مواكب للموضة / قديمة",
+    "pl": "Adjectif (صفة)",
+    "syn": "altmodisch",
+    "ant": "-"
+  },
+  {
+    "de": "altmodisch",
+    "ar": "قديم الطراز / عتيق / قديمة",
+    "pl": "Adjectif (صفة)",
+    "syn": "unmodisch",
+    "ant": "-"
+  },
+  {
+    "de": "die Gaststätte",
+    "ar": "المطعم / الحانة / مقهى",
+    "pl": "die Gaststätten",
+    "syn": "die Bar / die Kneipe",
+    "ant": "-"
+  },
+  {
+    "de": "danach",
+    "ar": "بعد ذلك / فيما بعد",
+    "pl": "Adverbe (ظرف)",
+    "syn": "dann",
+    "ant": "-"
+  },
+  {
+    "de": "dann",
+    "ar": "ثم / بعدئذ",
+    "pl": "Adverbe (ظرف)",
+    "syn": "danach",
+    "ant": "-"
+  },
+  {
+    "de": "wunderbar",
+    "ar": "رائع / بديع / عجيب",
+    "pl": "Adjectif (صفة)",
+    "syn": "herrlich / wunderschön",
+    "ant": "-"
+  },
+  {
+    "de": "wunderschön",
+    "ar": "في غاية الجمال / رائع جداً",
+    "pl": "Adjectif (صفة)",
+    "syn": "herrlich / wunderbar",
+    "ant": "-"
+  },
+  {
+    "de": "herrlich",
+    "ar": "رائع / مبهج / ساحر",
+    "pl": "Adjectif (صفة)",
+    "syn": "wunderbar / wunderschön",
+    "ant": "-"
+  },
+  {
+    "de": "der Strand",
+    "ar": "الشاطئ / الساحل",
+    "pl": "die Strände",
+    "syn": "der Platz",
+    "ant": "-"
+  },
+  {
+    "de": "reich",
+    "ar": "غني / ثري",
+    "pl": "Adjectif (صفة)",
+    "syn": "-",
+    "ant": "arm"
+  },
+  {
+    "de": "arm",
+    "ar": "فقير / مسكين",
+    "pl": "Adjectif (صفة)",
+    "syn": "-",
+    "ant": "reich"
+  },
+  {
+    "de": "unter",
+    "ar": "تحت / أسفل",
+    "pl": "Préposition (حرف جر)",
+    "syn": "-",
+    "ant": "über"
+  },
+  {
+    "de": "das Bundesland",
+    "ar": "الولاية الاتحادية / المقاطعة",
+    "pl": "die Bundesländer",
+    "syn": "das Land",
+    "ant": "-"
+  },
+  {
+    "de": "der Fluss",
+    "ar": "النهر",
+    "pl": "die Flüsse",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "ungefähr",
+    "ar": "تقريباً / حوالي",
+    "pl": "Adverbe (ظرف)",
+    "syn": "circa / etwa / fast",
+    "ant": "-"
+  },
+  {
+    "de": "circa",
+    "ar": "حوالي / تقريباً / ca.",
+    "pl": "Adverbe (ظرف)",
+    "syn": "etwa / fast / ungefähr",
+    "ant": "-"
+  },
+  {
+    "de": "der Mund",
+    "ar": "الفم",
+    "pl": "die Münder",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "etwa",
+    "ar": "تقريباً / حوالي / نحو",
+    "pl": "Adverbe (ظرف)",
+    "syn": "circa / fast / ungefähr",
+    "ant": "-"
+  },
+  {
+    "de": "das Hochhaus",
+    "ar": "البناية العالية / ناطحة السحاب",
+    "pl": "die Hochhäuser",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "das Finanzzentrum",
+    "ar": "المركز المالي",
+    "pl": "die Finanzzentren",
+    "syn": "das Zentrum",
+    "ant": "-"
+  },
+  {
+    "de": "die Bar",
+    "ar": "البار / الحانة",
+    "pl": "die Bars",
+    "syn": "die Gaststätte / die Kneipe",
+    "ant": "-"
+  },
+  {
+    "de": "die Kneipe",
+    "ar": "الحانة / المقهى الشعبي",
+    "pl": "die Kneipen",
+    "syn": "die Bar / die Gaststätte",
+    "ant": "-"
+  },
+  {
+    "de": "der Gruß",
+    "ar": "التحية / السلام",
+    "pl": "die Grüße",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "erzählen",
+    "ar": "يحكي / يروي / يقص",
+    "pl": "Verbe (فعل)",
+    "syn": "sagen / sprechen",
+    "ant": "-"
+  },
+  {
+    "de": "der Fisch",
+    "ar": "السمك",
+    "pl": "die Fische",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "vermutlich",
+    "ar": "على الأرجح / غالباً / محتمل",
+    "pl": "Adverbe (ظرف)",
+    "syn": "vielleicht",
+    "ant": "-"
+  },
+  {
+    "de": "der Einwohner",
+    "ar": "الساكن / المقيم",
+    "pl": "die Einwohner",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "landen",
+    "ar": "يهبط / يحطّ",
+    "pl": "Verbe (فعل)",
+    "syn": "-",
+    "ant": "-"
   }
 ]
