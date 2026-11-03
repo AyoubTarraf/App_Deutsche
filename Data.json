@@ -1,5 +1,54 @@
 [
   {
+    "de": "Ein Mann, ein Wort",
+    "ar": "رجل كلمة / وعد الحر دين (تعبير)",
+    "pl": "Expression (تعبير)",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "Eine Frau, ein Wörterbuch",
+    "ar": "امرأة قاموس (تعبير)",
+    "pl": "Expression (تعبير)",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "die Wasserflasche",
+    "ar": "قنينة ماء",
+    "pl": "die Wasserflaschen",
+    "syn": "die Flasche",
+    "ant": "-"
+  },
+  {
+    "de": "das Wasser",
+    "ar": "الماء",
+    "pl": "Sans pluriel (لا جمع له)",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "die Flasche",
+    "ar": "القنينة / الزجاجة",
+    "pl": "die Flaschen",
+    "syn": "die Wasserflasche",
+    "ant": "-"
+  },
+  {
+    "de": "wie lange?",
+    "ar": "كم المدة؟ / كم من الوقت؟",
+    "pl": "Question (أداة استفهام)",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "das Ding",
+    "ar": "الشيء / الغرض",
+    "pl": "die Dinge",
+    "syn": "die Sache / etwas",
+    "ant": "-"
+  },
+  {
     "de": "das Kinderzimmer",
     "ar": "غرفة الأطفال",
     "pl": "die Kinderzimmer",
