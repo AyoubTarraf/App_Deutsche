@@ -1,5 +1,47 @@
 [
   {
+    "de": "um",
+    "ar": "في (مع الأوقات) / حول",
+    "pl": "Préposition (حرف جر)",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "gegen",
+    "ar": "حوالي (مع الأوقات) / ضد",
+    "pl": "Préposition (حرف جر)",
+    "syn": "circa (ca.) / etwa / ungefähr",
+    "ant": "-"
+  },
+  {
+    "de": "beginnen",
+    "ar": "يبدأ",
+    "pl": "Verbe (فعل)",
+    "syn": "-",
+    "ant": "enden"
+  },
+  {
+    "de": "enden",
+    "ar": "ينتهي",
+    "pl": "Verbe (فعل)",
+    "syn": "die Aue / die Beendigung (Abreise)",
+    "ant": "beginnen"
+  },
+  {
+    "de": "wann",
+    "ar": "متى",
+    "pl": "Question (أداة استفهام)",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "das Geschenk",
+    "ar": "الهدية",
+    "pl": "die Geschenke",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
     "de": "Ein Mann, ein Wort",
     "ar": "رجل كلمة / وعد الحر دين (تعبير)",
     "pl": "Expression (تعبير)",
