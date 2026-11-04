@@ -1,5 +1,19 @@
 [
   {
+    "de": "Entschuldigen",
+    "ar": "عذراً",
+    "pl": "Expression (تعبير)",
+    "syn": "Entschuldigung / Verzeihen / Verzeihung",
+    "ant": "-"
+  },
+  {
+    "de": "Verzeihen",
+    "ar": "معذرة / أستميحك عذراً",
+    "pl": "Expression (تعبير)",
+    "syn": "Entschuldigen/ Entschuldigung / Verzeihung",
+    "ant": "-"
+  },
+  {
     "de": "um",
     "ar": "في (مع الأوقات) / حول",
     "pl": "Préposition (حرف جر)",
