@@ -1,5 +1,152 @@
 [
   {
+    "de": "gleich",
+    "ar": "حالاً / نفس الشيء / مساوٍ",
+    "pl": "Adverbe / Adjectif",
+    "syn": "sofort",
+    "ant": "-"
+  },
+  {
+    "de": "der Sonnenuntergang",
+    "ar": "غروب الشمس",
+    "pl": "die Sonnenuntergänge",
+    "syn": "-",
+    "ant": "der Sonnenaufgang"
+  },
+  {
+    "de": "der Sonnenaufgang",
+    "ar": "شروق الشمس",
+    "pl": "die Sonnenaufgänge",
+    "syn": "-",
+    "ant": "der Sonnenuntergang"
+  },
+  {
+    "de": "gleich",
+    "ar": "حالاً / نفس الشيء / مساوٍ",
+    "pl": "Adverbe / Adjectif",
+    "syn": "sofort",
+    "ant": "-"
+  },
+  {
+    "de": "sofort",
+    "ar": "فوراً / حالاً",
+    "pl": "Adverbe (ظرف)",
+    "syn": "gleich / jetzt",
+    "ant": "später"
+  },
+  {
+    "de": "das Ende",
+    "ar": "النهاية",
+    "pl": "die Enden",
+    "syn": "die Beendigung",
+    "ant": "-"
+  },
+  {
+    "de": "bis",
+    "ar": "إلى / حتى",
+    "pl": "Préposition (حرف جر)",
+    "syn": "-",
+    "ant": "seit / von"
+  },
+  {
+    "de": "Opa und Oma",
+    "ar": "الجد والجدة",
+    "pl": "die Großeltern",
+    "syn": "die Großeltern",
+    "ant": "-"
+  },
+  {
+    "de": "hin und wieder",
+    "ar": "بين الحين والآخر",
+    "pl": "Expression (تعبير)",
+    "syn": "ab und zu / manchmal",
+    "ant": "immer / nie"
+  },
+  {
+    "de": "einen Tag um den anderen",
+    "ar": "يوماً بعد يوم / يوماً تلو الآخر",
+    "pl": "Expression (تعبير)",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "selten",
+    "ar": "نادراً",
+    "pl": "Adverbe (ظرف)",
+    "syn": "-",
+    "ant": "oft / immer / regelmäßig"
+  },
+  {
+    "de": "die Dauer",
+    "ar": "المدة / الاستمرارية",
+    "pl": "die Dauern",
+    "syn": "die Zeit",
+    "ant": "-"
+  },
+  {
+    "de": "unternehmen",
+    "ar": "يقوم بـ / ينجز / يبادر",
+    "pl": "Verbe (فعل)",
+    "syn": "machen / tun",
+    "ant": "-"
+  },
+  {
+    "de": "tun",
+    "ar": "يفعل / يقوم بـ",
+    "pl": "Verbe (فعل)",
+    "syn": "machen / unternehmen",
+    "ant": "-"
+  },
+  {
+    "de": "gerade",
+    "ar": "الآن / للتو",
+    "pl": "Adverbe (ظرف)",
+    "syn": "im Moment / jetzt",
+    "ant": "später"
+  },
+  {
+    "de": "das macht nichts",
+    "ar": "لا بأس / لا مشكلة",
+    "pl": "Expression (تعبير)",
+    "syn": "kein Problem",
+    "ant": "-"
+  },
+  {
+    "de": "noch einmal",
+    "ar": "مرة أخرى / مجدداً",
+    "pl": "Expression (تعبير)",
+    "syn": "wieder",
+    "ant": "-"
+  },
+  {
+    "de": "wieder",
+    "ar": "مجدداً / مرة أخرى",
+    "pl": "Adverbe (ظرف)",
+    "syn": "noch einmal",
+    "ant": "-"
+  },
+  {
+    "de": "die Schlafpause",
+    "ar": "فترة راحة للنوم / قيلولة",
+    "pl": "die Schlafpausen",
+    "syn": "-",
+    "ant": "-"
+  },
+  {
+    "de": "wach",
+    "ar": "مستيقظ / صاحي",
+    "pl": "Adjectif (صفة)",
+    "syn": "-",
+    "ant": "schläfrig"
+  },
+  {
+    "de": "schläfrig",
+    "ar": "نعسان",
+    "pl": "Adjectif (صفة)",
+    "syn": "-",
+    "ant": "wach"
+  },
+  {
     "de": "Entschuldigen",
     "ar": "عذراً",
     "pl": "Expression (تعبير)",
