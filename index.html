@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="no-referrer">
-    <title>Deutsch Lernen - Vocabulaire & Quiz</title>
+    <title>Deutsch Lernen - Vocabulaire par Catégorie & Quiz 100% Aléatoire</title>
     <style>
         :root {
             --der: #2563eb;
@@ -28,19 +28,24 @@
         .admin-toggle-btn:hover { background: #334155; }
         .quiz-toggle-btn:hover { background: #0369a1; }
         
-        .status-bar { display: flex; justify-content: space-between; align-items: center; background: #f8fafc; padding: 12px 16px; border-radius: 12px; font-weight: bold; color: #475569; margin-bottom: 15px; border: 1px solid #e2e8f0; }
+        .status-bar { display: flex; justify-content: space-between; align-items: center; background: #f8fafc; padding: 12px 16px; border-radius: 12px; font-weight: bold; color: #475569; margin-bottom: 15px; border: 1px solid #e2e8f0; flex-wrap: wrap; gap: 8px; }
         .sync-badge { font-size: 0.8rem; padding: 4px 10px; border-radius: 20px; background: #e2e8f0; color: #334155; }
         .sync-badge.online { background: #dcfce7; color: #15803d; }
 
-        .search-input { width: 100%; padding: 12px 15px; border: 2px solid #cbd5e1; border-radius: 12px; font-size: 1rem; margin-bottom: 12px; outline: none; transition: border-color 0.2s; }
+        .search-input { width: 100%; padding: 12px 15px; border: 2px solid #cbd5e1; border-radius: 12px; font-size: 1rem; margin-bottom: 10px; outline: none; transition: border-color 0.2s; }
         .search-input:focus { border-color: #2563eb; }
+
+        .category-select { width: 100%; padding: 11px 14px; border: 2px solid #cbd5e1; border-radius: 12px; font-size: 0.95rem; font-weight: bold; color: #0f172a; background: #f8fafc; margin-bottom: 12px; outline: none; cursor: pointer; transition: border-color 0.2s; }
+        .category-select:focus { border-color: #2563eb; }
         
         .filters { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 15px; }
         .filter-btn { padding: 8px 14px; border: none; border-radius: 8px; background: #e2e8f0; color: #334155; font-weight: bold; white-space: nowrap; font-size: 0.85rem; transition: all 0.15s; }
         .filter-btn.active { background: #0f172a; color: white; }
 
         .card { border-radius: 16px; padding: 25px 20px; text-align: center; background: #ffffff; border: 2px solid #e2e8f0; border-top: 10px solid var(--der); box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; position: relative; }
-        .badge { display: inline-block; padding: 6px 16px; border-radius: 20px; color: white; font-weight: bold; font-size: 0.9rem; margin-bottom: 10px; direction: ltr; }
+        .badges-top-wrap { display: flex; flex-direction: column; align-items: center; gap: 6px; margin-bottom: 10px; }
+        .cat-pill { display: inline-block; padding: 5px 14px; border-radius: 20px; background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; font-weight: 700; font-size: 0.82rem; }
+        .badge { display: inline-block; padding: 6px 16px; border-radius: 20px; color: white; font-weight: bold; font-size: 0.9rem; direction: ltr; }
         .word-main { font-size: 2.1rem; font-weight: 800; color: #0f172a; margin: 10px 0; display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
         .audio-btn { background: #eff6ff; border: 2px solid #bfdbfe; border-radius: 50%; width: 44px; height: 44px; font-size: 1.2rem; display: inline-flex; align-items: center; justify-content: center; transition: transform 0.1s, background 0.15s; }
         .audio-btn:hover { background: #dbeafe; }
@@ -62,7 +67,7 @@
         .btn-nav { background: #2563eb; }
         .btn-rand { background: #64748b; }
 
-        /* Styles du Test de Connaissances */
+        /* Styles du Test de Connaissances 100% Aléatoire */
         .quiz-container { display: none; margin-top: 10px; }
         .quiz-container.active { display: block; }
         .quiz-badges-row { display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
@@ -92,8 +97,9 @@
         .gh-box p { margin: 0 0 10px 0; font-size: 0.8rem; color: #334155; line-height: 1.4; }
         .gh-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
 
-        .list-container { max-height: 300px; overflow-y: auto; margin-top: 10px; border: 1px solid #e2e8f0; border-radius: 10px; padding: 5px; display: none; }
+        .list-container { max-height: 340px; overflow-y: auto; margin-top: 10px; border: 1px solid #e2e8f0; border-radius: 10px; padding: 5px; display: none; }
         .list-container.open { display: block; }
+        .list-cat-header { background: #e2e8f0; color: #0f172a; font-weight: 800; font-size: 0.85rem; padding: 8px 12px; border-radius: 8px; margin: 6px 0 4px 0; }
         .list-item { padding: 12px; border-bottom: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-size: 0.95rem; gap: 8px; }
         .list-item:hover { background: #eff6ff; }
         .list-type-pill { font-size: 0.75rem; padding: 2px 8px; border-radius: 12px; color: white; font-weight: bold; white-space: nowrap; }
@@ -123,19 +129,24 @@
     <div class="header">
         <h1>🇩🇪 Deutsch Vocabulaire</h1>
         <div class="header-actions">
-            <button type="button" class="quiz-toggle-btn" id="quizBtn" onclick="toggleQuizMode()">🎮 Test de Connaissances</button>
+            <button type="button" class="quiz-toggle-btn" id="quizBtn" onclick="toggleQuizMode()">🎮 Test 100% Aléatoire</button>
             <button type="button" class="admin-toggle-btn" id="adminBtn" onclick="openAdminModal()">🔒 Admin</button>
         </div>
     </div>
 
     <div class="status-bar">
         <span id="counterText">Chargement...</span>
-        <span class="sync-badge online" id="syncBadge">⚡ Base Data.json</span>
+        <span class="sync-badge online" id="syncBadge">⚡ Classé par Catégories</span>
     </div>
 
-    <!-- Mode Apprentissage Normal -->
+    <!-- Mode Apprentissage par Catégories -->
     <div id="learningModeSection">
         <input type="text" id="searchInput" class="search-input" placeholder="🔍 Rechercher un mot en Allemand ou en Arabe..." oninput="applySearchAndFilter()">
+
+        <!-- Sélecteur de Catégorie Thématique (Essen, Familie, Haus, Reisen, etc.) -->
+        <select id="categorySelect" class="category-select" onchange="applySearchAndFilter()">
+            <option value="all">📂 Toutes les catégories thématiques (مرتبة حسب المواضيع)</option>
+        </select>
 
         <div class="filters">
             <button type="button" class="filter-btn active" id="f-all" onclick="setFilter('all')">Tous</button>
@@ -146,8 +157,10 @@
         </div>
 
         <div class="card" id="mainCard">
-            <!-- Type du mot en haut du mot (ex: Verbe (فعل), Adjectif (صفة), Nom (اسم)...) -->
-            <span class="badge" id="badgeType">...</span>
+            <div class="badges-top-wrap">
+                <span class="cat-pill" id="badgeCategory">📂 Catégorie</span>
+                <span class="badge" id="badgeType">...</span>
+            </div>
             <div class="word-main">
                 <span id="wordDe">Chargement...</span>
                 <button type="button" class="audio-btn" onclick="speakWord()" title="Écouter la prononciation">🔊</button>
@@ -158,6 +171,10 @@
                 <div class="detail-item">
                     <span class="detail-label">الترجمة (Traduction) :</span>
                     <span class="detail-val" id="wordAr">-</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">الموضوع (Catégorie) :</span>
+                    <span class="detail-val" id="wordCatDetail" style="font-size:0.92rem;">-</span>
                 </div>
                 <div class="detail-item">
                     <span class="detail-label">النوع (Type de mot) :</span>
@@ -185,30 +202,34 @@
         </div>
     </div>
 
-    <!-- Test de Connaissances Interactif -->
+    <!-- Test de Connaissances Interactif 100% Aléatoire -->
     <div class="quiz-container" id="quizModeSection">
         <div class="card" id="quizCard">
             <div id="quizQuestionView">
                 <div class="quiz-badges-row">
                     <span class="badge" id="quizScoreBadge" style="background:#0284c7;">Score : 0 / 0</span>
+                    <span class="badge" style="background:#0f172a;">🎲 100% Aléatoire</span>
                     <span class="badge" id="quizWordTypeBadge" style="background:#7c3aed;">...</span>
                 </div>
-                <div style="font-size: 0.9rem; color: #64748b; margin-bottom: 5px;">Choisis la bonne traduction en arabe :</div>
+                <div style="font-size: 0.9rem; color: #64748b; margin-bottom: 5px;">Choisis la bonne traduction en arabe (mélange total 100% aléatoire) :</div>
                 <div class="word-main" style="margin: 15px 0;">
                     <span id="quizWordDe">...</span>
                     <button type="button" class="audio-btn" onclick="speakQuizWord()" title="Écouter la prononciation">🔊</button>
                 </div>
                 <div class="quiz-options" id="quizOptionsContainer"></div>
-                <div id="quizNextBox" style="margin-top: 18px; display: none;">
+                <div id="quizNextBox" style="margin-top: 18px; display: none; gap: 8px;">
                     <button type="button" class="btn btn-nav" style="background: #16a34a; padding: 12px;" onclick="nextQuizQuestion()">Question Suivante ➡️</button>
+                </div>
+                <div style="margin-top: 12px;">
+                    <button type="button" class="btn btn-rand" style="padding: 10px; font-size: 0.85rem; background: #475569;" onclick="startQuiz()">🔀 Remélanger tout à 100% maintenant</button>
                 </div>
             </div>
             <div id="quizResultView" style="display: none;">
                 <span class="badge" style="background:#16a34a; font-size:1.1rem; padding:8px 18px;">🏆 Test Terminé !</span>
                 <h2 id="quizFinalTitle" style="color:#0f172a; margin: 15px 0;">Ton Score : 0 / 0</h2>
-                <p style="color:#475569; margin-bottom:20px;">Bravo ! Tu as testé tes connaissances sur l'ensemble de ton dictionnaire Data.json.</p>
+                <p style="color:#475569; margin-bottom:20px;">Bravo ! Tu as testé tes connaissances en mode 100% aléatoire sur ton dictionnaire Data.json.</p>
                 <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
-                    <button type="button" class="btn btn-nav" style="background:#2563eb; padding:12px 20px; flex:1;" onclick="startQuiz()">🔄 Recommencer le Test</button>
+                    <button type="button" class="btn btn-nav" style="background:#2563eb; padding:12px 20px; flex:1;" onclick="startQuiz()">🔄 Nouveau Test 100% Aléatoire</button>
                     <button type="button" class="btn btn-rand" style="padding:12px 20px; flex:1;" onclick="toggleQuizMode()">📖 Retour au Dictionnaire</button>
                 </div>
             </div>
@@ -230,6 +251,10 @@
         <div class="form-group">
             <label>Traduction en Arabe (الترجمة) :</label>
             <input type="text" id="inAr" class="form-input" dir="rtl" placeholder="Ex: الطاولة">
+        </div>
+        <div class="form-group">
+            <label>Catégorie thématique (الموضوع) :</label>
+            <input type="text" id="inCat" class="form-input" placeholder="Ex: 🍽️ Essen, Trinken & Restaurant (الأكل والشرب والمطعم)">
         </div>
         <div class="form-group">
             <label>Pluriel avec Article ou Type grammatical (الجمع / النوع) :</label>
@@ -274,7 +299,7 @@
     </div>
 
     <div style="margin-top: 15px;" id="listViewWrapper">
-        <button type="button" class="filter-btn" style="width:100%; padding:14px; font-size:0.95rem;" onclick="toggleWordList()">📋 Afficher / Masquer la liste complète</button>
+        <button type="button" class="filter-btn" style="width:100%; padding:14px; font-size:0.95rem;" onclick="toggleWordList()">📋 Afficher / Masquer la liste complète (par catégories)</button>
         <div class="list-container" id="wordListContainer"></div>
     </div>
 </div>
@@ -291,18 +316,155 @@ let activeList = [];
 let index = 0;
 let currentFilter = 'all';
 
-// Variables pour le Test de Connaissances
+// Variables pour le Test de Connaissances 100% Aléatoire
 let isQuizActive = false;
 let quizPool = [];
 let quizCurrentIndex = 0;
 let quizScore = 0;
 let quizTotalAnswered = 0;
+let lastQuizWordDe = null;
 
-// Moteur Audio Hybride (Voix Allemande Native + Fallback Cloud Allemand automatique sur PC)
+// Moteur Audio Hybride
 let cachedGermanVoice = null;
 window._currentUtterance = null;
 window._germanAudioPlayer = new Audio();
 window._germanAudioPlayer.preload = 'auto';
+
+/* ==================== MÉLANGE CRYPTOGRAPHIQUE 100% ALÉATOIRE (FISHER-YATES + CRYPTO) ==================== */
+function getTrueRandomInt(max) {
+    if (max <= 1) return 0;
+    if (window.crypto && window.crypto.getRandomValues) {
+        const array = new Uint32Array(1);
+        window.crypto.getRandomValues(array);
+        return array[0] % max;
+    }
+    return Math.floor(Math.random() * max);
+}
+
+function shuffle100PercentRandom(arr) {
+    const copy = [...arr];
+    // Double passe Fisher-Yates avec entropie cryptographique pour casser tout regroupement par catégorie
+    for (let pass = 0; pass < 2; pass++) {
+        for (let i = copy.length - 1; i > 0; i--) {
+            const j = getTrueRandomInt(i + 1);
+            const temp = copy[i];
+            copy[i] = copy[j];
+            copy[j] = temp;
+        }
+    }
+    // Évite que deux mots consécutifs de la même catégorie se suivent autant que possible
+    for (let i = 1; i < copy.length - 1; i++) {
+        if (copy[i].cat && copy[i].cat === copy[i - 1].cat) {
+            for (let k = i + 1; k < copy.length; k++) {
+                if (copy[k].cat !== copy[i - 1].cat) {
+                    const tmp = copy[i];
+                    copy[i] = copy[k];
+                    copy[k] = tmp;
+                    break;
+                }
+            }
+        }
+    }
+    return copy;
+}
+
+/* ==================== CLASSIFICATION THÉMATIQUE AUTOMATIQUE ==================== */
+const DEFAULT_CATEGORIES_ORDER = [
+    "🍽️ Essen, Trinken & Restaurant (الأكل والشرب والمطعم)",
+    "👨‍👩‍👧‍👦 Familie, Menschen & Soziales (العائلة والأشخاص والحالة الاجتماعية)",
+    "🏠 Haus, Zimmer & Möbel (المنزل والغرف والأثاث)",
+    "✈️ Reisen, Verkehr & Transport (السفر والمواصلات والتنقل)",
+    "🏙️ Stadt, Orte & Länder (المدينة والأماكن والبلدان)",
+    "💼 Arbeit, Beruf & Studium (العمل والمهن والدراسة)",
+    "📞 Kommunikation, Post & Medien (التواصل والبريد والإعلام)",
+    "💰 Geld, Einkaufen & Zahlen (المال والتسوق والأرقام)",
+    "🎨 Freizeit, Kunst, Sport & Feiern (الهوايات والفن والرياضة والاحتفالات)",
+    "⏰ Zeit, Wetter & Natur (الوقت والطقس والطبيعة)",
+    "🏥 Gesundheit, Körper & Schlaf (الصحة والجسم والنوم)",
+    "💡 Eigenschaften, Gefühle & Gegenteile (الصفات والمشاعر والأضداد)",
+    "🔧 Verben, Grammatik & Ausdrücke (الأفعال القاعدية والتعابير اليومية)"
+];
+
+function inferCategoryIfMissing(item) {
+    if (item.cat && String(item.cat).trim() && item.cat !== '-') {
+        return String(item.cat).trim();
+    }
+    const de = String(item.de || '').toLowerCase();
+    const ar = String(item.ar || '');
+    if (/essen|frühstück|mittag|abend|kaffee|wasser|flasche|glas|tasse|obst|apfel|erdbeere|birne|fleisch|schwein|sau|wurst|fisch|käse|kuchen|bier|wein|alkohol|koch|lecker|köstlich|kellner|gast|kneipe|bar|bestellen|bedienen/.test(de)) {
+        return DEFAULT_CATEGORIES_ORDER[0];
+    }
+    if (/mann|frau|ehe|heirat|eltern|vater|mutter|kind|junge|mädchen|bruder|schwester|geschwister|oma|opa|groß|onkel|tante|freund|bekannt|verwandt|mensch|person|leute|ledig|verheiratet|geschieden|verwitwet|alter|jung|alt|heißen/.test(de)) {
+        return DEFAULT_CATEGORIES_ORDER[1];
+    }
+    if (/zimmer|haus|wohn|adresse|anschrift|tisch|stuhl|herd|wasch|glühbirne|batterie|bildschirm|keller|ecke|möbel/.test(de)) {
+        return DEFAULT_CATEGORIES_ORDER[2];
+    }
+    if (/reise|fahren|abfahrt|ankunft|ankommen|auto|wagen|zug|bahnhof|flug|schiff|hafen|fahrrad|rad|park|fahrkarte|buchen|reservieren|gepäck|tasche/.test(de)) {
+        return DEFAULT_CATEGORIES_ORDER[3];
+    }
+    if (/stadt|land|ort|zentrum|mitte|apotheke|bibliothek|bücherei|museum|kino|strand|fluss|bauer|einwohner|wien|marokkaner|deutsche/.test(de)) {
+        return DEFAULT_CATEGORIES_ORDER[4];
+    }
+    if (/arbeit|beruf|lehrer|schüler|student|unterricht|kurs|sprach|schule|gymnasium|abitur|jura|jurist|firma|wirtschaft|übung|hausaufgabe|buch|heft|stift|lesen|schreiben|projekt|bericht|protokoll|sitzung|besprechung|rentner/.test(de)) {
+        return DEFAULT_CATEGORIES_ORDER[5];
+    }
+    if (/telefon|anruf|rufen|handy|post|mail|brief|paket|absender|empfänger|formular|unterschrift|frage|antwort|sprechen|reden|sagen|erzählen|hören|zeitung|kommunik/.test(de)) {
+        return DEFAULT_CATEGORIES_ORDER[6];
+    }
+    if (/geld|bank|kaufen|verkaufen|käufer|zahlen|bezahlen|kosten|preis|reich|arm|zahl|zählen|viel|wenig|bisschen|circa|etwa|ungefähr|fast|brauchen|konsum/.test(de)) {
+        return DEFAULT_CATEGORIES_ORDER[7];
+    }
+    if (/hobby|sport|spiel|fußball|schach|singen|tanzen|lied|musik|klavier|maler|malen|kunst|künstler|gemälde|bild|foto|kamera|geburt|geschenk|schenken|einladen|schuh|mantel|spazieren|ausgehen/.test(de)) {
+        return DEFAULT_CATEGORIES_ORDER[8];
+    }
+    if (/zeit|uhr|stunde|jahr|morgen|heute|früh|spät|jetzt|nun|moment|sofort|gleich|immer|nie|oft|selten|manchmal|wieder|anfang|beginn|ende|sonne|regen|katze|maus|mittwoch|wochenende|datum|dauer/.test(de)) {
+        return DEFAULT_CATEGORIES_ORDER[9];
+    }
+    if (/gesund|krank|patient|untersuchen|ohr|mund|rauchen|feuerzeug|schlaf|wach|aufstehen|aufwachen|sitzen|stehen|sehen/.test(de)) {
+        return DEFAULT_CATEGORIES_ORDER[10];
+    }
+    if (/stark|schwach|schnell|langsam|einfach|leicht|schwer|klug|dumm|fleißig|faul|schön|wunder|herrlich|toll|super|perfekt|hässlich|nett|freundlich|sauber|schmutzig|wahr|echt|wirklich|glück|pech|erfolg|problem|sorge|lieben|roman|lachen|lächeln|zufall|allein|zusammen|gemeinsam|trenn/.test(de)) {
+        return DEFAULT_CATEGORIES_ORDER[11];
+    }
+    return DEFAULT_CATEGORIES_ORDER[12];
+}
+
+function populateCategoryDropdown() {
+    const select = document.getElementById('categorySelect');
+    const prevValue = select.value || 'all';
+    const counts = new Map();
+
+    for (const item of vocabulary) {
+        const c = item.cat || DEFAULT_CATEGORIES_ORDER[12];
+        counts.set(c, (counts.get(c) || 0) + 1);
+    }
+
+    select.replaceChildren();
+    const allOpt = document.createElement('option');
+    allOpt.value = 'all';
+    allOpt.textContent = `📂 Toutes les catégories thématiques (${vocabulary.length} mots triés)`;
+    select.appendChild(allOpt);
+
+    const orderedCats = [...DEFAULT_CATEGORIES_ORDER];
+    for (const c of counts.keys()) {
+        if (!orderedCats.includes(c)) orderedCats.push(c);
+    }
+
+    for (const cat of orderedCats) {
+        if (!counts.has(cat)) continue;
+        const opt = document.createElement('option');
+        opt.value = cat;
+        opt.textContent = `${cat} (${counts.get(cat)})`;
+        select.appendChild(opt);
+    }
+
+    if ([...select.options].some(o => o.value === prevValue)) {
+        select.value = prevValue;
+    } else {
+        select.value = 'all';
+    }
+}
 
 /* ==================== DÉTECTION DU TYPE DE MOT (FRANÇAIS + ARABE) ==================== */
 function getWordTypeMeta(item) {
@@ -310,7 +472,6 @@ function getWordTypeMeta(item) {
     const pl = String(item?.pl || '').trim();
     const plLower = pl.toLowerCase();
 
-    // Cas particulier nom + verbe combinés (ex: "das Treffen / treffen")
     if (de.startsWith('das ') && plLower.includes('verbe')) {
         return {
             badge: '🟢 Nom (اسم) / Verbe (فعل)',
@@ -319,7 +480,6 @@ function getWordTypeMeta(item) {
         };
     }
 
-    // 1. Noms masculins (der)
     if (de.startsWith('der ')) {
         return {
             badge: '🔵 Nom Masculin - der (اسم مذكر)',
@@ -328,7 +488,6 @@ function getWordTypeMeta(item) {
         };
     }
 
-    // 2. Noms féminins ou pluriels (die)
     if (de.startsWith('die ')) {
         if (plLower.includes('pluriel')) {
             return {
@@ -344,7 +503,6 @@ function getWordTypeMeta(item) {
         };
     }
 
-    // 3. Noms neutres (das)
     if (de.startsWith('das ')) {
         return {
             badge: '🟢 Nom Neutre - das (اسم محايد)',
@@ -353,12 +511,10 @@ function getWordTypeMeta(item) {
         };
     }
 
-    // 4. Autres catégories grammaticales (Verbe, Adjectif, Adverbe, Expression, etc.) avec traduction arabe garantie
     let label = pl;
     if (!label || label === '-') {
         label = 'Expression / Autre (تعبير / أخرى)';
-    } else if (!/[\u0600-\u06FF]/.test(label)) {
-        // Ajoute automatiquement le type en arabe s'il manque dans Data.json
+    } else if (!/[؀-ۿ]/.test(label)) {
         if (plLower.includes('adjectif') && plLower.includes('adverbe')) {
             label = `${pl} (صفة / ظرف)`;
         } else if (plLower.includes('adjectif')) {
@@ -388,18 +544,17 @@ function getWordTypeMeta(item) {
         label = `Nom - ${pl}`;
     }
 
-    // Couleur distincte selon la nature grammaticale
-    let color = '#7c3aed'; // Violet par défaut
+    let color = '#7c3aed';
     if (plLower.includes('verbe')) {
-        color = '#7c3aed'; // Violet pour Verbe (فعل)
+        color = '#7c3aed';
     } else if (plLower.includes('adjectif')) {
-        color = '#d97706'; // Ambre pour Adjectif (صفة)
+        color = '#d97706';
     } else if (plLower.includes('adverbe')) {
-        color = '#0d9488'; // Turquoise pour Adverbe (ظرف)
+        color = '#0d9488';
     } else if (plLower.includes('expression') || plLower.includes('salutation')) {
-        color = '#db2777'; // Rose pour Expression (تعبير)
+        color = '#db2777';
     } else if (plLower.includes('préposition') || plLower.includes('conjonction') || plLower.includes('pronom') || plLower.includes('question')) {
-        color = '#4f46e5'; // Indigo pour Grammaire / Outils
+        color = '#4f46e5';
     }
 
     return {
@@ -409,7 +564,6 @@ function getWordTypeMeta(item) {
     };
 }
 
-// Vérifie strictement qu'une voix système est bien allemande (exclut toute voix française par défaut sur PC)
 function isStrictGermanVoice(v) {
     if (!v) return false;
     const lang = String(v.lang || '').toLowerCase().replace('_', '-');
@@ -482,7 +636,7 @@ function showToast(msg) {
     window._toastTimer = setTimeout(() => { t.style.display = 'none'; }, 3000);
 }
 
-/* ==================== LECTURE AUDIO ALLEMANDE GARANTIE (PC & MOBILE) ==================== */
+/* ==================== LECTURE AUDIO ALLEMANDE GARANTIE ==================== */
 function playCloudGermanAudio(cleanWord) {
     const encoded = encodeURIComponent(cleanWord);
     const urls = [
@@ -574,14 +728,14 @@ function speakQuizWord() {
     playGermanAudio(quizPool[quizCurrentIndex].de);
 }
 
-/* ==================== NETTOYAGE & VÉRIFICATION AUTOMATIQUE ==================== */
+/* ==================== NETTOYAGE & TRI PAR CATÉGORIES ==================== */
 function cleanGermanListString(val) {
     if (!val || val.trim() === '-') return [];
     const trimmed = val.trim();
     if (trimmed === 'Text auf / Buch auf' || trimmed === 'Text zu / Buch zu') {
         return [trimmed];
     }
-    const parts = trimmed.split('/').map(p => p.replace(/\s*\([^)]*[\u0600-\u06FF]+[^)]*\)/g, '').replace(/\s+/g, ' ').trim());
+    const parts = trimmed.split('/').map(p => p.replace(/\s*\([^)]*[؀-ۿ]+[^)]*\)/g, '').replace(/\s+/g, ' ').trim());
     const unique = [];
     const seen = new Set();
     for (const p of parts) {
@@ -591,6 +745,18 @@ function cleanGermanListString(val) {
         }
     }
     return unique;
+}
+
+function sortVocabularyByCategory(list) {
+    const catRank = new Map();
+    DEFAULT_CATEGORIES_ORDER.forEach((c, idx) => catRank.set(c, idx));
+
+    return [...list].sort((a, b) => {
+        const ra = catRank.has(a.cat) ? catRank.get(a.cat) : 999;
+        const rb = catRank.has(b.cat) ? catRank.get(b.cat) : 999;
+        if (ra !== rb) return ra - rb;
+        return 0; // Conserve l'ordre logique d'apprentissage à l'intérieur d'une même catégorie
+    });
 }
 
 async function deduplicateAndVerifyVocabulary() {
@@ -607,6 +773,7 @@ async function deduplicateAndVerifyVocabulary() {
         let plFormatted = String(item.pl || '-').replace(/\s+/g, ' ').trim();
         if (!plFormatted || plFormatted === '-') plFormatted = 'Expression (تعبير)';
         if (plFormatted === 'Sans pluriel') plFormatted = 'Sans pluriel (لا جمع له)';
+        const catFormatted = inferCategoryIfMissing(item);
 
         if (!deFormatted || !arFormatted) continue;
 
@@ -620,7 +787,8 @@ async function deduplicateAndVerifyVocabulary() {
                 ar: arFormatted,
                 pl: plFormatted,
                 syn: syns.length ? syns.join(' / ') : '-',
-                ant: ants.length ? ants.join(' / ') : '-'
+                ant: ants.length ? ants.join(' / ') : '-',
+                cat: catFormatted
             });
         } else {
             const existing = map.get(key);
@@ -634,43 +802,12 @@ async function deduplicateAndVerifyVocabulary() {
         }
     }
 
-    const byExactDe = new Map();
-    for (const entry of map.values()) {
-        byExactDe.set(entry.de, entry);
-    }
-
-    for (const [deWord, entry] of byExactDe.entries()) {
-        if (deWord.includes('/')) continue;
-        const syns = cleanGermanListString(entry.syn);
-        const ants = cleanGermanListString(entry.ant);
-
-        for (const s of syns) {
-            if (byExactDe.has(s) && !s.includes('/')) {
-                const target = byExactDe.get(s);
-                const tSyns = cleanGermanListString(target.syn);
-                if (!tSyns.some(x => x.toLowerCase() === deWord.toLowerCase())) {
-                    tSyns.push(deWord);
-                    target.syn = tSyns.join(' / ');
-                }
-            }
-        }
-        for (const a of ants) {
-            if (byExactDe.has(a) && !a.includes('/')) {
-                const target = byExactDe.get(a);
-                const tAnts = cleanGermanListString(target.ant);
-                if (!tAnts.some(x => x.toLowerCase() === deWord.toLowerCase())) {
-                    tAnts.push(deWord);
-                    target.ant = tAnts.join(' / ');
-                }
-            }
-        }
-    }
-
-    vocabulary = Array.from(byExactDe.values());
+    vocabulary = sortVocabularyByCategory(Array.from(map.values()));
     const removed = beforeCount - vocabulary.length;
     index = 0;
+    populateCategoryDropdown();
     applySearchAndFilter();
-    await persistVocabularyChange(`Nettoyage terminé (${vocabulary.length} mots vérifiés, ${removed} doublon(s) supprimé(s))`);
+    await persistVocabularyChange(`Nettoyage & tri par catégories terminés (${vocabulary.length} mots, ${removed} doublon(s) supprimé(s))`);
 }
 
 function initGithubConfig() {
@@ -727,7 +864,7 @@ function updateSyncStatusText() {
     } else if (dataFileHandle) {
         status.textContent = `✅ Fichier local connecté (${dataFileName}).`;
     } else {
-        status.textContent = `ℹ️ Mode lecture Data.json (${vocabulary.length} mots).`;
+        status.textContent = `ℹ️ Mode lecture Data.json (${vocabulary.length} mots classés par catégorie).`;
     }
 }
 
@@ -839,14 +976,22 @@ async function loadData() {
             throw new Error('Le fichier Data.json ne contient pas un tableau JSON valide.');
         }
 
-        vocabulary = loaded.map(w => ({
-            de: String(w.de || '').trim(),
-            ar: String(w.ar || '').trim(),
-            pl: String(w.pl || '-').trim(),
-            syn: String(w.syn || '-').trim(),
-            ant: String(w.ant || '-').trim()
-        })).filter(w => w.de && w.ar);
+        const rawMapped = loaded.map(w => {
+            const item = {
+                de: String(w.de || '').trim(),
+                ar: String(w.ar || '').trim(),
+                pl: String(w.pl || '-').trim(),
+                syn: String(w.syn || '-').trim(),
+                ant: String(w.ant || '-').trim(),
+                cat: String(w.cat || '').trim()
+            };
+            item.cat = inferCategoryIfMissing(item);
+            return item;
+        }).filter(w => w.de && w.ar);
 
+        // Tri par catégorie pour la première interface d'apprentissage
+        vocabulary = sortVocabularyByCategory(rawMapped);
+        populateCategoryDropdown();
         updateSyncStatusText();
     } catch (e) {
         vocabulary = [];
@@ -877,14 +1022,21 @@ async function connectDataFile() {
 
         dataFileHandle = handle;
         dataFileName = file.name;
-        vocabulary = parsed.map(w => ({
-            de: String(w.de || '').trim(),
-            ar: String(w.ar || '').trim(),
-            pl: String(w.pl || '-').trim(),
-            syn: String(w.syn || '-').trim(),
-            ant: String(w.ant || '-').trim()
-        })).filter(w => w.de && w.ar);
+        const rawMapped = parsed.map(w => {
+            const item = {
+                de: String(w.de || '').trim(),
+                ar: String(w.ar || '').trim(),
+                pl: String(w.pl || '-').trim(),
+                syn: String(w.syn || '-').trim(),
+                ant: String(w.ant || '-').trim(),
+                cat: String(w.cat || '').trim()
+            };
+            item.cat = inferCategoryIfMissing(item);
+            return item;
+        }).filter(w => w.de && w.ar);
 
+        vocabulary = sortVocabularyByCategory(rawMapped);
+        populateCategoryDropdown();
         applySearchAndFilter();
         updateSyncStatusText();
         showToast(`✅ ${dataFileName} connecté (${vocabulary.length} mots).`);
@@ -922,7 +1074,7 @@ async function persistVocabularyChange(actionMsg) {
     }
 }
 
-/* ==================== GESTION DU TEST DE CONNAISSANCES ==================== */
+/* ==================== GESTION DU TEST DE CONNAISSANCES 100% ALÉATOIRE ==================== */
 function toggleQuizMode() {
     isQuizActive = !isQuizActive;
     const learningSec = document.getElementById('learningModeSection');
@@ -939,20 +1091,27 @@ function toggleQuizMode() {
         learningSec.style.display = 'none';
         listWrapper.style.display = 'none';
         quizSec.classList.add('active');
-        quizBtn.textContent = '📚 Retourner';
+        quizBtn.textContent = '📚 Retourner au Cours';
         quizBtn.style.background = '#16a34a';
         startQuiz();
     } else {
         learningSec.style.display = 'block';
         listWrapper.style.display = 'block';
         quizSec.classList.remove('active');
-        quizBtn.textContent = '🎮 Test de Connaissances';
+        quizBtn.textContent = '🎮 Test 100% Aléatoire';
         quizBtn.style.background = '';
     }
 }
 
 function startQuiz() {
-    quizPool = [...vocabulary].sort(() => Math.random() - 0.5);
+    // Mélange intégral 100% aléatoire (Fisher-Yates + Crypto + anti-répétition de catégorie)
+    quizPool = shuffle100PercentRandom(vocabulary);
+    if (lastQuizWordDe && quizPool.length > 1 && quizPool[0].de === lastQuizWordDe) {
+        const swapIdx = 1 + getTrueRandomInt(quizPool.length - 1);
+        const tmp = quizPool[0];
+        quizPool[0] = quizPool[swapIdx];
+        quizPool[swapIdx] = tmp;
+    }
     quizCurrentIndex = 0;
     quizScore = 0;
     quizTotalAnswered = 0;
@@ -977,6 +1136,7 @@ function renderQuizQuestion() {
     resultView.style.display = 'none';
 
     const currentWord = quizPool[quizCurrentIndex];
+    lastQuizWordDe = currentWord.de;
     const typeMeta = getWordTypeMeta(currentWord);
 
     document.getElementById('quizScoreBadge').textContent = `Score : ${quizScore} / ${quizTotalAnswered} (Mot ${quizCurrentIndex + 1}/${quizPool.length})`;
@@ -988,9 +1148,10 @@ function renderQuizQuestion() {
     document.getElementById('quizWordDe').textContent = currentWord.de;
     document.getElementById('quizNextBox').style.display = 'none';
 
+    // Sélection 100% aléatoire des 3 mauvaises réponses sur l'ensemble du dictionnaire
     const wrongPool = vocabulary.filter(w => w.ar !== currentWord.ar);
-    const shuffledWrong = [...wrongPool].sort(() => Math.random() - 0.5).slice(0, 3);
-    const options = [...shuffledWrong, currentWord].sort(() => Math.random() - 0.5);
+    const shuffledWrong = shuffle100PercentRandom(wrongPool).slice(0, 3);
+    const options = shuffle100PercentRandom([...shuffledWrong, currentWord]);
 
     const container = document.getElementById('quizOptionsContainer');
     container.replaceChildren();
@@ -1049,7 +1210,7 @@ function goRandom() {
     if (activeList.length <= 1) return;
     let nextIdx = index;
     while (nextIdx === index) {
-        nextIdx = Math.floor(Math.random() * activeList.length);
+        nextIdx = getTrueRandomInt(activeList.length);
     }
     index = nextIdx;
     renderCard();
@@ -1104,8 +1265,9 @@ function lockAdmin() {
 }
 
 function resetAdminForm() {
-    for (const id of ['inDe', 'inAr', 'inPl', 'inSyn', 'inAnt', 'editOriginalDe']) {
-        document.getElementById(id).value = '';
+    for (const id of ['inDe', 'inAr', 'inCat', 'inPl', 'inSyn', 'inAnt', 'editOriginalDe']) {
+        const el = document.getElementById(id);
+        if (el) el.value = '';
     }
     document.getElementById('saveWordBtn').textContent = '➕ Enregistrer dans Data.json';
 }
@@ -1126,6 +1288,7 @@ async function addOrUpdateWord() {
     if (!isAdmin) return;
     const de = smartLocalFormat(document.getElementById('inDe').value);
     const ar = document.getElementById('inAr').value.trim();
+    const rawCat = document.getElementById('inCat').value.trim();
     const pl = document.getElementById('inPl').value.trim() || "-";
     const syn = document.getElementById('inSyn').value.trim() || "-";
     const ant = document.getElementById('inAnt').value.trim() || "-";
@@ -1136,6 +1299,7 @@ async function addOrUpdateWord() {
         return;
     }
 
+    const cat = rawCat || inferCategoryIfMissing({ de, ar, pl });
     const normalizeGerman = value => String(value || '').trim().replace(/\s+/g, ' ').toLocaleLowerCase('de');
     const normalizedDe = normalizeGerman(de);
 
@@ -1148,11 +1312,13 @@ async function addOrUpdateWord() {
         }
         const targetIdx = vocabulary.findIndex(w => normalizeGerman(w.de) === origNorm);
         if (targetIdx > -1) {
-            vocabulary[targetIdx] = { de, ar, pl, syn, ant };
+            vocabulary[targetIdx] = { de, ar, pl, syn, ant, cat };
         } else {
-            vocabulary.unshift({ de, ar, pl, syn, ant });
+            vocabulary.unshift({ de, ar, pl, syn, ant, cat });
         }
+        vocabulary = sortVocabularyByCategory(vocabulary);
         resetAdminForm();
+        populateCategoryDropdown();
         applySearchAndFilter();
         await persistVocabularyChange(`Mot « ${de} » modifié`);
     } else {
@@ -1161,10 +1327,16 @@ async function addOrUpdateWord() {
             showToast(`⚠️ Le mot « ${de} » existe déjà !`);
             return;
         }
-        vocabulary.unshift({ de, ar, pl, syn, ant });
+        vocabulary.push({ de, ar, pl, syn, ant, cat });
+        vocabulary = sortVocabularyByCategory(vocabulary);
         resetAdminForm();
-        index = 0;
+        populateCategoryDropdown();
         applySearchAndFilter();
+        const newIdx = activeList.findIndex(w => normalizeGerman(w.de) === normalizedDe);
+        if (newIdx > -1) {
+            index = newIdx;
+            renderCard();
+        }
         await persistVocabularyChange(`Nouveau mot « ${de} » ajouté`);
     }
 }
@@ -1175,6 +1347,7 @@ function editCurrentWord() {
     document.getElementById('editOriginalDe').value = item.de;
     document.getElementById('inDe').value = item.de;
     document.getElementById('inAr').value = item.ar;
+    document.getElementById('inCat').value = item.cat || '';
     document.getElementById('inPl').value = item.pl;
     document.getElementById('inSyn').value = item.syn;
     document.getElementById('inAnt').value = item.ant;
@@ -1189,6 +1362,7 @@ async function deleteWordByIndex(idxInActive, event) {
     if (!targetWord) return;
     if (!confirm(`Supprimer définitivement « ${targetWord} » de Data.json ?`)) return;
     vocabulary = vocabulary.filter(w => w.de !== targetWord);
+    populateCategoryDropdown();
     applySearchAndFilter();
     await persistVocabularyChange(`Mot « ${targetWord} » supprimé`);
 }
@@ -1196,22 +1370,26 @@ async function deleteWordByIndex(idxInActive, event) {
 function renderCard() {
     const wordDe = document.getElementById('wordDe');
     const wordAr = document.getElementById('wordAr');
+    const wordCatDetail = document.getElementById('wordCatDetail');
     const wordTypeDetail = document.getElementById('wordTypeDetail');
     const wordPl = document.getElementById('wordPl');
     const wordSyn = document.getElementById('wordSyn');
     const wordAnt = document.getElementById('wordAnt');
     const badge = document.getElementById('badgeType');
+    const badgeCat = document.getElementById('badgeCategory');
     const card = document.getElementById('mainCard');
     const counter = document.getElementById('counterText');
 
     if (activeList.length === 0) {
         wordDe.textContent = "Aucun mot trouvé";
         wordAr.textContent = "-";
+        wordCatDetail.textContent = "-";
         wordTypeDetail.textContent = "-";
         wordPl.textContent = "-";
         wordSyn.textContent = "-";
         wordAnt.textContent = "-";
         badge.textContent = "...";
+        badgeCat.textContent = "📂 Aucune catégorie";
         counter.textContent = `Mots : 0 / ${vocabulary.length}`;
         return;
     }
@@ -1221,14 +1399,17 @@ function renderCard() {
 
     const item = activeList[index];
     const typeMeta = getWordTypeMeta(item);
+    const catLabel = item.cat || inferCategoryIfMissing(item);
 
     wordDe.textContent = item.de;
     wordAr.textContent = item.ar;
+    wordCatDetail.textContent = catLabel;
     wordTypeDetail.textContent = typeMeta.shortLabel;
     wordPl.textContent = item.pl;
     wordSyn.textContent = item.syn;
     wordAnt.textContent = item.ant;
 
+    badgeCat.textContent = catLabel;
     badge.style.backgroundColor = typeMeta.color;
     card.style.borderTopColor = typeMeta.color;
     badge.textContent = typeMeta.badge;
@@ -1246,11 +1427,15 @@ function setFilter(cat) {
 
 function applySearchAndFilter() {
     const q = document.getElementById('searchInput').value.trim().toLowerCase();
+    const selectedCat = document.getElementById('categorySelect')?.value || 'all';
+
     activeList = vocabulary.filter(w => {
         const deStr = String(w.de || '').toLowerCase();
         const arStr = String(w.ar || '').toLowerCase();
-        const matchQ = !q || deStr.includes(q) || arStr.includes(q);
+        const catStr = String(w.cat || '').toLowerCase();
+        const matchQ = !q || deStr.includes(q) || arStr.includes(q) || catStr.includes(q);
         if (!matchQ) return false;
+        if (selectedCat !== 'all' && w.cat !== selectedCat) return false;
         if (currentFilter === 'der') return w.de.startsWith('der ');
         if (currentFilter === 'die') return w.de.startsWith('die ');
         if (currentFilter === 'das') return w.de.startsWith('das ');
@@ -1272,7 +1457,18 @@ function selectWordFromList(idx) {
 function buildList() {
     const container = document.getElementById('wordListContainer');
     container.replaceChildren();
+    let lastCategory = null;
+
     activeList.forEach((item, idx) => {
+        const itemCat = item.cat || inferCategoryIfMissing(item);
+        if (itemCat !== lastCategory) {
+            lastCategory = itemCat;
+            const catHeader = document.createElement('div');
+            catHeader.className = 'list-cat-header';
+            catHeader.textContent = itemCat;
+            container.appendChild(catHeader);
+        }
+
         const div = document.createElement('div');
         div.className = 'list-item';
         div.addEventListener('click', () => selectWordFromList(idx));
@@ -1332,18 +1528,24 @@ async function importJSONFile(input) {
     try {
         const parsed = JSON.parse(await file.text());
         if (!Array.isArray(parsed)) throw new Error('Le fichier doit contenir un tableau JSON valide.');
-        const normalized = parsed.map(w => ({
-            de: String(w.de || '').trim(),
-            ar: String(w.ar || '').trim(),
-            pl: String(w.pl || '-').trim(),
-            syn: String(w.syn || '-').trim(),
-            ant: String(w.ant || '-').trim()
-        })).filter(w => w.de && w.ar);
+        const normalized = parsed.map(w => {
+            const item = {
+                de: String(w.de || '').trim(),
+                ar: String(w.ar || '').trim(),
+                pl: String(w.pl || '-').trim(),
+                syn: String(w.syn || '-').trim(),
+                ant: String(w.ant || '-').trim(),
+                cat: String(w.cat || '').trim()
+            };
+            item.cat = inferCategoryIfMissing(item);
+            return item;
+        }).filter(w => w.de && w.ar);
 
-        vocabulary = normalized;
+        vocabulary = sortVocabularyByCategory(normalized);
         index = 0;
+        populateCategoryDropdown();
         applySearchAndFilter();
-        await persistVocabularyChange(`Importation de ${normalized.length} mots`);
+        await persistVocabularyChange(`Importation de ${vocabulary.length} mots`);
     } catch (e) {
         showToast('Import impossible : ' + (e.message || 'fichier JSON invalide'));
     } finally {
