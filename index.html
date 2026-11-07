@@ -391,40 +391,42 @@ function inferCategoryIfMissing(item) {
     }
     const de = String(item.de || '').toLowerCase();
     const ar = String(item.ar || '');
-    if (/essen|frühstück|mittag|abend|kaffee|wasser|flasche|glas|tasse|obst|apfel|erdbeere|birne|fleisch|schwein|sau|wurst|fisch|käse|kuchen|bier|wein|alkohol|koch|lecker|köstlich|kellner|gast|kneipe|bar|bestellen|bedienen/.test(de)) {
+    const text = de + ' ' + ar;
+
+    if (/essen|frühstück|mittag|abend|kaffee|wasser|flasche|glas|tasse|obst|apfel|erdbeere|birne|fleisch|schwein|sau|wurst|fisch|käse|kuchen|bier|wein|alkohol|koch|kochen|lecker|köstlich|kellner|gast|kneipe|bar|bestellen|bedienen|lebensmittel|bäcker|brot|milch|tee|zucker|salz|suppe|reis|hähnchen|gemüse|tomate|kartoffel|banane|orange|saft|trinken|getränk|restaurant|speisekarte|hunger|durst|يأكل|يشرب|فطور|غداء|عشاء|قهوة|ماء|شاي|حليب|خبز|لحم|سمك|دجاج|جبن|كعك|فاكهة|فواكه|تفاح|خضار|طعام|أكل|مطعم|مقهى|نادل|لذيذ|شهي|طبخ|يطبخ|طباخ|قنينة|كأس|فنجان|بيرة|خمر|مشروب/.test(text)) {
         return DEFAULT_CATEGORIES_ORDER[0];
     }
-    if (/mann|frau|ehe|heirat|eltern|vater|mutter|kind|junge|mädchen|bruder|schwester|geschwister|oma|opa|groß|onkel|tante|freund|bekannt|verwandt|mensch|person|leute|ledig|verheiratet|geschieden|verwitwet|alter|jung|alt|heißen/.test(de)) {
+    if (/mann|frau|ehe|heirat|eltern|vater|mutter|kind|junge|mädchen|bruder|schwester|geschwister|oma|opa|großeltern|großvater|großmutter|onkel|tante|freund|bekannt|verwandt|mensch|person|leute|ledig|verheiratet|geschieden|getrennt|verwitwet|familienstand|alter|jung|alt|kindheit|erzieh|heißen|sohn|tochter|baby|familie|nachbar|رجل|امرأة|زوج|زوجة|زواج|والد|أب|أم|طفل|ولد|بنت|فتى|فتاة|أخ|أخت|إخوة|جد|جدة|أجداد|عم|خال|عمة|خالة|صديق|قريب|عائلة|أسرة|إنسان|شخص|ناس|أعزب|متزوج|مطلق|أرمل|عمر|سن|شاب|مسن|تربية|يربي|يسمى|ابن|ابنة/.test(text)) {
         return DEFAULT_CATEGORIES_ORDER[1];
     }
-    if (/zimmer|haus|wohn|adresse|anschrift|tisch|stuhl|herd|wasch|glühbirne|batterie|bildschirm|keller|ecke|möbel/.test(de)) {
+    if (/zimmer|haus|wohn|adresse|anschrift|postleitzahl|tisch|stuhl|bank|herd|wasch|glühbirne|batterie|bildschirm|keller|ecke|möbel|bett|schrank|sofa|küche|bad|toilette|fenster|tür|wand|boden|dach|garten|balkon|miete|mieten|umziehen|aufmachen|zumachen|hängen|übernachten|غرفة|منزل|بيت|يسكن|سكن|عنوان|طاولة|كرسي|مقعد|فرن|مغسلة|يغسل|مصباح|بطارية|شاشة|قبو|زاوية|أثاث|سرير|خزانة|مطبخ|حمام|نافذة|باب|شباك|حديقة|شرفة|إيجار|يفتح|يغلق|يعلق|يبيت/.test(text)) {
         return DEFAULT_CATEGORIES_ORDER[2];
     }
-    if (/reise|fahren|abfahrt|ankunft|ankommen|auto|wagen|zug|bahnhof|flug|schiff|hafen|fahrrad|rad|park|fahrkarte|buchen|reservieren|gepäck|tasche/.test(de)) {
+    if (/reise|abreise|aufenthalt|fahren|mitfahren|abfahren|abfahrt|ankommen|ankunft|halten|parken|parkplatz|warten|auto|wagen|kennzeichen|taxi|bus|autobus|zug|bahnhof|flug|fliegen|landen|schiff|hafen|fahrrad|rad|laufen|fahrkarte|ticket|reservieren|buchen|gepäck|tasche|koffer|mitnehmen|papiere|pass|visum|verkehr|straße|weg|سفر|رحلة|مغادرة|إقامة|يسافر|يقود|ينطلق|وصول|يصل|يتوقف|يركن|موقف|ينتظر|سيارة|تاكسي|حافلة|باص|قطار|محطة|طائرة|مطار|يهبط|سفينة|ميناء|دراجة|تذكرة|يحجز|أمتعة|حقيبة|جواز|طريق|يمشي|يركض/.test(text)) {
         return DEFAULT_CATEGORIES_ORDER[3];
     }
-    if (/stadt|land|ort|zentrum|mitte|apotheke|bibliothek|bücherei|museum|kino|strand|fluss|bauer|einwohner|wien|marokkaner|deutsche/.test(de)) {
+    if (/stadt|land|bundesland|inland|ausland|ausländer|ort|geburtsort|einwohner|zentrum|mitte|hochhaus|platz|treffpunkt|strand|fluss|meer|see|berg|wald|dorf|bauernhof|bauer|landwirt|apotheke|bibliothek|bücherei|museum|kino|theater|hotel|kirche|moschee|schule|universität|supermarkt|markt|polizei|wien|marokkaner|deutsche|staatsangehörigkeit|مدينة|عاصمة|بلد|دولة|ولاية|أجنبي|مغربي|ألماني|جنسية|مكان|سكان|ساكن|مركز|وسط|بناية|ساحة|شاطئ|نهر|بحر|جبل|غابة|قرية|مزرعة|فلاح|صيدلية|مكتبة|متحف|سينما|فندق|مسجد|كنيسة|سوق/.test(text)) {
         return DEFAULT_CATEGORIES_ORDER[4];
     }
-    if (/arbeit|beruf|lehrer|schüler|student|unterricht|kurs|sprach|schule|gymnasium|abitur|jura|jurist|firma|wirtschaft|übung|hausaufgabe|buch|heft|stift|lesen|schreiben|projekt|bericht|protokoll|sitzung|besprechung|rentner/.test(de)) {
+    if (/arbeit|beruf|stelle|firma|wirtschaft|berufstätig|arbeitstätig|arbeitslos|beschäftigt|frei|besetzt|lehrer|schüler|student|gymnasium|abitur|jura|jurist|datenanalyst|rentner|hausfrau|hausmann|unterricht|lernen|kurs|sprache|übung|hausaufgabe|ergänzen|unterstreichen|beschreiben|lesen|schreiben|buch|heft|seite|wörterbuch|wort|satz|gegenteil|präteritum|stift|kugelschreiber|bleistift|projekt|entwickeln|bericht|protokoll|besprechung|sitzung|treffen|kollege|chef|büro|computer|prüfung|test|عمل|يعمل|مهنة|وظيفة|شركة|اقتصاد|موظف|عاطل|مشغول|شاغر|أستاذ|معلم|تلميذ|طالب|ثانوية|بكالوريا|قانون|حقوق|محلل|متقاعد|ربة بيت|حصة|درس|يدرس|يتعلم|يعلم|دورة|لغة|تمرين|واجب|يقرأ|يكتب|كتاب|دفتر|صفحة|قاموس|كلمة|جملة|قلم|مشروع|يطور|تقرير|اجتماع|امتحان/.test(text)) {
         return DEFAULT_CATEGORIES_ORDER[5];
     }
-    if (/telefon|anruf|rufen|handy|post|mail|brief|paket|absender|empfänger|formular|unterschrift|frage|antwort|sprechen|reden|sagen|erzählen|hören|zeitung|kommunik/.test(de)) {
+    if (/kommunik|sprechen|reden|sagen|erzählen|hören|fragen|frage|antworten|antwort|bejahen|verneinen|telefon|anrufen|anruf|handy|rufen|ruf|post|mail|schicken|bringen|bekommen|absender|empfänger|brief|paket|formular|angaben|unterschrift|zeitung|nachricht|internet|radio|fernsehen|تواصل|يتواصل|يتكلم|يتحدث|يقول|يحكي|يسمع|يسأل|سؤال|يجيب|جواب|ينفي|يؤكد|هاتف|يتصل|مكالمة|ينادي|بريد|يرسل|يتلقى|مرسل|مستقبل|رسالة|طرد|طابع|استمارة|معلومات|توقيع|جريدة|صحيفة|أخبار/.test(text)) {
         return DEFAULT_CATEGORIES_ORDER[6];
     }
-    if (/geld|bank|kaufen|verkaufen|käufer|zahlen|bezahlen|kosten|preis|reich|arm|zahl|zählen|viel|wenig|bisschen|circa|etwa|ungefähr|fast|brauchen|konsum/.test(de)) {
+    if (/geld|bank|abheben|kaufen|verkaufen|käufer|bezahlen|zahlen|kosten|preis|reich|arm|zählen|zahl|viel|wenig|bisschen|einige|nur|fast|ungefähr|circa|etwa|ziemlich|brauchen|gebrauchen|verbrauchen|konsumieren|euro|cent|rechnung|kasse|teuer|billig|günstig|مال|نقود|بنك|مصرف|يسحب|يشتري|يبيع|مشتري|يدفع|يكلف|تكاليف|ثمن|سعر|غني|فقير|يعد|رقم|عدد|كثير|قليل|بعض|فقط|تقريباً|حوالي|يحتاج|يستعمل|يستهلك|فاتورة|غالي|رخيص/.test(text)) {
         return DEFAULT_CATEGORIES_ORDER[7];
     }
-    if (/hobby|sport|spiel|fußball|schach|singen|tanzen|lied|musik|klavier|maler|malen|kunst|künstler|gemälde|bild|foto|kamera|geburt|geschenk|schenken|einladen|schuh|mantel|spazieren|ausgehen/.test(de)) {
+    if (/hobby|aktivität|tätigkeit|unternehmen|tun|machen|treiben|ausgehen|spazieren|sport|aufwärmung|trainer|schuh|mantel|kleidung|hose|hemd|kleid|jacke|modisch|spielen|spiel|fußball|schach|singen|tanzen|lied|musik|klavier|malen|maler|künstler|gemälde|bild|foto|kamera|geburt|einladen|schenken|geschenk|überraschung|feier|party|هواية|نشاط|يتنزه|رياضة|رياضي|مدرب|إحماء|حذاء|معطف|ملابس|موضة|يلعب|لعبة|مباراة|كرة|شطرنج|يغني|يرقص|أغنية|موسيقى|بيانو|يرسم|رسام|فنان|لوحة|صورة|كاميرا|عيد ميلاد|ولادة|يدعو|يهدي|هدية|مفاجأة|حفلة/.test(text)) {
         return DEFAULT_CATEGORIES_ORDER[8];
     }
-    if (/zeit|uhr|stunde|jahr|morgen|heute|früh|spät|jetzt|nun|moment|sofort|gleich|immer|nie|oft|selten|manchmal|wieder|anfang|beginn|ende|sonne|regen|katze|maus|mittwoch|wochenende|datum|dauer/.test(de)) {
+    if (/zeit|dauer|lange|wann|datum|uhr|stunde|minute|sekunde|um|gegen|vor|nach|seit|bis|jahr|monat|woche|tag|mittwoch|montag|dienstag|donnerstag|freitag|samstag|sonntag|wochenende|morgen|heute|gestern|früh|spät|jetzt|nun|gerade|moment|zurzeit|sofort|gleich|schon|noch|danach|dann|immer|stets|oft|regelmäßig|manchmal|selten|nie|wieder|anfang|beginn|aufhören|ende|sonne|regen|wetter|wind|schnee|kalt|warm|heiß|katze|maus|hund|tier|وقت|زمن|مدة|متى|تاريخ|ساعة|دقيقة|سنة|شهر|أسبوع|يوم|أربعاء|عطلة|صباح|غداً|اليوم|أمس|مبكراً|لاحقاً|الآن|حالياً|فوراً|دائماً|غالباً|أحياناً|نادراً|أبداً|مجدداً|يبدأ|بداية|ينتهي|نهاية|يتوقف|شمس|شروق|غروب|مطر|طقس|مظلة|قطة|فأر|حيوان/.test(text)) {
         return DEFAULT_CATEGORIES_ORDER[9];
     }
-    if (/gesund|krank|patient|untersuchen|ohr|mund|rauchen|feuerzeug|schlaf|wach|aufstehen|aufwachen|sitzen|stehen|sehen/.test(de)) {
+    if (/gesund|krank|patient|arzt|krankenhaus|medizin|tablette|schmerz|untersuchen|besserung|ohr|mund|auge|kopf|hand|fuß|herz|körper|rauchen|feuerzeug|aufwachen|aufstehen|wach|schläfrig|schlaf|sitzen|stehen|sehen|صحة|سليم|مريض|طبيب|مستشفى|دواء|يفحص|شفاء|سلامات|أذن|فم|عين|رأس|يد|قدم|جسم|يدخن|ولاعة|يستيقظ|ينام|نوم|نعسان|يجلس|يقف|يرى/.test(text)) {
         return DEFAULT_CATEGORIES_ORDER[10];
     }
-    if (/stark|schwach|schnell|langsam|einfach|leicht|schwer|klug|dumm|fleißig|faul|schön|wunder|herrlich|toll|super|perfekt|hässlich|nett|freundlich|sauber|schmutzig|wahr|echt|wirklich|glück|pech|erfolg|problem|sorge|lieben|roman|lachen|lächeln|zufall|allein|zusammen|gemeinsam|trenn/.test(de)) {
+    if (/stark|schwach|groß|klein|schnell|langsam|einfach|leicht|schwer|klug|dumm|fleißig|faul|schön|wunder|herrlich|toll|super|perfekt|gut|schlecht|hässlich|nett|freundlich|sauber|schmutzig|berühmt|bekannt|wichtig|wahr|echt|wirklich|glück|pech|erfolg|problem|sorge|lieben|roman|lachen|lächeln|weinen|angst|zögern|killer|zufall|allein|zusammen|gemeinsam|trenn|قوي|ضعيف|كبير|صغير|سريع|بطيء|سهل|صعب|خفيف|ثقيل|ذكي|غبي|مجتهد|كسول|جميل|رائع|ممتاز|جيد|قبيح|لطيف|ودود|نظيف|متسخ|مشهور|مهم|حقيقي|صحيح|كاذب|حظ|سعادة|نجاح|مشكلة|قلق|يحب|رواية|يضحك|يبتسم|يتردد|صدفة|وحيد|معاً|يفصل/.test(text)) {
         return DEFAULT_CATEGORIES_ORDER[11];
     }
     return DEFAULT_CATEGORIES_ORDER[12];
